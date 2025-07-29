@@ -26,9 +26,19 @@ public class SkillData
 
     public void LevelUp()
     {
+        if (!skillSO.isLevelUpEnabled) return;
+
         if (!IsMaxLevel())
         {
             currentLevel++;
         }
+    }
+
+    public StatModifier GetCurrentModifier()
+    {
+        if (IsMaxLevel())
+            return null;
+
+        return Modifiers[currentLevel];
     }
 }

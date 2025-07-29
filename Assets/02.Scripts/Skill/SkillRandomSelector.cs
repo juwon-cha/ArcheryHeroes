@@ -16,6 +16,7 @@ public class SkillRandomSelector
     {
         var available = skillDatas.Where(s => !s.IsMaxLevel()).ToList();
 
+        Debug.Log($"Available skills count: {available.Count}, Requested count: {count}");
         if (available.Count == 0)
             return null;
 
