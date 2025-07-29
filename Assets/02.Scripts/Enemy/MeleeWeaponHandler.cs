@@ -28,6 +28,7 @@ public class MeleeWeaponHandler : WeaponHandler
             Target // 레이어 마스크
         );
 
+        // 충돌 처리
         if (hit.collider != null)
         {
             ResourceController resourceController = hit.collider.GetComponent<ResourceController>();
@@ -47,6 +48,7 @@ public class MeleeWeaponHandler : WeaponHandler
         }
     }
 
+    // 근거리 무기는 따로 회전시켜줘야 한다
     public override void Rotate(bool isLeft)
     {
         if (isLeft)

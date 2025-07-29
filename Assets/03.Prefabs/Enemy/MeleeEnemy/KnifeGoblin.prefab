@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6067485286864423406}
   - component: {fileID: 8029843810610918852}
   m_Layer: 31
-  m_Name: Goblin
+  m_Name: KnifeGoblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 5
+  speed: 3
 --- !u!114 &6067485286864423406
 MonoBehaviour:
   m_ObjectHideFlags: 0

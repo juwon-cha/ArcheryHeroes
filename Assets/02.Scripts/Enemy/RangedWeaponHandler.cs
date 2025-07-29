@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RangedWeaponHandler : WeaponHandler
 {
-    [Header("Range Attack Data")]
+    [Header("Range Attack Info")]
     [SerializeField] private Transform projectileSpawnPosition;
 
     [SerializeField] private int bulletIndex;
