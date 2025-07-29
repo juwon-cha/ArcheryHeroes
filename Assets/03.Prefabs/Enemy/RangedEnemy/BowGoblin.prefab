@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5272366717956779933}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
   - component: {fileID: 8029843810610918852}
-  m_Layer: 0
-  m_Name: Goblin
+  m_Layer: 31
+  m_Name: BowGoblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 2680468871832475754}
   weaponPivot: {fileID: 5272366717956779933}
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 8091848209504161090, guid: 8ba3d6c15432ba646bfde2d77225c60b, type: 3}
   showGizmos: 1
   followRange: 15
 --- !u!1 &3015333807292570419
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 4357336016272996187}
   - component: {fileID: 2680468871832475754}
   - component: {fileID: 5145346338000460771}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

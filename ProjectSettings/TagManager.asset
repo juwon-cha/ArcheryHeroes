@@ -34,9 +34,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Level
+  - Player
+  - Monster
   m_SortingLayers:
   - name: Default
     uniqueID: 0

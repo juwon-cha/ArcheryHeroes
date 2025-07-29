@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AnimationHandler : MonoBehaviour
 {
-    private static readonly int isMoving = Animator.StringToHash("IsMoving");
+    private static readonly int isMoving = Animator.StringToHash("IsMove");
     private static readonly int isDamage = Animator.StringToHash("IsDamage");
 
     protected Animator animator;
