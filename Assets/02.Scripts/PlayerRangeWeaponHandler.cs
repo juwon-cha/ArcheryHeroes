@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeWeaponHandler : WeaponHandler
+public class PlayerRangeWeaponHandler : PlayerWeaponHandler
 {
     [Header("Ranged Attack Data")]
     [SerializeField] private Transform projectileSpawnPosition;
@@ -28,12 +28,12 @@ public class RangeWeaponHandler : WeaponHandler
     [SerializeField] private Color projectileColor;
     public Color ProjectileColor { get { return projectileColor; } }
 
-    private ProjectileManager projectileManager;
+    private PlayerProjectileManager projectileManager;
 
     protected override void Start()
     {
         base.Start();
-        projectileManager = ProjectileManager.Instance;
+        projectileManager = PlayerProjectileManager.Instance;
     }
 
     public override void Attack()
@@ -60,7 +60,6 @@ public class RangeWeaponHandler : WeaponHandler
             this,
             projectileSpawnPosition.position,
             RotateVector2(lookDirection, angle));
-        Debug.Log(RotateVector2(lookDirection, angle));
     }
 
     private static Vector2 RotateVector2(Vector2 v, float degree)

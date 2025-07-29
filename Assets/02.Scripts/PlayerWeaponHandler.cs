@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class WeaponHandler : MonoBehaviour
+public class PlayerWeaponHandler : MonoBehaviour
 {
     [Header("Attack Info")]
     [SerializeField] private float delay = 1f;
@@ -33,13 +33,13 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private float knockbackTime = 1f;
     public float KnockbackTime { get => knockbackTime; set => knockbackTime = value; }
 
-    public BaseController controller { get; private set; }
+    public PlayerBaseController controller { get; private set; }
 
     private SpriteRenderer weaponRenderer;
 
     protected virtual void Awake()
     {
-        controller = GetComponentInParent<BaseController>();
+        controller = GetComponentInParent<PlayerBaseController>();
         weaponRenderer = GetComponentInChildren<SpriteRenderer>();
 
         transform.localScale = Vector3.one * weaponSize;
@@ -52,7 +52,7 @@ public class WeaponHandler : MonoBehaviour
 
     public virtual void Attack()
     {
-        Debug.Log("°ø°ÝÁß");
+
     }
 
     public virtual void Rotate(bool isLeft)

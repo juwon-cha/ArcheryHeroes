@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileManager : MonoBehaviour
+public class PlayerProjectileManager : MonoBehaviour
 {
-    private static ProjectileManager instance;
-    public static ProjectileManager Instance { get { return instance; } }
+    private static PlayerProjectileManager instance;
+    public static PlayerProjectileManager Instance { get { return instance; } }
 
     [SerializeField] private GameObject[] projectilePrefabs;
 
@@ -14,12 +14,12 @@ public class ProjectileManager : MonoBehaviour
         instance = this;
     }
 
-    public void ShootBullet(RangeWeaponHandler rangeWeaponHandler, Vector2 startPosition, Vector2 direction)
+    public void ShootBullet(PlayerRangeWeaponHandler rangeWeaponHandler, Vector2 startPosition, Vector2 direction)
     {
         GameObject origin = projectilePrefabs[rangeWeaponHandler.BulletIndex];
         GameObject gameObject = Instantiate(origin, startPosition, Quaternion.identity);
 
-        ProjectileController projectileController = gameObject.GetComponent<ProjectileController>();
+        PlayerProjectileController projectileController = gameObject.GetComponent<PlayerProjectileController>();
         projectileController.Init(direction, rangeWeaponHandler);
     }
 }

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileController : MonoBehaviour
+public class PlayerProjectileController : MonoBehaviour
 {
     [SerializeField] private LayerMask levelCollisionLayer;
 
-    private RangeWeaponHandler rangeWeaponHandler;
+    private PlayerRangeWeaponHandler rangeWeaponHandler;
 
     private float currentDuration;
     private Vector2 direction;
@@ -41,7 +41,7 @@ public class ProjectileController : MonoBehaviour
         rigid.velocity = direction * rangeWeaponHandler.Speed;
     }
 
-    public void Init(Vector2 direction, RangeWeaponHandler weaponHandler)
+    public void Init(Vector2 direction, PlayerRangeWeaponHandler weaponHandler)
     {
         rangeWeaponHandler = weaponHandler;
 

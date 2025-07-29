@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BaseController : MonoBehaviour
+public class PlayerBaseController : MonoBehaviour
 {
     protected Rigidbody2D rigid;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform weaponPivot;
-    [SerializeField] public WeaponHandler weaponPrefab;
-    protected WeaponHandler weaponHandler;
+    [SerializeField] public PlayerWeaponHandler weaponPrefab;
+    protected PlayerWeaponHandler weaponHandler;
+    protected GameObject closestTarget;
 
     protected bool isAttacking;
     private float timeSinceLastAttack = float.MaxValue;
@@ -32,26 +33,35 @@ public class BaseController : MonoBehaviour
         }
         else
         {
-            weaponHandler = GetComponentInChildren<WeaponHandler>();
+            weaponHandler = GetComponentInChildren<PlayerWeaponHandler>();
         }
     }
 
     protected virtual void Start()
     {
-        
+
     }
 
     protected virtual void Update()
     {
+        AttackCheck();
         if(moveDirection != Vector2.zero)
             lookDirection = moveDirection.normalized;
+        else if(moveDirection == Vector2.zero && closestTarget != null)
+            lookDirection = DirectionToTarget();
         HandleAction();
         Rotate(lookDirection);
         HandleAttackDelay();
+        closestTarget = null;
     }
     protected virtual void FixedUpdate()
     {
         Movement(moveDirection);
+    }
+
+    private Vector2 DirectionToTarget()
+    {
+        return (closestTarget.transform.position - transform.position).normalized;
     }
 
     protected virtual void HandleAction()
@@ -90,7 +100,7 @@ public class BaseController : MonoBehaviour
             timeSinceLastAttack += Time.deltaTime;
         }
 
-        if(isAttacking && timeSinceLastAttack > weaponHandler.Delay)
+        if(closestTarget != null && isAttacking && timeSinceLastAttack > weaponHandler.Delay)
         {
             timeSinceLastAttack = 0;
             Attack();
@@ -105,5 +115,8 @@ public class BaseController : MonoBehaviour
         }
     }
 
-    
+    protected virtual void AttackCheck()
+    {
+
+    }
 }
