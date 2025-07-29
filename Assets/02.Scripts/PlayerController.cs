@@ -15,6 +15,11 @@ public class PlayerController : BaseController
         base.Start();
         playerCamera = Camera.main;
     }
+
+    protected override void HandleAction()
+    {
+        isAttacking = moveDirection == Vector2.zero ? true : false;
+    }
     private void OnMove(InputValue inputValue)
     {
         moveDirection = inputValue.Get<Vector2>();

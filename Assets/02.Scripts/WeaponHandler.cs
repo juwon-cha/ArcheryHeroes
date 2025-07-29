@@ -32,4 +32,31 @@ public class WeaponHandler : MonoBehaviour
 
     [SerializeField] private float knockbackTime = 1f;
     public float KnockbackTime { get => knockbackTime; set => knockbackTime = value; }
+
+    public BaseController controller { get; private set; }
+
+    private SpriteRenderer weaponRenderer;
+
+    protected virtual void Awake()
+    {
+        controller = GetComponentInParent<BaseController>();
+        weaponRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        transform.localScale = Vector3.one * weaponSize;
+    }
+
+    protected virtual void Start()
+    {
+
+    }
+
+    public virtual void Attack()
+    {
+        Debug.Log("°ø°ÝÁß");
+    }
+
+    public virtual void Rotate(bool isLeft)
+    {
+        weaponRenderer.flipY = isLeft;
+    }
 }

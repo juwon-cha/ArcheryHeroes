@@ -184,6 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1595651993454325111}
   weaponPivot: {fileID: 5704645585697235688}
+  weaponPrefab: {fileID: 4105408153431025822, guid: 92442d2803d4be4438b9df3ffcda675e, type: 3}
 --- !u!1 &5893668865522084624
 GameObject:
   m_ObjectHideFlags: 0
