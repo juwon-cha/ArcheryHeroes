@@ -1,31 +1,37 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class SkillManager : MonoBehaviour
+public class SkillManager : Singleton<SkillManager>
 {
     [SerializeField] private SkillDataSO[] allSkills;
+
+    private Dictionary<SkillDataSO, SkillData> skillDataDict = new();
     private SkillRandomSelector selector;
-    private HashSet<SkillDataSO> acquiredSkills = new();
 
-    private int playerLevel = 1;
-
-    private void Awake()
+    protected override void Initialize()
     {
-        selector = new SkillRandomSelector(allSkills);
+        base.Initialize();
+
+        foreach (var skillSO in allSkills)
+            skillDataDict[skillSO] = new SkillData(skillSO);
+
+        selector = new SkillRandomSelector(skillDataDict.Values);
     }
 
-    public SkillDataSO GetRandomNewSkill()
+    // 랜덤으로 스킬 데이터들 가져오기
+    public List<SkillData> GetRandomSkills(int count)
     {
-        selector.ExcludeSkills(acquiredSkills);
-        return selector.SelectRandomSkill(playerLevel);
+        return selector.SelectRandomSkills(count);
     }
 
-    public void AcquireSkill(SkillDataSO skill)
+    // 특정 스킬 레벨업
+    public void LevelUpSkill(SkillDataSO skillSO)
     {
-        if (skill == null || acquiredSkills.Contains(skill))
-            return;
-
-        acquiredSkills.Add(skill);
-        Debug.Log($"획득한 스킬: {skill.skillName}");
+        if (skillDataDict.TryGetValue(skillSO, out var skillData))
+        {
+            skillData.LevelUp();
+            Debug.Log($"{skillSO.skillName} 레벨업: {skillData.currentLevel}");
+        }
     }
 }

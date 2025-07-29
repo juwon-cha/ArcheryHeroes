@@ -4,30 +4,24 @@ using UnityEngine;
 
 public class SkillRandomSelector
 {
-    private List<SkillDataSO> skillPool;
-    private HashSet<SkillDataSO> excludedSkills = new();
+    private List<SkillData> skillDatas;
 
-    public SkillRandomSelector(IEnumerable<SkillDataSO> skills)
+    public SkillRandomSelector(IEnumerable<SkillData> skills)
     {
-        skillPool = new List<SkillDataSO>(skills);
+        skillDatas = new(skills);
     }
 
-    public void ExcludeSkills(IEnumerable<SkillDataSO> skills)
+    // 최대 레벨이 아닌 스킬 중에서 원하는 개수만큼 랜덤 선택
+    public List<SkillData> SelectRandomSkills(int count)
     {
-        excludedSkills = new HashSet<SkillDataSO>(skills);
-    }
-
-    // 중복 제외 후 최대 count 개수만큼 랜덤 스킬 반환
-    public List<SkillDataSO> SelectRandomSkills(int count)
-    {
-        var available = skillPool.Where(s => !excludedSkills.Contains(s)).ToList();
+        var available = skillDatas.Where(s => !s.IsMaxLevel()).ToList();
 
         if (available.Count == 0)
-            return new List<SkillDataSO>();
+            return null;
 
         count = Mathf.Min(count, available.Count);
 
-        // 리스트 셔플
+        // 리스트 셔플 (Fisher-Yates)
         for (int i = 0; i < available.Count; i++)
         {
             int j = Random.Range(i, available.Count);
