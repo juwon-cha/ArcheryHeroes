@@ -22,8 +22,6 @@ public class LevelUpUI : MonoBehaviour
 
     void Initialize()
     {
-        Debug.Log("LevelUpUI Initialized");
-
         if (titleText != null)
             titleText.text = "Level Up";
 
@@ -41,8 +39,6 @@ public class LevelUpUI : MonoBehaviour
 
     void SetSelectButtons()
     {
-        Debug.Log("Setting Select Buttons");
-
         var skillList = SkillManager.Instance.GetRandomSkills(maxSelectCount);
         int count = Mathf.Min(skillList.Count, maxSelectCount);
 
