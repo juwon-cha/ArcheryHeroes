@@ -24,6 +24,7 @@ public class BaseController : MonoBehaviour
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        lookDirection = new Vector2(1, 0);
 
         if (weaponPrefab != null)
         {
@@ -42,7 +43,8 @@ public class BaseController : MonoBehaviour
 
     protected virtual void Update()
     {
-        lookDirection = moveDirection;
+        if(moveDirection != Vector2.zero)
+            lookDirection = moveDirection.normalized;
         HandleAction();
         Rotate(lookDirection);
         HandleAttackDelay();
@@ -102,4 +104,6 @@ public class BaseController : MonoBehaviour
             weaponHandler?.Attack();
         }
     }
+
+    
 }
