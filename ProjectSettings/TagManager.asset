@@ -32,11 +32,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - Level
   - Player
   - Monster
+  - Level
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

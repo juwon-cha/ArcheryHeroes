@@ -49,21 +49,21 @@ MonoBehaviour:
   delay: 1
   weaponSize: 0.6
   power: 1
-  speed: 1
+  speed: 2
   attackRange: 5
   Target:
     serializedVersion: 2
-    m_Bits: 1073741824
+    m_Bits: 134217728
   isOnKnockBack: 0
   knockBackPower: 1
   knockBackDuration: 0.1
   projectileSpawnPosition: {fileID: 3111056865554600265}
   bulletIndex: 0
-  bulletSize: 1
-  duration: 10
-  spread: 1
-  numberOfProjectilesPerShot: 1
-  multipleProjectileAngle: 1
+  bulletSize: 0.7
+  duration: 5
+  spread: 3
+  numberOfProjectilesPerShot: 3
+  multipleProjectileAngle: 3
   projectileColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &6095780711545954297
 GameObject:
