@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    // TEMP Player
+    [SerializeField] private GameObject playerPrefab;
+    public GameObject Player { get; private set; }
+
+    void Awake()
+    {
+        Player = playerPrefab;
+
+        // Test
+        //EnemyManager.Instance.StartWave(5);
+
+        // 정진규 테스트
+    }
+
+    void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EndOfWave()
     {
-        
+
     }
 }

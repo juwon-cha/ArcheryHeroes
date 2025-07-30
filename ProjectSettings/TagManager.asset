@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Monster
   layers:
   - Default
   - TransparentFX
@@ -11,6 +12,7 @@ TagManager:
   - 
   - Water
   - UI
+  - Obstacle
   - 
   - 
   - 
@@ -31,10 +33,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Monster
+  - Level
   - 
   - 
   m_SortingLayers:
