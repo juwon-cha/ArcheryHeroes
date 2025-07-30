@@ -34,11 +34,18 @@ public class WeaponHandler : MonoBehaviour
 
     private static readonly int IsAttack = Animator.StringToHash("IsAttack");
 
+    public EnemyController EnemyController { get; private set; }
     private Animator animator;
     private SpriteRenderer weaponRenderer;
 
     protected virtual void Awake()
     {
+        EnemyController = GetComponentInParent<EnemyController>();
+        if (EnemyController == null)
+        {
+            Debug.LogError("EnemyController component is missing on " + gameObject.name);
+        }
+
         animator = GetComponentInChildren<Animator>();
         if (animator == null)
         {
@@ -53,6 +60,11 @@ public class WeaponHandler : MonoBehaviour
 
         animator.speed = 1.0f / delay; // 애니메이션 속도를 공격 딜레이에 맞춰 조정
         transform.localScale = Vector3.one * weaponSize; // 무기 크기 설정
+    }
+
+    protected virtual void Start()
+    {
+        
     }
 
     public virtual void Attack()

@@ -8,13 +8,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject playerPrefab;
     public GameObject Player { get; private set; }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        Player = playerPrefab;
+
+        // Test
+        EnemyManager.Instance.StartWave(5);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
