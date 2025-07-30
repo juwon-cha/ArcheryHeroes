@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class LevelUpSelectButton : MonoBehaviour
 {
     private LevelUpUI levelUpUI;
-    [SerializeField] private TMP_Text skillNameText;
-    [SerializeField] private Image skillIconIamge;
+    [SerializeField] private TMP_Text abilityNameText;
+    [SerializeField] private Image abilityIconIamge;
     [SerializeField] private Button selectButton;
-    private SkillData skillData;
+    private AbilityData abilityData;
 
     public void Initialize(LevelUpUI _levelUpUI)
     {
@@ -22,25 +22,25 @@ public class LevelUpSelectButton : MonoBehaviour
             selectButton.onClick.AddListener(OnButtonClick);
         }
 
-        SetSkillData(null);
+        SetAbilityData(null);
     }
 
-    public void SetSkillData(SkillData _skillData)
+    public void SetAbilityData(AbilityData _skillData)
     {
-        skillData = _skillData;
+        abilityData = _skillData;
 
-        if (skillNameText != null)
-            skillNameText.text = skillData?.SkillName;
+        if (abilityNameText != null)
+            abilityNameText.text = abilityData?.SkillName;
 
-        if (skillIconIamge != null && skillData?.Icon != null)
-            skillIconIamge.sprite = skillData.Icon;
+        if (abilityIconIamge != null && abilityData?.Icon != null)
+            abilityIconIamge.sprite = abilityData.Icon;
     }
 
     public void OnButtonClick()
     {
-        if (skillData != null)
+        if (abilityData != null)
         {
-            SkillManager.Instance.LevelUpSkill(skillData.skillSO);
+            AbilityManager.Instance.LevelUpSkill(abilityData.abilitySO);
             levelUpUI.Hide();
         }
     }

@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 562918482}
   - component: {fileID: 562918481}
   m_Layer: 0
-  m_Name: SkillManager
+  m_Name: AbilityManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f41bc71734dd24b937213f2e199b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allSkills:
+  allAbilities:
   - {fileID: 11400000, guid: be26ba6645baa0c47a889fee6cfdac27, type: 2}
   - {fileID: 11400000, guid: bec8ef87f2d8e324f8c0ec0a5fe2063f, type: 2}
   - {fileID: 11400000, guid: 547f776ee0ff1714cba4f8452e162a57, type: 2}

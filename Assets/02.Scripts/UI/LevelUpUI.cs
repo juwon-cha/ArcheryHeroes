@@ -39,14 +39,14 @@ public class LevelUpUI : MonoBehaviour
 
     void SetSelectButtons()
     {
-        var skillList = SkillManager.Instance.GetRandomSkills(maxSelectCount);
-        int count = Mathf.Min(skillList.Count, maxSelectCount);
+        var abilityList = AbilityManager.Instance.GetRandomAbilities(maxSelectCount);
+        int count = Mathf.Min(abilityList.Count, maxSelectCount);
 
         for (int i = 0; i < count; i++)
         {
             if (i < levelUpSelectButtons.Count)
             {
-                levelUpSelectButtons[i].SetSkillData(skillList[i]);
+                levelUpSelectButtons[i].SetAbilityData(abilityList[i]);
             }
         }
 

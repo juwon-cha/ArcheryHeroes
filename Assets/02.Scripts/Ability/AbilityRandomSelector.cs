@@ -2,21 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SkillRandomSelector
+public class AbilityRandomSelector
 {
-    private List<SkillData> skillDatas;
+    private List<AbilityData> abilityDatas;
 
-    public SkillRandomSelector(IEnumerable<SkillData> skills)
+    public AbilityRandomSelector(IEnumerable<AbilityData> abilities)
     {
-        skillDatas = new(skills);
+        abilityDatas = new(abilities);
     }
 
     // 최대 레벨이 아닌 스킬 중에서 원하는 개수만큼 랜덤 선택
-    public List<SkillData> SelectRandomSkills(int count)
+    public List<AbilityData> SelectRandomAbilities(int count)
     {
-        var available = skillDatas.Where(s => !s.IsMaxLevel()).ToList();
+        var available = abilityDatas.Where(s => !s.IsMaxLevel()).ToList();
 
-        Debug.Log($"Available skills count: {available.Count}, Requested count: {count}");
         if (available.Count == 0)
             return null;
 
