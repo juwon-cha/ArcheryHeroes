@@ -8,10 +8,12 @@ public class EnemyController : BaseController
     private Transform _target;
 
     [SerializeField] private float followRange = 15f;
+    Room parentRoom; // 몬스터가 속한 방
 
-    public void Init(Transform target)
+    public void Init(Transform target, Room room)
     {
         _target = target;
+        parentRoom = room;
     }
 
     protected override void Attack()
