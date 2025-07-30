@@ -1786,15 +1786,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
+  - {fileID: 249625004468040122, guid: 41600c15284ed3a4ba8db8fe9411874a, type: 3}
+  - {fileID: 249625004468040122, guid: eb37b73f1a8d34546b2f063f61dd9b4a, type: 3}
+  - {fileID: 249625004468040122, guid: d7b6d2c59476cac44aae46708c64b55d, type: 3}
+  - {fileID: 249625004468040122, guid: 924ff645471626f4cb8ca67920fca9e7, type: 3}
   - {fileID: 249625004468040122, guid: f59487cfe943d0442a3934f7793b1ebb, type: 3}
   spawnAreas:
   - serializedVersion: 2
-    x: 5
-    y: 3
-    width: 1
-    height: 1
+    x: -6.14
+    y: -4.25
+    width: 12.17
+    height: 7.64
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
-  timeBetweenSpawns: 1
+  timeBetweenSpawns: 0
   timeBetweenWaves: 1
 --- !u!4 &561525142
 Transform:

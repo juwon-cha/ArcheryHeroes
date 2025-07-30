@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
         Player = playerPrefab;
 
         // Test
-        EnemyManager.Instance.StartWave(1);
+        EnemyManager.Instance.StartWave(5);
     }
 
     void Update()
