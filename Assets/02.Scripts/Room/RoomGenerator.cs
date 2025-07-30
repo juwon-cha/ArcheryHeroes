@@ -38,7 +38,7 @@ public class RoomGenerator : MonoBehaviour
     // RoomManager에서 호출하는 방 생성 메서드
     public void GenerateRoom()
     {
-        DrawAllTileBounds();
+        //DrawAllTileBounds(); // 타일 디버그용
         Debug.Log("<color=orange> RoomGenerator: 생성 명령을 받았습니다. 이제 장애물과 몬스터를 생성합니다.</color>");
         // 이전 방 정보 초기화
         spawnedObstacleBounds.Clear();
