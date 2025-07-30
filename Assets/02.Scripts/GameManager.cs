@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject playerPrefab;
     public GameObject Player { get; private set; }
 
-    void Start()
+    void Awake()
     {
         Player = playerPrefab;
 
@@ -16,7 +16,6 @@ public class GameManager : Singleton<GameManager>
         //EnemyManager.Instance.StartWave(5);
 
         // 정진규 테스트
-        // 
     }
 
     void Update()
