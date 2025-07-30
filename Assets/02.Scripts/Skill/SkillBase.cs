@@ -2,13 +2,22 @@ using UnityEngine;
 
 public abstract class SkillBase : ScriptableObject
 {
-    public string skillName; // ½ºÅ³ ÀÌ¸§
-    public float cooldown; // ÄðÅ¸ÀÓ (ÃÊ ´ÜÀ§)
-    protected float lastUsedTime; // ¸¶Áö¸· »ç¿ë ½Ã°£
+    public string skillName; // ìŠ¤í‚¬ ì´ë¦„
+    public float cooldown; // ì¿¨íƒ€ìž„ (ì´ˆ ë‹¨ìœ„)
+    public bool ignoreCooldown; // ì¿¨íƒ€ìž„ ì—†ì´ ì‚¬ìš© ê°€ëŠ¥í•œì§€ ì—¬ë¶€
+    protected float lastUsedTime; // ë§ˆì§€ë§‰ ì‚¬ìš© ì‹œê°„
 
     public virtual bool CanUse => Time.time >= lastUsedTime + cooldown;
 
-    public abstract void Activate(GameObject player);
-    public void SetLastUsedTime(float time) => lastUsedTime = time;
-    public void ResetCooldown() => lastUsedTime = 0f; // ÄðÅ¸ÀÓ ÃÊ±âÈ­
+    public virtual void Initialize() { }
+    public void Use(GameObject player){
+        if (!ignoreCooldown && !CanUse) return;
+        OnUse(player); // ìŠ¤í‚¬ ì‚¬ìš© ë¡œì§ í˜¸ì¶œ
+        SetLastUsedTime(Time.time);
+    }
+
+    protected abstract void OnUse(GameObject player);
+
+    public virtual void SetLastUsedTime(float time) => lastUsedTime = time;
+    public void ResetCooldown() => lastUsedTime = 0f; // ì¿¨íƒ€ìž„ ì´ˆê¸°í™”
 }
