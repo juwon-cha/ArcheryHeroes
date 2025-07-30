@@ -16,13 +16,13 @@ public class RangedWeaponHandler : WeaponHandler
     [SerializeField] private float duration;
     public float Duration { get { return duration; } }
 
-    [SerializeField] private float spread; // Åº ÆÛÁü
+    [SerializeField] private float spread; // íƒ„ í¼ì§
     public float Spread { get { return spread; } }
 
-    [SerializeField] private int numberOfProjectilesPerShot; // ¹ß»çÇÒ ÃÑ¾Ë °³¼ö
+    [SerializeField] private int numberOfProjectilesPerShot; // ë°œì‚¬í•  ì´ì•Œ ê°œìˆ˜
     public int NumberOfProjectilesPerShot { get { return numberOfProjectilesPerShot; } }
 
-    [SerializeField] private float multipleProjectileAngle; // °¢°¢ÀÇ ÅºÀÌ ¹ß»çµÇ´Â °¢µµ
+    [SerializeField] private float multipleProjectileAngle; // ê°ê°ì˜ íƒ„ì´ ë°œì‚¬ë˜ëŠ” ê°ë„
     public float MultipleProjectileAngle { get { return multipleProjectileAngle; } }
 
     [SerializeField] private Color projectileColor;
@@ -48,7 +48,7 @@ public class RangedWeaponHandler : WeaponHandler
             float randomSpread = Random.Range(-spread, spread);
             angle += randomSpread;
 
-            CreateProjectile(EnemyController.LookDirection, angle);
+            CreateProjectile(BaseController.LookDirection, angle);
         }
     }
 
@@ -63,8 +63,8 @@ public class RangedWeaponHandler : WeaponHandler
 
     private static Vector2 RotateVector2(Vector2 v, float degree)
     {
-        // QuaternionÀÌ °¡Áö´Â È¸ÀüÀÇ ¼öÄ¡ ¸¸Å­ v¸¦ È¸Àü½ÃÅ´
-        // Çà·Ä °ö¼ÀÀ» ÅëÇØ º¤ÅÍ¸¦ È¸Àü½ÃÅ°´Â ¹æ¹ı -> ±³È¯ ¹ıÄ¢ÀÌ ¼º¸³ÇÏÁö ¾Ê¾Æ¼­ ¼ø¼­¿¡ À¯ÀÇ
+        // Quaternionì´ ê°€ì§€ëŠ” íšŒì „ì˜ ìˆ˜ì¹˜ ë§Œí¼ vë¥¼ íšŒì „ì‹œí‚´
+        // í–‰ë ¬ ê³±ì…ˆì„ í†µí•´ ë²¡í„°ë¥¼ íšŒì „ì‹œí‚¤ëŠ” ë°©ë²• -> êµí™˜ ë²•ì¹™ì´ ì„±ë¦½í•˜ì§€ ì•Šì•„ì„œ ìˆœì„œì— ìœ ì˜
         return Quaternion.Euler(0, 0, degree) * v;
     }
 }

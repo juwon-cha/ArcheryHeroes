@@ -7,6 +7,7 @@ public class ObjectPoolingManager : Singleton<ObjectPoolingManager>
 {
     private readonly Dictionary<GameObject, Queue<GameObject>> pools = new();
     private readonly Dictionary<GameObject, GameObject> instanceToPrefab = new();
+
     protected override void Initialize()
     {
         base.Initialize();
@@ -20,32 +21,32 @@ public class ObjectPoolingManager : Singleton<ObjectPoolingManager>
 
     private void OnSceneLoaded(Scene _, LoadSceneMode __) => ClearAllPools();
 
-    // ¿ÀºêÁ§Æ®¸¦ °¡Á®¿À´Â ¸Ş¼­µå
+    // ì˜¤ë¸Œì íŠ¸ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì„œë“œ
     public GameObject Get(GameObject prefab, Vector3 pos, Quaternion rot)
     {
         if (prefab == null) return null;
 
-        // Dictionary¿¡ prefabÀÌ ¾øÀ¸¸é »õ·Î »ı¼º
+        // Dictionaryì— prefabì´ ì—†ìœ¼ë©´ ìƒˆë¡œ ìƒì„±
         if (!pools.TryGetValue(prefab, out var pool))
         {
             pool = new();
             pools[prefab] = pool;
         }
 
-        // Ç®¿¡¼­ ¿ÀºêÁ§Æ®¸¦ °¡Á®¿À°Å³ª »õ·Î »ı¼º
+        // í’€ì—ì„œ ì˜¤ë¸Œì íŠ¸ë¥¼ ê°€ì ¸ì˜¤ê±°ë‚˜ ìƒˆë¡œ ìƒì„±
         var obj = pool.Count > 0 ? pool.Dequeue() : Instantiate(prefab);
-        instanceToPrefab.TryAdd(obj, prefab); // ÀÎ½ºÅÏ½º¿Í ÇÁ¸®ÆÕ ¸ÅÇÎ
+        instanceToPrefab.TryAdd(obj, prefab); // ì¸ìŠ¤í„´ìŠ¤ì™€ í”„ë¦¬íŒ¹ ë§¤í•‘
 
-        // À§Ä¡¿Í È¸Àü ¼³Á¤
+        // ìœ„ì¹˜ì™€ íšŒì „ ì„¤ì •
         obj.transform.SetPositionAndRotation(pos, rot);
         obj.SetActive(true);
         return obj;
     }
 
-    // ¿ÀºêÁ§Æ®¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼­µå
+    // ì˜¤ë¸Œì íŠ¸ë¥¼ ë°˜í™˜í•˜ëŠ” ë©”ì„œë“œ
     public void Return(GameObject obj)
     {
-        // ÀÎ½ºÅÏ½º°¡ ÇÁ¸®ÆÕ¿¡ ¸ÅÇÎµÇ¾î ÀÖ´ÂÁö È®ÀÎ
+        // ì¸ìŠ¤í„´ìŠ¤ê°€ í”„ë¦¬íŒ¹ì— ë§¤í•‘ë˜ì–´ ìˆëŠ”ì§€ í™•ì¸
         if (!instanceToPrefab.TryGetValue(obj, out var prefab))
         {
             Destroy(obj);
@@ -56,7 +57,7 @@ public class ObjectPoolingManager : Singleton<ObjectPoolingManager>
         pools[prefab].Enqueue(obj);
     }
 
-    // ¸ğµç Ç®À» ºñ¿ì´Â ¸Ş¼­µå
+    // ëª¨ë“  í’€ì„ ë¹„ìš°ëŠ” ë©”ì„œë“œ
     public void ClearAllPools()
     {
         foreach (var pool in pools.Values)

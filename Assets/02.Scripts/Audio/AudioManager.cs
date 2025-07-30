@@ -45,7 +45,7 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    // ¹öÆ° Å¬¸¯ ÀÌº¥Æ®¿¡¼­ »ç¿îµå È£Ãâ¿ë
+    // ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ì—ì„œ ì‚¬ìš´ë“œ í˜¸ì¶œìš©
     public static void OnPlaySound(string soundName)
     {
         Instance.PlaySound(soundName);
@@ -73,7 +73,7 @@ public class AudioManager : Singleton<AudioManager>
     }
 
 
-    // ¹è°æÀ½¾Ç Àç»ı¿ë
+    // ë°°ê²½ìŒì•… ì¬ìƒìš©
     public void PlayBGM(string soundName, bool loop = true)
     {
         if (soundDataDict.TryGetValue(soundName, out SoundDataSO data))
@@ -95,7 +95,7 @@ public class AudioManager : Singleton<AudioManager>
         currentBGM = data;
     }
 
-    // »ç¿îµå È¿°ú Àç»ı¿ë
+    // ì‚¬ìš´ë“œ íš¨ê³¼ ì¬ìƒìš©
     public void PlaySFX(string soundName)
     {
         if (soundDataDict.TryGetValue(soundName, out SoundDataSO data))
@@ -116,12 +116,14 @@ public class AudioManager : Singleton<AudioManager>
         return data.audioClips[Random.Range(0, data.audioClips.Length)];
     }
 
-    // º¼·ı Á¶Àı¿ë
-    public void SetVolume(VolumeType type, float volume01)
+    // ë³¼ë¥¨ ì¡°ì ˆìš©
+    public void SetVolume(VolumeType type, float volume)
     {
         string param = type == VolumeType.Master ? masterVolumeParam :
                        type == VolumeType.BGM ? bgmVolumeParam : sfxVolumeParam;
-        float volumeDB = Mathf.Log10(volume01) * 20f; // Convert to decibels
+
+        float volumeDB = (volume <= 0.0001f) ? -80f : Mathf.Log10(volume) * 20f;
+
         mixer.SetFloat(param, volumeDB);
     }
 
@@ -132,8 +134,17 @@ public class AudioManager : Singleton<AudioManager>
         mixer.GetFloat(param, out float value);
         return Mathf.Pow(10f, value / 20f);
     }
+    
+    // ì„¤ì • ì´ˆê¸°í™”ìš©
+    public void ResetVolumes()
+    {
+        SetVolume(VolumeType.Master, 1f);
+        SetVolume(VolumeType.BGM, 1f);
+        SetVolume(VolumeType.SFX, 1f);
+    }
+    
 
-    // ¹è°æÀ½¾Ç ÆäÀÌµåÀÎ/¾Æ¿ô¿ë
+    // ë°°ê²½ìŒì•… í˜ì´ë“œì¸/ì•„ì›ƒìš©
     public void FadeOutBGM(float duration)
     {
         if (currentBGM == null) return;

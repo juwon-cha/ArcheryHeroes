@@ -5,7 +5,7 @@ using UnityEngine;
 public class SkillManager : Singleton<SkillManager>
 {
     [SerializeField] private List<SkillBase> skills;
-    private HashSet<SkillBase> acquiredSkills; // È¹µæÇÑ ½ºÅ³µé
+    private HashSet<SkillBase> acquiredSkills; // íšë“í•œ ìŠ¤í‚¬ë“¤
 
     protected override void Initialize()
     {
@@ -28,13 +28,14 @@ public class SkillManager : Singleton<SkillManager>
         {
             if (!skill.CanUse) continue;
 
-            skill.Activate(player);
+            skill.Use(player);
             skill.SetLastUsedTime(Time.time);
         }
     }
 
     public void AddSkill(SkillBase skill)
     {
+        skill.Initialize();
         acquiredSkills.Add(skill);
     }
 
