@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class ResourceController : MonoBehaviour
 {
-    [SerializeField] private float _healthChangeDelay = 0.5f; // Ã¼·Â º¯°æ µô·¹ÀÌ(¹«Àû)
+    [SerializeField] private float _healthChangeDelay = 0.5f; // ì²´ë ¥ ë³€ê²½ ë”œë ˆì´(ë¬´ì )
 
-    private EnemyController enemyController;
+    private BaseController baseController;
     private StatHandler statHandler;
     private AnimationHandler animationHandler;
 
-    // º¯È­¸¦ °¡Áø ½Ã°£ ÀúÀå
+    // ë³€í™”ë¥¼ ê°€ì§„ ì‹œê°„ ì €ì¥
     private float timeSinceLastHealthChange = float.MaxValue;
 
     public float CurrentHealth { get; private set; }
@@ -23,8 +23,8 @@ public class ResourceController : MonoBehaviour
 
     private void Awake()
     {
-        enemyController = GetComponent<EnemyController>();
-        if (enemyController == null)
+        baseController = GetComponent<BaseController>();
+        if (baseController == null)
         {
             Debug.LogError("BaseController component is missing on " + gameObject.name);
         }
@@ -49,13 +49,13 @@ public class ResourceController : MonoBehaviour
 
     private void Update()
     {
-        // Ã¼·Â º¯°æ µô·¹ÀÌ Ã¼Å©
+        // ì²´ë ¥ ë³€ê²½ ë”œë ˆì´ ì²´í¬
         if (timeSinceLastHealthChange < _healthChangeDelay)
         {
             timeSinceLastHealthChange += Time.deltaTime;
             if (timeSinceLastHealthChange >= _healthChangeDelay)
             {
-                animationHandler.InvincibilityEnd(); // ¹«Àû »óÅÂ ÇØÁ¦
+                animationHandler.InvincibilityEnd(); // ë¬´ì  ìƒíƒœ í•´ì œ
             }
         }
     }
@@ -64,24 +64,24 @@ public class ResourceController : MonoBehaviour
     {
         if (change == 0 || timeSinceLastHealthChange < _healthChangeDelay)
         {
-            return false; // Ã¼·Â º¯°æÀÌ ¾ø°Å³ª ¹«Àû »óÅÂ¶ó¸é º¯°æÇÏÁö ¾ÊÀ½
+            return false; // ì²´ë ¥ ë³€ê²½ì´ ì—†ê±°ë‚˜ ë¬´ì  ìƒíƒœë¼ë©´ ë³€ê²½í•˜ì§€ ì•ŠìŒ
         }
 
-        timeSinceLastHealthChange = 0f; // Ã¼·Â º¯°æ ½Ã°£ ÃÊ±âÈ­
+        timeSinceLastHealthChange = 0f; // ì²´ë ¥ ë³€ê²½ ì‹œê°„ ì´ˆê¸°í™”
 
         CurrentHealth += change;
-        CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth; // ÃÖ´ë Ã¼·Â ÃÊ°ú ¹æÁö
-        CurrentHealth = CurrentHealth < 0 ? 0 : CurrentHealth; // ÃÖ¼Ò Ã¼·Â 0À¸·Î Á¦ÇÑ
+        CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth; // ìµœëŒ€ ì²´ë ¥ ì´ˆê³¼ ë°©ì§€
+        CurrentHealth = CurrentHealth < 0 ? 0 : CurrentHealth; // ìµœì†Œ ì²´ë ¥ 0ìœ¼ë¡œ ì œí•œ
 
-        OnChangeHealth?.Invoke(CurrentHealth, MaxHealth); // Ã¼·Â º¯°æ ÀÌº¥Æ® È£Ãâ
+        OnChangeHealth?.Invoke(CurrentHealth, MaxHealth); // ì²´ë ¥ ë³€ê²½ ì´ë²¤íŠ¸ í˜¸ì¶œ
 
         if (change < 0)
         {
-            animationHandler.Damage(); // µ¥¹ÌÁö ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+            animationHandler.Damage(); // ë°ë¯¸ì§€ ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
 
             if (DamageClip != null)
             {
-                // µ¥¹ÌÁö »ç¿îµå Àç»ı
+                // ë°ë¯¸ì§€ ì‚¬ìš´ë“œ ì¬ìƒ
             }
         }
 
@@ -95,7 +95,7 @@ public class ResourceController : MonoBehaviour
 
     private void Death()
     {
-        enemyController.OnDead();
+        baseController.OnDead();
     }
 
     public void AddHealthChangeEvent(Action<float, float> action)
