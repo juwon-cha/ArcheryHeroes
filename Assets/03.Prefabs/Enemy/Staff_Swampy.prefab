@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6067485286864423406}
   - component: {fileID: 8029843810610918852}
   m_Layer: 31
-  m_Name: Axe_LizardM
+  m_Name: Staff_Swampy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05, y: -0.15}
+  m_Offset: {x: 0, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -140,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.9}
+  m_Size: {x: 0.5, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &3900136068608612351
 MonoBehaviour:
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 2680468871832475754}
   weaponPivot: {fileID: 5272366717956779933}
-  weaponPrefab: {fileID: 3434713312661476415, guid: f9575f19361e6dd4080d561ddc720d38, type: 3}
+  weaponPrefab: {fileID: 8091848209504161090, guid: 3c321a6b1b46d354e810a49225262bb1, type: 3}
   showGizmos: 1
   followRange: 15
 --- !u!1 &3015333807292570419
@@ -273,7 +273,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: dab545c3b5152b642adeefb52b2dff2a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0835d53225643b4eb3c34e23e4e76aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -294,7 +294,7 @@ Animator:
   m_GameObject: {fileID: 3015333807292570419}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d991b1b8c9a09f04aa0f441f05abd4b3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5fd2070df274c7e4fbd626a1ce4a3089, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
