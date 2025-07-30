@@ -25,6 +25,14 @@ public class RoomGenerator : MonoBehaviour
     // 방이 생성되면서 생긴 장애물의 위치를 기억하는 변수
     private List<Bounds> spawnedObstacleBounds = new List<Bounds>();
 
+    // 컴포넌트
+    private Room room;
+
+    private void Awake()
+    {
+        room = GetComponent<Room>();
+    }
+
     // RoomManager에서 호출하는 방 생성 메서드
     public void GenerateRoom()
     {
@@ -115,7 +123,14 @@ public class RoomGenerator : MonoBehaviour
                 if(IsPositionValid(randomPosition, 1.0f)) // 검사하는 범위 (Cell과 크기가 동일하여 한 Cell에 최대 한 마리의 몬스터만 생성)
                 {
                     // 적 프리팹을, 랜덤한 위치에, 회전 없이, enemyParent의 하위 오브젝트로 생성한다.
-                    Instantiate(enemyPrefab, randomPosition, Quaternion.identity, enemyParent);
+                    GameObject enemyInstance = Instantiate(enemyPrefab, randomPosition, Quaternion.identity, enemyParent);
+
+                    EnemyController enemyScript = enemyInstance.GetComponent<EnemyController>();
+                    if (enemyScript != null)
+                    {
+                        room.RegisterEnemy(enemyScript); // Room에 Enemy를 등록
+                    }
+
                     break;
                 }
             }

@@ -13,6 +13,7 @@ public class RoomManager : Singleton<RoomManager>
 
     private GameObject currentRoomInstance;
     private int currentStage = 0;
+    private Room currentRoom;
 
     private void Start()
     {

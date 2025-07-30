@@ -224,6 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 735665433}
+  - component: {fileID: 735665434}
   m_Layer: 0
   m_Name: RoomManager
   m_TagString: Untagged
@@ -246,6 +247,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &735665434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735665432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf1a03d5b3996e4fa4c83fb3108fea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalRoomPrefabs:
+  - {fileID: 6791910563153433711, guid: 7bdb2222bd6402b499acf594db1ffe97, type: 3}
+  bossRoomPrefab: {fileID: 6791910563153433711, guid: 7bdb2222bd6402b499acf594db1ffe97, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
