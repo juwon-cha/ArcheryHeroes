@@ -5,13 +5,13 @@ using UnityEngine;
 public class MeleeWeaponHandler : WeaponHandler
 {
     [Header("Melee Attack Info")]
-    public Vector2 ColliderBoxSize = Vector2.one; // ±Ù°Å¸® °ø°İ(Ãæµ¹) ¹üÀ§
+    public Vector2 ColliderBoxSize = Vector2.one; // ê·¼ê±°ë¦¬ ê³µê²©(ì¶©ëŒ) ë²”ìœ„
 
     protected override void Start()
     {
         base.Start();
 
-        ColliderBoxSize = ColliderBoxSize * WeaponSize; // ¹«±â Å©±â¿¡ ¸ÂÃç Ãæµ¹ ¹üÀ§ Å©±â Á¶Á¤
+        ColliderBoxSize = ColliderBoxSize * WeaponSize; // ë¬´ê¸° í¬ê¸°ì— ë§ì¶° ì¶©ëŒ ë²”ìœ„ í¬ê¸° ì¡°ì •
     }
 
     public override void Attack()
@@ -19,25 +19,25 @@ public class MeleeWeaponHandler : WeaponHandler
         base.Attack();
 
         RaycastHit2D hit = Physics2D.BoxCast(
-            // ÇöÀç À§Ä¡¿¡¼­ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ¹Ú½º Ä³½ºÆ®
-            transform.position + (Vector3)EnemyController.LookDirection * ColliderBoxSize.x, // À§Ä¡
-            ColliderBoxSize, // »çÀÌÁî
-            0f, // °¢µµ
-            Vector2.zero, // ¹æÇâ
-            0f, // °Å¸®
-            Target // ·¹ÀÌ¾î ¸¶½ºÅ©
+            // í˜„ì¬ ìœ„ì¹˜ì—ì„œ ë°”ë¼ë³´ëŠ” ë°©í–¥ìœ¼ë¡œ ë°•ìŠ¤ ìºìŠ¤íŠ¸
+            transform.position + (Vector3)BaseController.LookDirection * ColliderBoxSize.x, // ìœ„ì¹˜
+            ColliderBoxSize, // ì‚¬ì´ì¦ˆ
+            0f, // ê°ë„
+            Vector2.zero, // ë°©í–¥
+            0f, // ê±°ë¦¬
+            Target // ë ˆì´ì–´ ë§ˆìŠ¤í¬
         );
 
-        // Ãæµ¹ Ã³¸®
+        // ì¶©ëŒ ì²˜ë¦¬
         if (hit.collider != null)
         {
             ResourceController resourceController = hit.collider.GetComponent<ResourceController>();
             if (resourceController != null)
             {
-                resourceController.ChangeHealth(-Power); // µ¥¹ÌÁö Àû¿ë
+                resourceController.ChangeHealth(-Power); // ë°ë¯¸ì§€ ì ìš©
                 if (IsOnKnockBack)
                 {
-                    // ³Ë¹é Ã³¸®
+                    // ë„‰ë°± ì²˜ë¦¬
                     EnemyController controller = hit.collider.GetComponent<EnemyController>();
                     if (controller != null)
                     {
@@ -48,16 +48,16 @@ public class MeleeWeaponHandler : WeaponHandler
         }
     }
 
-    // ±Ù°Å¸® ¹«±â´Â µû·Î È¸Àü½ÃÄÑÁà¾ß ÇÑ´Ù
+    // ê·¼ê±°ë¦¬ ë¬´ê¸°ëŠ” ë”°ë¡œ íšŒì „ì‹œì¼œì¤˜ì•¼ í•œë‹¤
     public override void Rotate(bool isLeft)
     {
         if (isLeft)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0); // ¿ŞÂÊÀ¸·Î È¸Àü
+            transform.eulerAngles = new Vector3(0, 180, 0); // ì™¼ìª½ìœ¼ë¡œ íšŒì „
         }
         else
         {
-            transform.eulerAngles = Vector3.zero; // ¿À¸¥ÂÊÀ¸·Î È¸Àü
+            transform.eulerAngles = Vector3.zero; // ì˜¤ë¥¸ìª½ìœ¼ë¡œ íšŒì „
         }
     }
 }

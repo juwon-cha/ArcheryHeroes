@@ -34,14 +34,14 @@ public class WeaponHandler : MonoBehaviour
 
     private static readonly int IsAttack = Animator.StringToHash("IsAttack");
 
-    public EnemyController EnemyController { get; private set; }
+    public BaseController BaseController { get; private set; }
     private Animator animator;
     private SpriteRenderer weaponRenderer;
 
     protected virtual void Awake()
     {
-        EnemyController = GetComponentInParent<EnemyController>();
-        if (EnemyController == null)
+        BaseController = GetComponentInParent<BaseController>();
+        if (BaseController == null)
         {
             Debug.LogError("EnemyController component is missing on " + gameObject.name);
         }
@@ -58,8 +58,8 @@ public class WeaponHandler : MonoBehaviour
             Debug.LogError("SpriteRenderer component is missing on " + gameObject.name);
         }
 
-        animator.speed = 1.0f / delay; // ¾Ö´Ï¸ŞÀÌ¼Ç ¼Óµµ¸¦ °ø°İ µô·¹ÀÌ¿¡ ¸ÂÃç Á¶Á¤
-        transform.localScale = Vector3.one * weaponSize; // ¹«±â Å©±â ¼³Á¤
+        animator.speed = 1.0f / delay; // ì• ë‹ˆë©”ì´ì…˜ ì†ë„ë¥¼ ê³µê²© ë”œë ˆì´ì— ë§ì¶° ì¡°ì •
+        transform.localScale = Vector3.one * weaponSize; // ë¬´ê¸° í¬ê¸° ì„¤ì •
     }
 
     protected virtual void Start()
@@ -72,7 +72,7 @@ public class WeaponHandler : MonoBehaviour
         AttackAnimation();
 
 
-        // TODO: °ø°İ »ç¿îµå Àç»ı
+        // TODO: ê³µê²© ì‚¬ìš´ë“œ ì¬ìƒ
     }
 
     public void AttackAnimation()
@@ -84,7 +84,7 @@ public class WeaponHandler : MonoBehaviour
     {
         if (weaponRenderer != null)
         {
-            weaponRenderer.flipY = isLeft; // ¿ŞÂÊÀ» ¹Ù¶óº¸¸é flipY¸¦ true·Î ¼³Á¤
+            weaponRenderer.flipY = isLeft; // ì™¼ìª½ì„ ë°”ë¼ë³´ë©´ flipYë¥¼ trueë¡œ ì„¤ì •
         }
         else
         {
