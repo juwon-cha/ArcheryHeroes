@@ -7256,7 +7256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {fileID: 4078396793070650262}
-  obstaclePrefabs: []
+  obstaclePrefabs:
+  - {fileID: 2566860578231287609, guid: 61468c5f368fed448b6408b6ce080984, type: 3}
   minObstacle: 3
   maxObstacle: 7
   cellSize: 1
