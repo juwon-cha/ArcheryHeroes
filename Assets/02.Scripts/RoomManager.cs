@@ -17,6 +17,7 @@ public class RoomManager : Singleton<RoomManager>
 
     private void Start()
     {
+        Debug.Log("<color=red>1. RoomManager가 시작되었습니다!</color>"); // 디버그용
         SpawnNextRoom();
     }
 
@@ -40,8 +41,18 @@ public class RoomManager : Singleton<RoomManager>
             selectedRoomPrefab = normalRoomPrefabs[Random.Range(0, normalRoomPrefabs.Count)];
         }
 
+        Debug.Log("<color=orange>2. 다음 방 생성을 시도합니다. 사용할 프리팹: " + selectedRoomPrefab.name + "</color>"); // 디버그용
         // 선택된 '방 프리팹'을 씬에 생성
         currentRoomInstance = Instantiate(selectedRoomPrefab, Vector3.zero, Quaternion.identity);
+        Debug.Log("<color=green>3. 방 프리팹 인스턴스화 성공!</color>"); // 디버그용
+
+        RoomGenerator generator = currentRoomInstance.GetComponent<RoomGenerator>();
+        if (generator == null)
+        {
+            Debug.LogError("치명적 오류: 생성된 방에 RoomGenerator 스크립트가 없습니다!"); // 에러 로그 추가!
+        }
+        else
+            generator.GenerateRoom();
 
         // RoomGenerator는 프리팹에 이미 붙어있으므로, 그 안의 로직이 실행되도록 함
         // 만약 RoomGenerator의 GenerateRoom()이 public이라면 아래처럼 명시적으로 호출 가능

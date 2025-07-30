@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class RoomGenerator : MonoBehaviour
 {
     [Header("방의 영역 설정")]
-    [SerializeField] private BoxCollider2D spawnArea;
+    //[SerializeField] private BoxCollider2D spawnArea; // 몬스터
+    [SerializeField] private Tilemap floorTilemap; // 장애물
 
     [Header("장애물 설정")]
     [SerializeField] private List<GameObject> obstaclePrefabs;
@@ -36,6 +38,8 @@ public class RoomGenerator : MonoBehaviour
     // RoomManager에서 호출하는 방 생성 메서드
     public void GenerateRoom()
     {
+        DrawAllTileBounds();
+        Debug.Log("<color=orange> RoomGenerator: 생성 명령을 받았습니다. 이제 장애물과 몬스터를 생성합니다.</color>");
         // 이전 방 정보 초기화
         spawnedObstacleBounds.Clear();
 
@@ -54,23 +58,29 @@ public class RoomGenerator : MonoBehaviour
     {
         // 장애물 생성이 가능한 위치 목록
         List<Vector2> possiblePositions = new List<Vector2>();
-        Bounds areaBounds = spawnArea.bounds;
+        //Bounds areaBounds = spawnArea.bounds;
+        Bounds areaBounds = floorTilemap.localBounds;
 
-        // spawnArea를 CellSize 기준으로 몇 개의 칸을 나눌 수 있는지 계산
-        int gridWidth = Mathf.FloorToInt(areaBounds.size.x / cellSize);
-        int gridHeight = Mathf.FloorToInt(areaBounds.size.y / cellSize);
+        floorTilemap.CompressBounds(); // 불필요한 빈 공간을 제거해 범위를 압축
+        BoundsInt tileBounds = floorTilemap.cellBounds;
 
-        // 각 칸의 중심 좌표를 possiblePositions 리스트에 추가
-        for (int x = 0; x < gridWidth; x++)
+        // 모든 타일 좌표를 순회
+        for (int x = tileBounds.xMin; x < tileBounds.xMax; x++)
         {
-            for (int y = 0; y < gridHeight; y++)
+            for (int y = tileBounds.yMin; y < tileBounds.yMax; y++)
             {
-                float posX = areaBounds.min.x + (x * cellSize) + (cellSize / 2);
-                float posY = areaBounds.min.y + (y * cellSize) + (cellSize / 2);
-                possiblePositions.Add(new Vector2(posX, posY));
+                Vector3Int tilePosition = new Vector3Int(x, y, 0);
+
+                // 해당 타일 좌표에 실제로 타일이 있는지 확인 (가장자리 등 빈 공간 제외)
+                if (floorTilemap.HasTile(tilePosition))
+                {
+                    // 타일 좌표를 월드 좌표(타일의 정중앙)로 변환하여 리스트에 추가
+                    possiblePositions.Add(floorTilemap.GetCellCenterWorld(tilePosition));
+                }
             }
         }
 
+        Debug.Log($"<color=lime>장애물 생성 가능 위치 {possiblePositions.Count}개를 찾았습니다.</color>");
         // 위치 목록을 무작위로 섞기
         ShuffleList(possiblePositions);
 
@@ -85,6 +95,37 @@ public class RoomGenerator : MonoBehaviour
             Vector2 spawnPosition = possiblePositions[i]; // 섞인 리스트에서 순서대로 위치를 꺼냄
 
             Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity, obstacleParent);
+        }
+
+    }
+
+    void DrawAllTileBounds()
+    {
+        if (floorTilemap == null) return;
+
+        Grid grid = floorTilemap.layoutGrid;
+        BoundsInt tileBounds = floorTilemap.cellBounds;
+
+        for (int x = tileBounds.xMin; x < tileBounds.xMax; x++)
+        {
+            for (int y = tileBounds.yMin; y < tileBounds.yMax; y++)
+            {
+                Vector3Int tilePos = new Vector3Int(x, y, 0);
+                if (floorTilemap.HasTile(tilePos))
+                {
+                    // 타일의 네 모서리 월드 좌표를 가져옵니다.
+                    Vector3 p1 = grid.CellToWorld(new Vector3Int(x, y, 0));
+                    Vector3 p2 = grid.CellToWorld(new Vector3Int(x + 1, y, 0));
+                    Vector3 p3 = grid.CellToWorld(new Vector3Int(x, y + 1, 0));
+                    Vector3 p4 = grid.CellToWorld(new Vector3Int(x + 1, y + 1, 0));
+
+                    // 네 모서리를 이어 보라색 사각형을 그립니다.
+                    Debug.DrawLine(p1, p2, Color.magenta, 15f);
+                    Debug.DrawLine(p1, p3, Color.magenta, 15f);
+                    Debug.DrawLine(p2, p4, Color.magenta, 15f);
+                    Debug.DrawLine(p3, p4, Color.magenta, 15f);
+                }
+            }
         }
     }
 
@@ -103,13 +144,18 @@ public class RoomGenerator : MonoBehaviour
             list[randomIndex] = temp;
         }
     }
-
+        
 
 
     // 몬스터 생성 메서드
     private void SpawnEnemys()
     {
+        Debug.Log("<color=cyan> SpawnEnemys 메서드 시작! </color>"); // 디버그 용도
+        Room room = GetComponent<Room>();
+        Transform playerTransform = GameManager.Instance.Player.transform;
+
         int enemyCount = Random.Range(minEnemy, maxEnemy + 1);
+        Debug.Log($"<color=yellow>생성 시도할 적의 수: {enemyCount}</color>"); // 디버그 용도
 
         for (int i = 0; i < enemyCount; i++)
         {
@@ -125,10 +171,18 @@ public class RoomGenerator : MonoBehaviour
                     // 적 프리팹을, 랜덤한 위치에, 회전 없이, enemyParent의 하위 오브젝트로 생성한다.
                     GameObject enemyInstance = Instantiate(enemyPrefab, randomPosition, Quaternion.identity, enemyParent);
 
-                    EnemyController enemyScript = enemyInstance.GetComponent<EnemyController>();
-                    if (enemyScript != null)
+                    EnemyController enemyController = enemyInstance.GetComponent<EnemyController>();
+
+                    if (enemyController != null)
                     {
-                        room.RegisterEnemy(enemyScript); // Room에 Enemy를 등록
+                        // 수정 전
+                        //room.RegisterEnemy(enemyScript); // Room에 Enemy를 등록 (Enemy연동 전)
+
+                        // 수정 후
+                        // 주원님 enemyController에서 Init을 받아옴
+                        enemyController.Init(playerTransform, room);
+                        // 그리고 생성한 몬스터 목록을 방에 등록한다.
+                        room.RegisterEnemy(enemyController);
                     }
 
                     break;
@@ -140,7 +194,8 @@ public class RoomGenerator : MonoBehaviour
     // 스폰 영역 내에서 랜덤한 좌표를 반환하는 헬퍼 함수
     private Vector2 GetRandomPointInSpawnArea()
     {
-        Bounds bounds = spawnArea.bounds;
+        //Bounds bounds = spawnArea.bounds;
+        Bounds bounds = floorTilemap.localBounds;
         return new Vector2(
             Random.Range(bounds.min.x, bounds.max.x),
             Random.Range(bounds.min.y, bounds.max.y)

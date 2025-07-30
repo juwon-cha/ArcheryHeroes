@@ -36,6 +36,10 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private float followRange = 15f;
 
+    // 정진규
+    // 본인이 속한 방 정보를 추가
+    private Room parentRoom;
+
     protected virtual void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -87,9 +91,10 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Init(Transform target)
+    public void Init(Transform target, Room room)
     {
         _target = target;
+        parentRoom = room;
     }
 
     private void Movement(Vector2 direction)
@@ -174,6 +179,13 @@ public class EnemyController : MonoBehaviour
         }
 
         Destroy(gameObject, 2f); // 2초 후에 오브젝트 삭제
+
+        // 정진규 추가
+        // 자신이 속한 방(parentRoom)에게 죽었음을 알림
+        if (parentRoom != null)
+        {
+            parentRoom.OnEnemyDied(this);
+        }
 
         // EnemyController
         EnemyManager.Instance.RemoveEnemyOnDead(this);
