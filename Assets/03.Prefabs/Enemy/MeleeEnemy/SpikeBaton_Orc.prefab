@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5272366717956779933}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
   - component: {fileID: 8029843810610918852}
-  m_Layer: 0
-  m_Name: Goblin
+  m_Layer: 31
+  m_Name: SpikeBaton_Orc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 249625004468040122}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.28, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -140,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.6, y: 1.1}
   m_EdgeRadius: 0
 --- !u!114 &3900136068608612351
 MonoBehaviour:
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 2
+  speed: 3
 --- !u!114 &6067485286864423406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 2680468871832475754}
   weaponPivot: {fileID: 5272366717956779933}
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 3434713312661476415, guid: e9500116945633f48a95e450d37fabef, type: 3}
   showGizmos: 1
   followRange: 15
 --- !u!1 &3015333807292570419
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 4357336016272996187}
   - component: {fileID: 2680468871832475754}
   - component: {fileID: 5145346338000460771}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 6d650ccbb0dfdac4eab579917aaf77eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc12cca01adf17149b8b7cc13528f580, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -294,7 +294,7 @@ Animator:
   m_GameObject: {fileID: 3015333807292570419}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5a2b4e406f5306a40b0312190d3328db, type: 2}
+  m_Controller: {fileID: 9100000, guid: e6685209b83140046b18214a409c8a21, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

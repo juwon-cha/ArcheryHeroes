@@ -33,9 +33,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Player
+  - Monster
+  - Level
   - 
   - 
   m_SortingLayers:
