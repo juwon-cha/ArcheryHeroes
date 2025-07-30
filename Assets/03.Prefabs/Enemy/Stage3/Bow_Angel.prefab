@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6067485286864423406}
   - component: {fileID: 8029843810610918852}
   m_Layer: 31
-  m_Name: SpikeBaton_Orc
+  m_Name: Bow_Angel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 1.1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &3900136068608612351
 MonoBehaviour:
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 2680468871832475754}
   weaponPivot: {fileID: 5272366717956779933}
-  weaponPrefab: {fileID: 3434713312661476415, guid: e9500116945633f48a95e450d37fabef, type: 3}
+  weaponPrefab: {fileID: 8091848209504161090, guid: 8ba3d6c15432ba646bfde2d77225c60b, type: 3}
   showGizmos: 1
   followRange: 15
 --- !u!1 &3015333807292570419
@@ -273,7 +273,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: dc12cca01adf17149b8b7cc13528f580, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cdb9c36806aeddd449221eef441e53b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -294,7 +294,7 @@ Animator:
   m_GameObject: {fileID: 3015333807292570419}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e6685209b83140046b18214a409c8a21, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6a793ad2605cef2499be02d276c1252d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
