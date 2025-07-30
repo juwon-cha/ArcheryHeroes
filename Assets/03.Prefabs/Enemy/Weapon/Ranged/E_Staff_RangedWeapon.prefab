@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5597059658187248746}
   - component: {fileID: 8091848209504161090}
   m_Layer: 0
-  m_Name: E_Bow_RangedWeapon
+  m_Name: E_Staff_RangedWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,12 +58,12 @@ MonoBehaviour:
   knockBackPower: 1
   knockBackDuration: 0.1
   projectileSpawnPosition: {fileID: 3111056865554600265}
-  bulletIndex: 0
-  bulletSize: 0.7
+  bulletIndex: 1
+  bulletSize: 0.6
   duration: 5
-  spread: 3
-  numberOfProjectilesPerShot: 3
-  multipleProjectileAngle: 3
+  spread: 1
+  numberOfProjectilesPerShot: 1
+  multipleProjectileAngle: 1
   projectileColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &6095780711545954297
 GameObject:
@@ -123,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 6694582930842019974}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0, z: 0}
+  m_LocalPosition: {x: 0.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 110
-  m_Sprite: {fileID: 21300000, guid: f7fad9010c9ac354c97686f906ce0804, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55630168ea583a74383006fd42860125, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -191,7 +191,7 @@ Animator:
   m_GameObject: {fileID: 6694582930842019974}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b71e25ad57dfbbd46aeb338e499508e0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5455c024a7c884c41a50c52d34f65cd3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
