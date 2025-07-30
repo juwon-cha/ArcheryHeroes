@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public enum SoundType
 {
@@ -151,7 +152,7 @@ public class AudioManager : Singleton<AudioManager>
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
-        fadeCoroutine = StartCoroutine(FadeVolumeCoroutine(bgmVolumeParam, currentBGM.volume, 0f, duration));
+        fadeCoroutine = StartCoroutine(FadeVolumeCoroutine(currentBGM.volume, 0f, duration));
     }
 
     public void FadeInBGM(float duration)
@@ -160,10 +161,10 @@ public class AudioManager : Singleton<AudioManager>
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
-        fadeCoroutine = StartCoroutine(FadeVolumeCoroutine(bgmVolumeParam, 0f, currentBGM.volume, duration));
+        fadeCoroutine = StartCoroutine(FadeVolumeCoroutine(0f, currentBGM.volume, duration));
     }
 
-    private IEnumerator FadeVolumeCoroutine(string param, float from, float to, float duration)
+    private IEnumerator FadeVolumeCoroutine(float from, float to, float duration)
     {
         float time = 0f;
         while (time < duration)

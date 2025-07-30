@@ -14,23 +14,22 @@ public class FadeManager : Singleton<FadeManager>
 
     protected override void Initialize()
     {
-        FadeOut();
-        SceneManager.sceneLoaded += (_, __) => FadeOut(); // 씬이 변경될 때마다 페이드 아웃
+        FadeIn();
+        SceneManager.sceneLoaded += (_, __) => FadeIn(); // 씬이 변경될 때마다 페이드 아웃
     }
 
     // 씬 이동
     public static void LoadScene(string sceneName)
     {
-        Instance.FadeIn(() => SceneManager.LoadScene(sceneName));
+        Instance.FadeOut(() => SceneManager.LoadScene(sceneName));
     }
-
     public void FadeIn(Action onComplete = null)
     {
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
-        AudioManager.Instance.FadeOutBGM(fadeDuration); // BGM 페이드 아웃
-        fadeCoroutine = StartCoroutine(FadeCoroutine(fadeImage, 0f, 1f, onComplete));
+        AudioManager.Instance.FadeInBGM(fadeDuration); // BGM 페이드 인
+        fadeCoroutine = StartCoroutine(FadeCoroutine(fadeImage, 1f, 0f, onComplete));
     }
 
     public void FadeOut(Action onComplete = null)
@@ -38,8 +37,8 @@ public class FadeManager : Singleton<FadeManager>
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
-        AudioManager.Instance.FadeInBGM(fadeDuration); // BGM 페이드 인
-        fadeCoroutine = StartCoroutine(FadeCoroutine(fadeImage, 1f, 0f, onComplete));
+        AudioManager.Instance.FadeOutBGM(fadeDuration); // BGM 페이드 아웃
+        fadeCoroutine = StartCoroutine(FadeCoroutine(fadeImage, 0f, 1f, onComplete));
     }
 
     IEnumerator FadeCoroutine(Image image, float from, float to, Action onComplete = null)
