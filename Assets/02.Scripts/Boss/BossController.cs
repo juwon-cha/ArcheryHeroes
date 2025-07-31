@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 // 보스 컨트롤러는 플레이어와 일반 몬스터와 다른 특수한 행동을 가져서 BaseController를 상속하지 않음
 public class BossController : MonoBehaviour
@@ -29,6 +30,10 @@ public class BossController : MonoBehaviour
     public float ChaseRange { get { return chaseRange; } }
     [SerializeField] private float attackRange = 7f; // 공격을 시작할 범위
     public float AttackRange { get { return attackRange; } }
+
+    [Header("맵 정보")]
+    [SerializeField] private Tilemap groundTilemap; // 장판이 생성될 바닥 타일맵
+    public Tilemap GroundTilemap { get { return groundTilemap; } }
 
     private BossState currentState;
 
