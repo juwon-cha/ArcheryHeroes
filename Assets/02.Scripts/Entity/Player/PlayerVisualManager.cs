@@ -34,10 +34,18 @@ public class PlayerVisualManager : MonoBehaviour
         }
     }
 
+    private const string PlayerVisualIndexKey = "VisualIndexKey";
+
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         controller = GetComponentInChildren<Animator>();
+    }
+
+    private void Start()
+    {
+        visualIndex = PlayerPrefs.GetInt(PlayerVisualIndexKey, 4);
+        ChangeVisual(visualIndex);
     }
 
     private void Update()
@@ -55,5 +63,6 @@ public class PlayerVisualManager : MonoBehaviour
     {
         spriteRenderer.sprite = playerVisualData[index].baseSprites;
         controller.runtimeAnimatorController = playerVisualData[index].controllers;
+        PlayerPrefs.SetInt(PlayerVisualIndexKey, index);
     }
 }
