@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 3691518702325944581}
   - component: {fileID: 2603235494111273287}
   - component: {fileID: 5272583914466429563}
+  - component: {fileID: 5781391003895975159}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -228,6 +229,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0752a889e7951c44f9929a7419953810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5781391003895975159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863558932465538756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a20f77e2dc6f224da937989a9bfd973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerVisualData:
+  - baseSprites: {fileID: 21300000, guid: 7c948bfdd3b42fa4cb5f03520a43f7c0, type: 3}
+    controllers: {fileID: 9100000, guid: 7bf7429557cb83e4a8625f9066a95cdb, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: 8bc42eb36da83a8439736de59d230594, type: 3}
+    controllers: {fileID: 9100000, guid: d26a8e90f0252594e9ea3f8455f68fdb, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: 3dfcd864260142647b8f58d80c5ecb1e, type: 3}
+    controllers: {fileID: 9100000, guid: 030a897f622c5264bba86e7e700aaddd, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: 46ae574a69cf33c4f8fa53374cf0adeb, type: 3}
+    controllers: {fileID: 9100000, guid: 914655afbf9616f4ba2416c8f7c0c9dc, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: 37e25516e8b221545bdb821ae655b64d, type: 3}
+    controllers: {fileID: 9100000, guid: 5125e4bd133534545801f8db36ee38c6, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: 810d91aff6c1cc541a7dd27c248f1f68, type: 3}
+    controllers: {fileID: 9100000, guid: 925b9ade11571184796889a42f0d3005, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: 72bbae53f493bff4aa5ff8953608075b, type: 3}
+    controllers: {fileID: 9100000, guid: c139ac7d244930249a9fbd8fc9735639, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: dab545c3b5152b642adeefb52b2dff2a, type: 3}
+    controllers: {fileID: 9100000, guid: f859f57e4043d4e43992271e249b3299, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: d59ced679fab1954491f42361f3fb1a5, type: 3}
+    controllers: {fileID: 9100000, guid: a9efe695c7476384c913a4c9a93da287, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: f3de521d047fe4445ae0e43be943095e, type: 3}
+    controllers: {fileID: 9100000, guid: 74c9a6740e3ca734dafae6f08040c489, type: 2}
+    isGet: 1
 --- !u!1 &5893668865522084624
 GameObject:
   m_ObjectHideFlags: 0
