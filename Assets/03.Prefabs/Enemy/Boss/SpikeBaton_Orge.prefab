@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5272366717956779933}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,9 +45,8 @@ GameObject:
   - component: {fileID: 3900136068608612351}
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
-  - component: {fileID: 8029843810610918852}
-  m_Layer: 31
-  m_Name: Axe_Orge
+  m_Layer: 28
+  m_Name: SpikeBaton_Orge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,23 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0752a889e7951c44f9929a7419953810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8029843810610918852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 249625004468040122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d30896042c8ea44d9070753717ebe92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterRenderer: {fileID: 2680468871832475754}
-  weaponPivot: {fileID: 5272366717956779933}
-  weaponPrefab: {fileID: 3434713312661476415, guid: f9575f19361e6dd4080d561ddc720d38, type: 3}
-  showGizmos: 1
-  followRange: 15
 --- !u!1 &3015333807292570419
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +192,7 @@ GameObject:
   - component: {fileID: 4357336016272996187}
   - component: {fileID: 2680468871832475754}
   - component: {fileID: 5145346338000460771}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
