@@ -7,14 +7,6 @@ public class BossChaseState : BossState
     public override void EnterState(BossController boss)
     {
         Debug.Log("보스: 추적 시작!");
-
-        // 첫 번째 공격 패턴의 공격 범위를 기준으로 설정 (혹은 보스 자체의 attackRange 변수 사용)
-        if (boss.attackPatterns.Count > 0)
-        {
-            // 예시: 첫 번째 공격 패턴의 쿨타임 등을 기반으로 공격 범위 설정 (SO에 attackRange 변수 추가 필요)
-            // attackRange = boss.attackPatterns[0].attackRange; 
-            //attackRange = 7f; // 임시 값
-        }
     }
 
     public override void UpdateState(BossController boss)

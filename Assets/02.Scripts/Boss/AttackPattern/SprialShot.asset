@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5ccfcae001bbec4c90fb2eb640eb456, type: 3}
-  m_Name: RadialShot
+  m_Script: {fileID: 11500000, guid: 919001d1459131c4f925b33acb4bbefa, type: 3}
+  m_Name: SprialShot
   m_EditorClassIdentifier: 
-  AttackName: RadialShot
+  AttackName: SpiralShot
   Cooldown: 1.5
   projectilePrefab: {fileID: 8643473914380838996, guid: 18c0224bcb0cfb942bcc13d325761cce, type: 3}
-  projectileCount: 10
-  projectileSpeed: 1
-  burstCount: 3
-  delayBetweenBursts: 0.5
+  projectileSpeed: 10
+  patternDuration: 5
+  fireRate: 0.1
+  rotationSpeed: 100
