@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f860eca3891bf2b459542793936a25e7, type: 3}
-  m_Name: TestSkill01
+  m_Name: DamageCircleSpawnSkill
   m_EditorClassIdentifier: 
-  skillName: Skill01
+  skillName: "\uC7A5\uD310 \uC18C\uD658"
   ignoreCooldown: 0
   skillDatas:
+  - cooldown: 10
+    conditions: []
+    effects:
+    - {fileID: 11400000, guid: de2e00f47e92ebe4181bf055755e9487, type: 2}
   - cooldown: 5
     conditions: []
     effects:
-    - {fileID: 11400000, guid: 75804a437d3e5de44b841af87ebba178, type: 2}
+    - {fileID: 11400000, guid: de2e00f47e92ebe4181bf055755e9487, type: 2}
   - cooldown: 3
     conditions: []
     effects:
-    - {fileID: 11400000, guid: 75804a437d3e5de44b841af87ebba178, type: 2}
-  - cooldown: 1
-    conditions: []
-    effects:
-    - {fileID: 11400000, guid: 75804a437d3e5de44b841af87ebba178, type: 2}
+    - {fileID: 11400000, guid: de2e00f47e92ebe4181bf055755e9487, type: 2}

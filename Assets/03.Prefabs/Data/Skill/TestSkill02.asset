@@ -9,8 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368bc750000741746a6d53fd1c09cecc, type: 3}
+  m_Script: {fileID: 11500000, guid: f860eca3891bf2b459542793936a25e7, type: 3}
   m_Name: TestSkill02
   m_EditorClassIdentifier: 
-  skillName: Example02
-  cooldown: 2
+  skillName: Skill01
+  ignoreCooldown: 0
+  skillDatas:
+  - cooldown: 5
+    conditions: []
+    effects:
+    - {fileID: 11400000, guid: 21cb5305719d1534a8b9cf980a4eced5, type: 2}
+  - cooldown: 3
+    conditions: []
+    effects:
+    - {fileID: 11400000, guid: 21cb5305719d1534a8b9cf980a4eced5, type: 2}
+  - cooldown: 1
+    conditions: []
+    effects:
+    - {fileID: 11400000, guid: 21cb5305719d1534a8b9cf980a4eced5, type: 2}
