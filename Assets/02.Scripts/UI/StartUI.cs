@@ -5,8 +5,7 @@ using UnityEditor;
 
 public class StartUI : MonoBehaviour
 {
-    [SerializeField] private string sceneName = "CJW_Test";
-    [SerializeField] private GameObject settingUI;
+    [SerializeField] private string sceneName = "MainScene";
 
     public void OnStart()
     {
@@ -15,7 +14,7 @@ public class StartUI : MonoBehaviour
 
     public void OnSetting()
     {
-        settingUI.SetActive(true);
+        UIManager.Instance.ShowUI(UIType.Setting);
     }
 
     public void OnExit()

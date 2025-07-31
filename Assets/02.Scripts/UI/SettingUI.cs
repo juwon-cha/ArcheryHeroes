@@ -9,18 +9,18 @@ public class SettingUI : MonoBehaviour
     private void Awake()
     {
         audioSettingsPanel = GetComponentInChildren<AudioSettingsPanel>();
-        audioSettingsPanel?.Initialize();
+        audioSettingsPanel.Initialize();
     }
 
     public void OnResetSettings()
     {
         AudioManager.Instance.ResetVolumes();
-        audioSettingsPanel?.UpdateSliders();
+        audioSettingsPanel.UpdateSliders();
     }
 
     public void OnClose()
     {
-        gameObject.SetActive(false);
+        UIManager.Instance.HideUI(UIType.Setting);
     }
 
 }
