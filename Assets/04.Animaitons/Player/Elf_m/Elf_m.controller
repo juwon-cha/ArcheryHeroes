@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 02e783123ca17574892e071aa743c4e3, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7e73071361b68d04ebef0e613136a200, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -124,7 +124,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a82b14d610b01be41bee7c158346f093, type: 2}
+  m_Motion: {fileID: 7400000, guid: da172b0241125924eab83572d460b1db, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -164,7 +164,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MainSprite
+  m_Name: Elf_m
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsMove
@@ -172,13 +172,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsDamage
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -239,7 +239,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c3dbd82bfa55f3b4687ea19b2fdfe564, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7e78cb7bdba55e44c9edb3905193166f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
