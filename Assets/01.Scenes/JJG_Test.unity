@@ -306,6 +306,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefabs:
   - {fileID: 8868071699777748880, guid: 9d7d1e740e3842f4da580e03dfe452fd, type: 3}
+  - {fileID: 8231877604041128707, guid: 1cb1a1e91fe014c4f97c35cc40753f71, type: 3}
+  - {fileID: 1282480997240505041, guid: 3f1bf30ab0517454b933bb6fe4f000f9, type: 3}
+  - {fileID: 2588046398583611180, guid: 2640647b9c9a09d4ab84e69ac56d60da, type: 3}
   bossRoomPrefab: {fileID: 8868071699777748880, guid: 9d7d1e740e3842f4da580e03dfe452fd, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
