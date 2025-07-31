@@ -8,12 +8,14 @@ using UnityEngine.UI;
 public class FadeManager : Singleton<FadeManager>
 {
     [SerializeField] private float fadeDuration = 1f;
-    [SerializeField] private Image fadeImage; // 페이드 효과를 적용할 이미지
+    private Image fadeImage; // 페이드 효과를 적용할 이미지
     private Coroutine fadeCoroutine;
 
 
     protected override void Initialize()
     {
+        fadeImage = GetComponentInChildren<Image>(true);
+
         FadeIn();
         SceneManager.sceneLoaded += (_, __) => FadeIn(); // 씬이 변경될 때마다 페이드 아웃
     }
