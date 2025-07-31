@@ -1,97 +1,91 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 [CreateAssetMenu(fileName = "NewLaserBeamPattern", menuName = "Boss/Attack Patterns/Laser Beam")]
 public class LaserBeamPatternSO : BossAttackSO
 {
     [Header("레이저 설정")]
-    [SerializeField] private float chargeDuration = 1f; // 충전 시간
-    [SerializeField] private float laserDuration = 3f;  // 레이저 발사 지속 시간
-    [SerializeField] private float laserDamage = 10f;   // 초당 대미지
+    [SerializeField] private float rotationDuration = 8f; // 한 바퀴(360도)를 도는 데 걸리는 시간
+    [SerializeField] private float laserLength = 20f;     // 각 레이저의 고정 길이
+    [SerializeField] private float laserWidth = 0.5f;     // 레이저의 두께
+    [SerializeField] private float laserDamage = 5f;      // 초당 대미지
 
     [Header("레이저 외형")]
-    [SerializeField] private Material laserMaterial;    // 레이저를 그릴 머티리얼
-    [SerializeField] private float laserWidth = 0.2f;   // 레이저 두께
+    [SerializeField] private GameObject laserSpritePrefab; // 사용할 레이저 스프라이트 프리팹
 
     public override void Execute(BossController boss)
     {
-        boss.StartCoroutine(FireLaserCoroutine(boss));
+        boss.StartCoroutine(RotateLasersCoroutine(boss));
     }
 
-    // 실제 레이저 발사 로직을 담고 있는 코루틴
-    private IEnumerator FireLaserCoroutine(BossController boss)
+    private IEnumerator RotateLasersCoroutine(BossController boss)
     {
-        // LineRenderer 준비
-        LineRenderer laserRenderer = boss.GetComponent<LineRenderer>();
-        if (laserRenderer == null)
+        if (laserSpritePrefab == null)
         {
-            // 만약 LineRenderer가 없다면, 새로 추가해줍니다.
-            laserRenderer = boss.gameObject.AddComponent<LineRenderer>();
+            Debug.LogError($"{AttackName}: laserSpritePrefab이 할당되지 않았습니다!");
+            boss.ChangeState(new BossIdleState(Cooldown));
+            yield break;
         }
 
-        // 레이저 외형 설정
-        laserRenderer.enabled = true;               // 활성화 상태 보장
-        laserRenderer.positionCount = 2;            // 점 개수 보장
-        laserRenderer.material = laserMaterial;
-        laserRenderer.startWidth = laserWidth;
-        laserRenderer.endWidth = laserWidth;
-        //laserRenderer.sortingLayerName = "Laser";   // 필요하다면 Layer 이름 지정
-        //laserRenderer.sortingOrder = 120;           // 필요하다면 순서 지정
+        // 3개의 레이저 생성
+        Debug.Log($"{boss.name}이(가) {AttackName} 시전!");
+        List<GameObject> lasers = new List<GameObject>();
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject laser = Object.Instantiate(laserSpritePrefab, boss.transform.position, Quaternion.identity);
+            lasers.Add(laser);
+        }
 
-        // 충전 단계
-        Debug.Log($"{boss.name}이(가) {AttackName} 충전 시작!");
-        // boss.animator.SetTrigger("ChargeLaser"); // 충전 애니메이션이 있다면...
-        yield return new WaitForSeconds(chargeDuration);
-
-        // 레이저 발사 단계
-        Debug.Log("레이저 발사!");
-        laserRenderer.enabled = true;
-
-        float timer = laserDuration;
+        // 정해진 시간 동안 회전
+        float timer = rotationDuration;
         while (timer > 0)
         {
-            // 매 프레임 플레이어를 향하도록 방향을 다시 계산 (유도 레이저)
-            Vector2 targetDirection = (boss.Target.position - boss.transform.position).normalized;
+            // 현재 회전 진행률 계산 (0.0 -> 1.0)
+            float progress = 1f - (timer / rotationDuration);
+            // 전체 360도 중 현재의 기본 각도 계산
+            float baseAngle = 360f * progress;
 
-            Vector3 startPos = new Vector3(boss.transform.position.x, boss.transform.position.y, 0f);
-            laserRenderer.SetPosition(0, startPos);
-
-            // 레이저의 시작점은 항상 보스의 위치
-            //laserRenderer.SetPosition(0, boss.transform.position);
-
-            // 레이저의 끝점을 Raycast를 이용해 결정
-            RaycastHit2D hit = Physics2D.Raycast(boss.transform.position, targetDirection, 100f);
-
-            if (hit.collider != null)
+            // 3개의 레이저를 각각 업데이트
+            for (int i = 0; i < lasers.Count; i++)
             {
-                // 무언가에 맞았다면, 맞은 지점이 끝점
-                laserRenderer.SetPosition(1, hit.point);
-                if (hit.collider.CompareTag("Player"))
+                // 기본 각도에서 각 레이저의 고유한 오프셋(0, 120, 240도)을 더함
+                float currentAngle = baseAngle + (i * 120f);
+
+                // 위치는 항상 보스 중심으로 고정
+                lasers[i].transform.position = boss.transform.position;
+                // 계산된 각도로 회전
+                lasers[i].transform.rotation = Quaternion.Euler(0, 0, currentAngle);
+                // 고정된 길이와 너비로 스케일 설정
+                lasers[i].transform.localScale = new Vector3(laserLength, laserWidth, 1f);
+
+                // 충돌 처리
+                Vector2 origin = boss.transform.position;
+                Vector2 direction = lasers[i].transform.right; // 현재 레이저가 향하는 방향
+                RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, laserLength);
+                Debug.DrawRay(origin, direction * laserLength, Color.red);
+
+                foreach (RaycastHit2D hit in hits)
                 {
-                    // 맞은 것이 플레이어라면 대미지를 줌
-                    // hit.collider.GetComponent<PlayerHealth>().TakeDamage(laserDamage * Time.deltaTime);
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        Debug.Log("플레이어 피격!");
+                        // hit.collider.GetComponent<PlayerHealth>().TakeDamage(laserDamage * Time.deltaTime);
+                    }
                 }
-            }
-            else
-            {
-                // 아무것도 맞지 않았다면, 최대 사거리까지 레이저를 그림
-                laserRenderer.SetPosition(1, (Vector2)boss.transform.position + targetDirection * 100f);
             }
 
             timer -= Time.deltaTime;
             yield return null; // 다음 프레임까지 대기
         }
 
-        Debug.Log("레이저 패턴 종료.");
-        // 단순히 비활성화하는 대신, 점의 개수를 0으로 만들어 확실하게 라인을 지웁니다.
-        if (laserRenderer != null)
+        Debug.Log("회전 레이저 패턴 종료");
+        foreach (GameObject laser in lasers)
         {
-            laserRenderer.positionCount = 0;
+            Object.Destroy(laser);
         }
-        // enabled를 꺼도 좋지만, positionCount를 0으로 하는 것이 더 확실한 방법입니다.
-        laserRenderer.enabled = false;
 
-        // 공격이 완전히 끝났으므로, 다음 상태로 전환
         boss.ChangeState(new BossIdleState(Cooldown));
     }
 }
