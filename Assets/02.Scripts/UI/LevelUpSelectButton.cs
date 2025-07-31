@@ -30,7 +30,7 @@ public class LevelUpSelectButton : MonoBehaviour
         abilityData = _skillData;
 
         if (abilityNameText != null)
-            abilityNameText.text = abilityData?.SkillName;
+            abilityNameText.text = abilityData?.AbilityName;
 
         if (abilityIconIamge != null && abilityData?.Icon != null)
             abilityIconIamge.sprite = abilityData.Icon;

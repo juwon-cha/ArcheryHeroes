@@ -2,14 +2,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/AbilityData")]
-public class AbilityDataSO : ScriptableObject
+public abstract class AbilityDataSO : ScriptableObject
 {
-    public string skillName;
+    public string abilityName;
     public string description;
     public Sprite icon;
-    public bool isLevelUpEnabled = true; // ·¹º§¾÷À» »ç¿ëÇÏ´ÂÁö ¿©ºÎ
-    public int MaxLevel => modifiers != null ? modifiers.Max(m => m.valuesPerLevel.Count) : 0;
+    public bool isLevelUpEnabled = true; // ë ˆë²¨ì—…ì„ ì‚¬ìš©í•˜ëŠ”ì§€ ì—¬ë¶€
+    public int MaxLevel
+    {
+        get
+        {
+            if (this is StatAbilityDataSO statAbilityData)
+                return statAbilityData.MaxLevel;
+            else if (this is SkillAbilityDataSO skillAbilityData)
+                return skillAbilityData.MaxLevel;
 
-    public List<StatModifier> modifiers;
+            return 0;
+        }
+    }
+
 }

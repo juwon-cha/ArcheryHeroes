@@ -7,7 +7,8 @@ public enum StatModifierType
     Damage,
     Cooldown,
     MaxHP,
-    CurrentHP
+    CurrentHP,
+    ExpGainRate // κ²½ν—μΉ νλ“λ‰ μ¦κ°€μ¨ (μ: +20%λΌλ©΄ 1.2λ°° κ²½ν—μΉ)
 }
 
 
@@ -17,7 +18,7 @@ public class StatModifier
     public StatModifierType type;
     public bool isPercentage;
 
-    public List<float> valuesPerLevel; // ΏΉ: [0.1f, 0.2f, 0.3f] ΅ζ 1~3·ΉΊ§ΐΟ ¶§ Αυ°΅·®
+    public List<float> valuesPerLevel; // μ: [0.1f, 0.2f, 0.3f] β†’ 1~3λ λ²¨μΌ λ• μ¦κ°€λ‰
     public float GetValueByLevel(int level)
     {
         if (level < 1 || level > valuesPerLevel.Count)
