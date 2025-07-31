@@ -13,21 +13,6 @@ public class PlayerController : BaseController
 
     private float minDistance;
 
-    protected override void Awake()
-    {
-        rigidBody = GetComponent<Rigidbody2D>();
-        lookDirection = new Vector2(1, 0);
-
-        if (weaponPrefab != null)
-        {
-            weaponHandler = Instantiate(weaponPrefab, weaponPivot);
-        }
-        else
-        {
-            weaponHandler = GetComponentInChildren<WeaponHandler>();
-        }
-    }
-
     protected override void Start()
     {
         base.Start();
@@ -40,20 +25,14 @@ public class PlayerController : BaseController
         if(movementDirection != Vector2.zero)
             lookDirection = movementDirection.normalized;
         else if(movementDirection == Vector2.zero && closestTarget != null)
-            lookDirection = DirectionToTarget();
+            lookDirection = DirectionToCloseTarget();
         HandleAction();
         Rotate(lookDirection);
         HandleAttackDelay();
         closestTarget = null;
     }
 
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
-        //Movement(moveDirection);
-    }
-
-    private Vector2 DirectionToTarget()
+    private Vector2 DirectionToCloseTarget()
     {
         return (closestTarget.transform.position - transform.position).normalized;
     }
@@ -74,17 +53,13 @@ public class PlayerController : BaseController
         }
 
         if (isAttacking && timeSinceLastAttack > weaponHandler.Delay)
+        {
             if (closestTarget != null && isAttacking && timeSinceLastAttack > weaponHandler.Delay)
             {
                 timeSinceLastAttack = 0;
                 Attack();
+            }
         }
-    }
-
-    protected override void Movement(Vector2 direction)
-    {
-        direction = direction * 5;
-        rigidBody.velocity = direction;
     }
 
     protected override void Attack()
