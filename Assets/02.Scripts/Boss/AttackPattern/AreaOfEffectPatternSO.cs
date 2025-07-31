@@ -92,18 +92,6 @@ public class AreaOfEffectPatternSO : BossAttackSO
 
             damageZone.transform.localScale = Vector3.one * areaSize;
 
-            // 플레이어가 장판 위에 있으면 지속 피해 받음
-            //StatHandler playerStatHandler = boss.Target.GetComponent<StatHandler>();
-            //if (playerStatHandler != null)
-            //{
-            //    // 장판이 플레이어에게 지속 피해를 주도록 설정
-            //    damageZone.GetComponent<DamageZone>().Initialize(playerStatHandler, boss.StatHandler);
-            //}
-            //else
-            //{
-            //    Debug.LogWarning("플레이어의 StatHandler가 할당되지 않았습니다!");
-            //}
-
             Object.Destroy(damageZone, damageZoneLifetime); // 일정 시간 후 자동 파괴
 
             // 역할을 다한 경고 표시기 파괴

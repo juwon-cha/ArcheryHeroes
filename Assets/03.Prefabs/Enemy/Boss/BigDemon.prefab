@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 3900136068608612351}
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
-  - component: {fileID: 8029843810610918852}
+  - component: {fileID: 119583954426625805}
   m_Layer: 31
-  m_Name: Staff_BigDemon
+  m_Name: BigDemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0752a889e7951c44f9929a7419953810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8029843810610918852
+--- !u!114 &119583954426625805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,14 +191,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 249625004468040122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d30896042c8ea44d9070753717ebe92, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ca73444c9b1ee14ca7909198c699576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterRenderer: {fileID: 2680468871832475754}
-  weaponPivot: {fileID: 5272366717956779933}
-  weaponPrefab: {fileID: 8091848209504161090, guid: 3c321a6b1b46d354e810a49225262bb1, type: 3}
-  showGizmos: 1
-  followRange: 15
+  spriteRenderer: {fileID: 0}
+  attackPatterns: []
+  target: {fileID: 0}
+  detectionRange: 20
+  chaseRange: 15
+  attackRange: 7
+  groundTilemap: {fileID: 0}
 --- !u!1 &3015333807292570419
 GameObject:
   m_ObjectHideFlags: 0

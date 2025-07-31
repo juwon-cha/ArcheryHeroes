@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5272366717956779933}
-  m_Layer: 28
+  m_Layer: 31
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 3900136068608612351}
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
-  - component: {fileID: 4125889405143737647}
-  m_Layer: 28
-  m_Name: SpikeBaton_Orge
+  - component: {fileID: -6785567588292168187}
+  m_Layer: 31
+  m_Name: BigZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05, y: -0.15}
+  m_Offset: {x: 0, y: -0.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -140,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5}
+  m_Size: {x: 1, y: 1.4}
   m_EdgeRadius: 0
 --- !u!114 &3900136068608612351
 MonoBehaviour:
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e41f08a78c72a46be7b09ef2b290cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 70
   speed: 3
 --- !u!114 &6067485286864423406
 MonoBehaviour:
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0752a889e7951c44f9929a7419953810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4125889405143737647
+--- !u!114 &-6785567588292168187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,13 +194,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca73444c9b1ee14ca7909198c699576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2680468871832475754}
-  attackPatterns:
-  - {fileID: 11400000, guid: 36d1d34509d6e4f47991212cf8bdd68c, type: 2}
+  spriteRenderer: {fileID: 0}
+  attackPatterns: []
   target: {fileID: 0}
-  detectionRange: 15
-  chaseRange: 20
+  detectionRange: 20
+  chaseRange: 15
   attackRange: 7
+  groundTilemap: {fileID: 0}
 --- !u!1 &3015333807292570419
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 4357336016272996187}
   - component: {fileID: 2680468871832475754}
   - component: {fileID: 5145346338000460771}
-  m_Layer: 28
+  m_Layer: 31
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 09369f63a26cda549822120b145f171a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4088e924c39b404c92d43ad271bceb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -296,7 +296,7 @@ Animator:
   m_GameObject: {fileID: 3015333807292570419}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d9fc12e2c5d3c1a428a2350fb7b0cec3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 76a8f617261e5654f913644be96c934c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

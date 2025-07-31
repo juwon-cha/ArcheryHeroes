@@ -8,11 +8,19 @@ public class RadialShotPatternSO : BossAttackSO
     [Header("원형 탄막 설정")]
     [SerializeField] private GameObject projectilePrefab; // 발사할 투사체 프리팹
     [SerializeField] private int projectileCount = 12;    // 투사체 개수
-    [SerializeField] private float projectileSpeed = 10f; // 투사체 속도
 
     [Header("연사 설정")]
     [SerializeField] private int burstCount = 3; // 총 몇 번 발사할 것인가
     [SerializeField] private float delayBetweenBursts = 0.5f; // 발사 사이의 간격
+
+    [Header("투사체 상세 설정")]
+    [SerializeField] private float projectileSpeed = 10f; // 투사체 속도
+    [SerializeField] private float projectileDuration = 5f; // 투사체 수명
+    [SerializeField] private float projectilePower = 10f; // 투사체 공격력
+    [SerializeField] private LayerMask targetLayer;       // 공격할 대상의 레이어
+    [SerializeField] private bool applyKnockback = true;
+    [SerializeField] private float knockbackPower = 5f;
+    [SerializeField] private float knockbackDuration = 0.2f;
 
     public override void Execute(BossController boss)
     {
@@ -56,10 +64,13 @@ public class RadialShotPatternSO : BossAttackSO
                 // 오른쪽 방향을 currentAngle만큼 회전시킨 새로운 방향 벡터를 만들어 냄
                 Vector2 direction = rotation * Vector2.right;
 
-                GameObject projectile = Object.Instantiate(projectilePrefab, boss.transform.position, rotation);
-                if (projectile.GetComponent<Rigidbody2D>() != null)
+                GameObject projectileGO = Object.Instantiate(projectilePrefab, boss.transform.position, rotation);
+
+                BossProjectileController projectile = projectileGO.GetComponent<BossProjectileController>();
+                if (projectile != null)
                 {
-                    projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
+                    projectile.Init(direction, projectileSpeed, projectileDuration, projectilePower, targetLayer,
+                                    applyKnockback, knockbackPower, knockbackDuration);
                 }
             }
 

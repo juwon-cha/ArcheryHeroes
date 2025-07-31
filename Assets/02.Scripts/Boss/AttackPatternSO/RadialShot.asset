@@ -16,6 +16,14 @@ MonoBehaviour:
   Cooldown: 1.5
   projectilePrefab: {fileID: 8643473914380838996, guid: 18c0224bcb0cfb942bcc13d325761cce, type: 3}
   projectileCount: 10
-  projectileSpeed: 1
   burstCount: 3
   delayBetweenBursts: 0.5
+  projectileSpeed: 1.5
+  projectileDuration: 5
+  projectilePower: 3
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 134217728
+  applyKnockback: 1
+  knockbackPower: 5
+  knockbackDuration: 0.2

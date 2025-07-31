@@ -7,10 +7,18 @@ public class SpiralShotPatternSO : BossAttackSO
 {
     [Header("나선 탄막 설정")]
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private float patternDuration = 5f; // 패턴 지속 시간
     [SerializeField] private float fireRate = 0.1f; // 발사 간격 (초)
     [SerializeField] private float rotationSpeed = 100f; // 초당 회전 각도
+
+    [Header("투사체 상세 설정")]
+    [SerializeField] private float projectileSpeed = 10f; // 투사체 속도
+    [SerializeField] private float projectileDuration = 5f; // 투사체 수명
+    [SerializeField] private float projectilePower = 10f; // 투사체 공격력
+    [SerializeField] private LayerMask targetLayer;       // 공격할 대상의 레이어
+    [SerializeField] private bool applyKnockback = true;
+    [SerializeField] private float knockbackPower = 5f;
+    [SerializeField] private float knockbackDuration = 0.2f;
 
     private float patternTimer; // 패턴 전체 시간
     private float fireTimer; // 다음 발사 시간
@@ -55,10 +63,14 @@ public class SpiralShotPatternSO : BossAttackSO
                 Quaternion rotation = Quaternion.Euler(0, 0, currentAngle);
                 Vector2 direction = rotation * Vector2.right;
 
-                GameObject projectile = Object.Instantiate(projectilePrefab, boss.transform.position, rotation);
-                if (projectile.GetComponent<Rigidbody2D>() != null)
+                // 투사체 생성
+                GameObject projectileGO = Object.Instantiate(projectilePrefab, boss.transform.position, Quaternion.identity);
+                BossProjectileController projectile = projectileGO.GetComponent<BossProjectileController>();
+
+                if (projectile != null)
                 {
-                    projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
+                    projectile.Init(direction, projectileSpeed, projectileDuration, projectilePower, targetLayer,
+                                    applyKnockback, knockbackPower, knockbackDuration);
                 }
             }
 

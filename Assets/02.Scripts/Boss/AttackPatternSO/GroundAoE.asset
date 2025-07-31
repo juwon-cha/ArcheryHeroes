@@ -15,7 +15,7 @@ MonoBehaviour:
   AttackName: GroundAoE
   Cooldown: 1.5
   areaCount: 3
-  spawnRadius: 10
+  spawnRadius: 3
   warningDuration: 1.5
   warningIndicatorPrefab: {fileID: 1058332346767464224, guid: 95c0fdc4221748d478722feffe3b4c4c, type: 3}
   damageZonePrefab: {fileID: 4369729686545429262, guid: 82bb4b07e53ddd446b884dafd65ab7cf, type: 3}
