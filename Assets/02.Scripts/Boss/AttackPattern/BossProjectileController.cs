@@ -75,7 +75,10 @@ public class BossProjectileController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 비활성화 상태이거나, 이미 파괴 과정에 들어갔으면 무시
-        if (!isReady) return;
+        if (!isReady)
+        {
+            return;
+        }
 
         // 벽과 충돌했는지 확인 (비트 연산으로 레이어 마스크 포함 여부 체크)
         if ((levelCollisionLayer.value & (1 << collision.gameObject.layer)) > 0)

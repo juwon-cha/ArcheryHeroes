@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3996544131451030108}
   - component: {fileID: 3587117529418917185}
   - component: {fileID: 4611591762268048015}
-  - component: {fileID: 3900136068608612351}
+  - component: {fileID: 4899896004034724136}
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
   - component: {fileID: -6785567588292168187}
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.15}
@@ -142,7 +142,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.4}
   m_EdgeRadius: 0
---- !u!114 &3900136068608612351
+--- !u!114 &4899896004034724136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 249625004468040122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abc4170ea7a655d46b84db53dbf74368, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bdc7da16012f2e4ebb7e4fc22c47dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _healthChangeDelay: 0.5
@@ -194,12 +194,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca73444c9b1ee14ca7909198c699576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  attackPatterns: []
+  spriteRenderer: {fileID: 2680468871832475754}
+  power: 3
+  applyKnockback: 1
+  knockbackPower: 5
+  knockbackDuration: 0.5
+  attackPatterns:
+  - {fileID: 11400000, guid: 2afa8b72c58ab1942bf890256f43818e, type: 2}
+  - {fileID: 11400000, guid: 10f6dd58ee531874e9a869cbd0b3959f, type: 2}
+  - {fileID: 11400000, guid: ae0ade2413b8f7148aa1dc28b649f6be, type: 2}
   target: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 134217728
   detectionRange: 20
   chaseRange: 15
-  attackRange: 7
+  attackRange: 5
   groundTilemap: {fileID: 0}
 --- !u!1 &3015333807292570419
 GameObject:
@@ -274,7 +284,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 120
   m_Sprite: {fileID: 21300000, guid: d4088e924c39b404c92d43ad271bceb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

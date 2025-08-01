@@ -8,7 +8,7 @@ public class DamageZone : MonoBehaviour
 
     private bool isPlayerInside = false; // 플레이어가 현재 장판 안에 있는지 여부
     private float damageTimer;           // 다음 데미지 틱까지 시간 재는 타이머
-    private StatHandler playerStatHandler;
+    private ResourceController playerResourceController;
 
     private void Start()
     {
@@ -34,32 +34,30 @@ public class DamageZone : MonoBehaviour
 
     private void ApplyDamage()
     {
-        if (playerStatHandler != null)
+        if (playerResourceController != null)
         {
             Debug.Log($"플레이어에게 {damagePerTick}의 지속 피해!");
 
-            // TODO: 플레이어에게 데미지 적용
-            // playerStatHandler.TakeDamage(damagePerTick);
+            playerResourceController.ChangeHealth(-damagePerTick);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             isPlayerInside = true;
-            // 플레이어의 StatHandler 컴포넌트를 가져와 저장
-            playerStatHandler = other.GetComponent<StatHandler>();
+            // 플레이어의 ResourceController 저장
+            playerResourceController = collision.GetComponent<ResourceController>();
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             isPlayerInside = false;
-            // 플레이어가 나갔으므로 참조를 비움
-            playerStatHandler = null;
+            playerResourceController = null;
         }
     }
 }

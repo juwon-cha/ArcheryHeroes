@@ -15,12 +15,25 @@ public class BossController : MonoBehaviour
     private StatHandler statHandler;
     public StatHandler StatHandler { get { return statHandler; } }
 
+    [Header("공격 정보")]
+    [SerializeField] private float power = 3f; // 보스의 공격력
+    public float Power { get { return power; } }
+    public float AdditionalPower { get; set; } = 0f; 
+
+    [SerializeField] private bool applyKnockback = true; // 넉백 적용 여부
+    public bool ApplyKnockback { get { return applyKnockback; } }
+    [SerializeField] private float knockbackPower = 5f; // 넉백 힘
+    public float KnockbackPower { get { return knockbackPower; } }
+    [SerializeField] private float knockbackDuration = 0.5f; // 넉백 지속 시간
+    public float KnockbackDuration { get { return knockbackDuration; } }
+
     [Header("공격 패턴")]
     public List<BossAttackSO> attackPatterns; // 보스가 사용할 스킬 목록
 
     [Header("타겟 정보")]
     [SerializeField] private Transform target; // 플레이어의 Transform
     public Transform Target { get { return target; } }
+    [SerializeField] private LayerMask targetLayer;
     public Vector2 LookDirection { get; set; } // 보스가 바라보는 방향
 
     [Header("AI 범위 설정")]
@@ -93,11 +106,6 @@ public class BossController : MonoBehaviour
         currentState.EnterState(this);
     }
 
-    private void OnDead()
-    {
-        Debug.Log("Boss defeated!");
-    }
-
     public float DistanceToTarget()
     {
         return Vector3.Distance(transform.position, target.position);
@@ -111,6 +119,53 @@ public class BossController : MonoBehaviour
     public void StopMovement()
     {
         rigidBody.velocity = Vector2.zero;
+    }
+
+    public void OnDead()
+    {
+        rigidBody.velocity = Vector3.zero;
+
+        foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
+        {
+            Color color = renderer.color;
+            color.a = 0.3f;
+            renderer.color = color;
+        }
+
+        foreach (Behaviour component in transform.GetComponentsInChildren<Behaviour>())
+        {
+            component.enabled = false; // 나머지 컴포넌트 비활성화
+        }
+
+        Destroy(gameObject, 2f); // 2초 후에 오브젝트 삭제
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 타겟과 충돌했는지 확인
+        if ((targetLayer.value & (1 << collision.gameObject.layer)) > 0)
+        {
+            Debug.Log("Hit Player!");
+
+            ResourceController targetResource = collision.GetComponent<ResourceController>();
+            if (targetResource != null)
+            {
+                // 기본 공격력과 추가 공격력을 합산하여 최종 데미지 계산
+                float totalDamage = power + AdditionalPower;
+                targetResource.ChangeHealth(-totalDamage);
+                Debug.Log($"플레이어에게 {totalDamage}의 피해를 입혔습니다! (기본: {power}, 추가: {AdditionalPower})");
+            }
+
+            // 넉백 처리
+            if (applyKnockback)
+            {
+                BaseController controller = collision.GetComponent<BaseController>();
+                if (controller != null)
+                {
+                    controller.ApplyKnockBack(transform, knockbackPower, knockbackDuration);
+                }
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()

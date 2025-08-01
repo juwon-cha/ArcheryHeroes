@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 3996544131451030108}
   - component: {fileID: 3587117529418917185}
   - component: {fileID: 4611591762268048015}
+  - component: {fileID: 500566345909905810}
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
   - component: {fileID: 4125889405143737647}
@@ -125,7 +126,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.05, y: -0.15}
@@ -141,6 +142,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &500566345909905810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249625004468040122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdc7da16012f2e4ebb7e4fc22c47dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthChangeDelay: 0.5
+  DamageClip: {fileID: 0}
 --- !u!114 &8355837575124620355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,12 +195,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2680468871832475754}
+  power: 3
+  applyKnockback: 1
+  knockbackPower: 5
+  knockbackDuration: 0.5
   attackPatterns:
   - {fileID: 11400000, guid: c9b194af9e1faed438cf4516db553660, type: 2}
+  - {fileID: 11400000, guid: b61f0b534b823e145be53bc8bad1ea22, type: 2}
+  - {fileID: 11400000, guid: d6f2b54c741295347a3913fccd8e0080, type: 2}
   target: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 134217728
   detectionRange: 15
   chaseRange: 20
-  attackRange: 7
+  attackRange: 5
   groundTilemap: {fileID: 0}
 --- !u!1 &3015333807292570419
 GameObject:

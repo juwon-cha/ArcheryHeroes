@@ -7,10 +7,11 @@ using static UnityEngine.UI.Image;
 public class LaserBeamPatternSO : BossAttackSO
 {
     [Header("레이저 설정")]
+    [SerializeField] private float laserCount = 3f;       // 레이저 개수
     [SerializeField] private float rotationDuration = 8f; // 한 바퀴(360도)를 도는 데 걸리는 시간
     [SerializeField] private float laserLength = 20f;     // 각 레이저의 고정 길이
     [SerializeField] private float laserWidth = 0.5f;     // 레이저의 두께
-    [SerializeField] private float laserDamage = 5f;      // 초당 대미지
+    [SerializeField] private float laserDamage = 5f;      // 레이저 데미지
 
     [Header("레이저 외형")]
     [SerializeField] private GameObject laserSpritePrefab; // 사용할 레이저 스프라이트 프리팹
@@ -29,14 +30,17 @@ public class LaserBeamPatternSO : BossAttackSO
             yield break;
         }
 
-        // 3개의 레이저 생성
+        // 레이저 생성
         Debug.Log($"{boss.name}이(가) {AttackName} 시전!");
         List<GameObject> lasers = new List<GameObject>();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < laserCount; i++)
         {
             GameObject laser = Object.Instantiate(laserSpritePrefab, boss.transform.position, Quaternion.identity);
             lasers.Add(laser);
         }
+
+        // 각 레이저 사이의 각도 계산
+        float angleBetweenLasers = 360f / laserCount;
 
         // 정해진 시간 동안 회전
         float timer = rotationDuration;
@@ -47,11 +51,11 @@ public class LaserBeamPatternSO : BossAttackSO
             // 전체 360도 중 현재의 기본 각도 계산
             float baseAngle = 360f * progress;
 
-            // 3개의 레이저를 각각 업데이트
+            // 레이저를 각각 업데이트
             for (int i = 0; i < lasers.Count; i++)
             {
-                // 기본 각도에서 각 레이저의 고유한 오프셋(0, 120, 240도)을 더함
-                float currentAngle = baseAngle + (i * 120f);
+                // 미리 계산한 각도를 사용하여 현재 각도 계산
+                float currentAngle = baseAngle + (i * angleBetweenLasers);
 
                 // 위치는 항상 보스 중심으로 고정
                 lasers[i].transform.position = boss.transform.position;
@@ -68,10 +72,29 @@ public class LaserBeamPatternSO : BossAttackSO
 
                 foreach (RaycastHit2D hit in hits)
                 {
-                    if (hit.collider.CompareTag("Player"))
+                    if (hit.collider.gameObject.layer == boss.Target.gameObject.layer)
                     {
                         Debug.Log("플레이어 피격!");
-                        // hit.collider.GetComponent<PlayerHealth>().TakeDamage(laserDamage * Time.deltaTime);
+
+                        // 데미지 처리 (프레임당 데미지)
+                        ResourceController targetResource = hit.collider.GetComponent<ResourceController>();
+                        if (targetResource != null)
+                        {
+                            // Time.deltaTime을 곱하여 프레임에 따른 피해량 계산
+                            float damageThisFrame = laserDamage * Time.deltaTime;
+                            targetResource.ChangeHealth(-damageThisFrame);
+                        }
+
+                        // 넉백 처리
+                        if (boss.ApplyKnockback)
+                        {
+                            BaseController controller = hit.collider.GetComponent<BaseController>();
+                            if (controller != null)
+                            {
+                                // BossController에서 넉백 정보를 가져와 전달
+                                controller.ApplyKnockBack(boss.transform, boss.KnockbackPower, boss.KnockbackDuration);
+                            }
+                        }
                     }
                 }
             }

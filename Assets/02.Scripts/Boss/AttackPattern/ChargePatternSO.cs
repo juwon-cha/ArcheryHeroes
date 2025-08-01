@@ -9,9 +9,7 @@ public class ChargePatternSO : BossAttackSO
     [SerializeField] private float aimDuration = 1.2f;      // 인디케이터가 표시되는 조준 시간
     [SerializeField] private float chargeSpeed = 25f;       // 돌진 속도
     [SerializeField] private float chargeDistance = 5f;    // 돌진할 거리
-
-    [Header("보스 크기 보정")]
-    [SerializeField] private float bossBodyRadius = 1f; // 보스의 중심에서 가장자리까지의 대략적인 거리
+    [SerializeField] private float power = 2f;              // 돌진 추가 공격력
 
     [Header("인디케이터 설정")]
     [SerializeField] private GameObject indicatorPrefab;    // 돌진 경로를 표시할 프리팹
@@ -63,6 +61,8 @@ public class ChargePatternSO : BossAttackSO
 
         Debug.Log("돌진!");
 
+        boss.AdditionalPower = power; // 돌진 시 추가 공격력 설정
+
         // 돌진에 걸리는 시간 계산
         float chargeActualDuration = chargeDistance / chargeSpeed;
 
@@ -77,6 +77,8 @@ public class ChargePatternSO : BossAttackSO
 
         // 돌진이 끝나면 멈춤
         boss.StopMovement();
+
+        boss.AdditionalPower = 0f; // 추가 공격력 초기화
 
         boss.ChangeState(new BossIdleState(Cooldown));
     }
