@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BaseController : MonoBehaviour
@@ -167,6 +168,10 @@ public class BaseController : MonoBehaviour
             component.enabled = false; // 나머지 컴포넌트 비활성화
         }
 
-        Destroy(gameObject, 2f); // 2초 후에 오브젝트 삭제
+        // 정진규 임시 수정
+        if (this.gameObject.CompareTag("Player"))
+            Destroy(gameObject, 2f); // 2초 후에 오브젝트 삭제
+        else if (this.gameObject.CompareTag("Monster"))
+            ObjectPoolingManager.Instance.Return(this.gameObject);
     }
 }

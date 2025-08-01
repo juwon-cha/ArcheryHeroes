@@ -78,7 +78,11 @@ public class DungeonRoom : MonoBehaviour
             // 유효한 위치 리스트에서 하나 가져온다
             Vector2 spawnPosition = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
 
-            GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, enemyParent);
+            // 수정 전에는 Instantiate로 생성했었다.
+            GameObject enemyInstance = ObjectPoolingManager.Instance.Get(enemyPrefab, spawnPosition, Quaternion.identity);
+            if(enemyParent != null)
+                enemyInstance.transform.SetParent(enemyParent);
+
             EnemyController enemyController = enemyInstance.GetComponent<EnemyController>();
 
             if (enemyController != null)
