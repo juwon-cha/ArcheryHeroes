@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c964f236c248044a604db3970f9f19, type: 3}
+  m_Name: OrbitingOrbEffect_Lv2
+  m_EditorClassIdentifier: 
+  orbPrefab: {fileID: 3995127850393183158, guid: bd8ca5d4157137446807c3e64811edb8, type: 3}
+  orbCount: 5
+  orbitRadius: 1.5
+  orbitSpeed: 1.5

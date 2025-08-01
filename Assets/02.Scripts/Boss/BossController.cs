@@ -10,6 +10,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody;
     public Rigidbody2D Rigidbody { get { return rigidBody; } }
+    private BoxCollider2D boxCollider;
+    public BoxCollider2D BoxCollider { get { return boxCollider; } }
     private AnimationHandler animationHandler;
     public AnimationHandler AnimationHandler { get { return animationHandler; } }
     private StatHandler statHandler;
@@ -56,6 +58,12 @@ public class BossController : MonoBehaviour
         if (rigidBody == null)
         {
             Debug.LogError("Rigidbody2D component is missing on " + gameObject.name);
+        }
+
+        boxCollider = GetComponent<BoxCollider2D>();
+        if (boxCollider == null)
+        {
+            Debug.LogError("BoxCollider2D component is missing on " + gameObject.name);
         }
 
         animationHandler = GetComponentInChildren<AnimationHandler>();
