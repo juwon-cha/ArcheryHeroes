@@ -42,23 +42,23 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // º® Ãæµ¹
+        // ë²½ ì¶©ëŒ
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
         {
             DestroyProjectile();
         }
-        // Å¸°Ù°ú Ãæµ¹
+        // íƒ€ê²Ÿê³¼ ì¶©ëŒ
         else if (rangeWeaponHandler.Target.value == (rangeWeaponHandler.Target.value | (1 << collision.gameObject.layer)))
         {
-            // µ¥¹ÌÁö °è»ê
+            // ë°ë¯¸ì§€ ê³„ì‚°
             ResourceController targetResource = collision.GetComponent<ResourceController>();
             if (targetResource != null)
             {
                 targetResource.ChangeHealth(-rangeWeaponHandler.Power);
                 if (rangeWeaponHandler.IsOnKnockBack)
                 {
-                    // ³Ë¹é Ã³¸®
-                    EnemyController controller = collision.GetComponent<EnemyController>();
+                    // ë„‰ë°± ì²˜ë¦¬
+                    BaseController controller = collision.GetComponent<BaseController>();
                     if (controller != null)
                     {
                         controller.ApplyKnockBack(transform, rangeWeaponHandler.KnockBackPower, rangeWeaponHandler.KnockBackDuration);
@@ -79,12 +79,12 @@ public class ProjectileController : MonoBehaviour
         transform.localScale = Vector3.one * weaponHandler.BulletSize;
         spriteRenderer.color = weaponHandler.ProjectileColor;
 
-        // ¿ÀºêÁ§Æ®ÀÇ ¿À¸¥ÂÊÀ» _direction ¹æÇâÀ¸·Î ¹Ù¶óº¸°Ô È¸Àü
+        // ì˜¤ë¸Œì íŠ¸ì˜ ì˜¤ë¥¸ìª½ì„ _direction ë°©í–¥ìœ¼ë¡œ ë°”ë¼ë³´ê²Œ íšŒì „
         transform.right = this.direction;
 
         if (direction.x < 0)
         {
-            // ÇÇ¹şÀ» È¸Àü ½ÃÄÑÁà¾ß Åõ»çÃ¼°¡ Á¦´ë·Î º¸ÀÎ´Ù(?)
+            // í”¼ë²—ì„ íšŒì „ ì‹œì¼œì¤˜ì•¼ íˆ¬ì‚¬ì²´ê°€ ì œëŒ€ë¡œ ë³´ì¸ë‹¤(?)
             pivot.localRotation = Quaternion.Euler(180, 0, 0);
         }
         else

@@ -6,6 +6,7 @@ using UnityEngine;
 public class BaseController : MonoBehaviour
 {
     protected Rigidbody2D rigidBody;
+    public Rigidbody2D Rigidbody { get { return rigidBody; } }
 
     [SerializeField] private SpriteRenderer characterRenderer;
     [SerializeField] protected Transform weaponPivot;
