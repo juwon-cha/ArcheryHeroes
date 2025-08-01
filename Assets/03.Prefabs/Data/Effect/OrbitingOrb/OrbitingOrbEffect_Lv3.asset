@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: OrbitingOrbEffect_Lv3
   m_EditorClassIdentifier: 
   orbPrefab: {fileID: 3995127850393183158, guid: bd8ca5d4157137446807c3e64811edb8, type: 3}
-  orbCount: 5
-  orbitRadius: 1.5
-  orbitSpeed: 3
+  orbCount: 7
+  orbitRadius: 3
+  orbitSpeed: 2
