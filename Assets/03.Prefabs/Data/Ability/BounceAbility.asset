@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\uBCBD \uBC18\uC0AC"
   description: 
-  icon: {fileID: 21300000, guid: 3a125acbcc06b014da29066f7209b827, type: 3}
+  icon: {fileID: 21300000, guid: 29b2ed7eb46e20f46bc46b2c590bd5fa, type: 3}
   isLevelUpEnabled: 1
   modifiers:
   - type: 9
