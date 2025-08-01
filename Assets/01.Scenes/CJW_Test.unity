@@ -3762,6 +3762,10 @@ PrefabInstance:
       propertyPath: groundTilemap
       value: 
       objectReference: {fileID: 267289054}
+    - target: {fileID: 119583954426625805, guid: 027f879da16278b4d89f47c31f0fdaf7, type: 3}
+      propertyPath: attackPatterns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 249625004468040122, guid: 027f879da16278b4d89f47c31f0fdaf7, type: 3}
       propertyPath: m_Name
       value: BigDemon
