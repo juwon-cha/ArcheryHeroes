@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4fe6ccf116fe40b0a2cfb0533f2db, type: 3}
+  m_Name: TimedTeleportAbility
+  m_EditorClassIdentifier: 
+  abilityName: "\uD3EC\uD0C8 \uC0DD\uC131"
+  description: 
+  icon: {fileID: 21300000, guid: af97997104beb414db5c8cc6ebf8b5ea, type: 3}
+  isLevelUpEnabled: 1
+  skillDataSO: {fileID: 11400000, guid: fab6844efec5949458d3f5454d847fa8, type: 2}

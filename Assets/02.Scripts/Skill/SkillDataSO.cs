@@ -12,7 +12,6 @@ public class SkillDataSO : ScriptableObject
     public int MaxLevel => skillDatas.Count; // 최대 레벨 (0부터 시작하므로 -1)
     private int currentLevel; // 현재 레벨
     protected float lastUsedTime; // 마지막 사용 시간
-    private EffectContext effectContext;
 
     public SkillData CurrentSkillData => skillDatas[currentLevel];
 
@@ -71,5 +70,5 @@ public class SkillDataSO : ScriptableObject
     }
 
     public virtual void SetLastUsedTime(float time) => lastUsedTime = time;
-    public void ResetCooldown() => lastUsedTime = 0f; // 쿨타임 초기화
+    public void ResetCooldown() => lastUsedTime = -100f; // 쿨타임 초기화
 }
