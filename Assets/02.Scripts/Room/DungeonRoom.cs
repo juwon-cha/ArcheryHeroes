@@ -56,7 +56,7 @@ public class DungeonRoom : MonoBehaviour
                 {
                     // 해당 위치가 장애물에 막혀있지 않은지도 추가로 확인한다.
                     Vector2 worldPos = enemySpawnPoint.GetCellCenterWorld(tilePosition);
-                    if (IsPositionValid(worldPos, 1.0f))
+                    if (IsPositionValid(worldPos, 1.4f))
                     {
                         possibleSpawnPoints.Add(worldPos);
                     }
