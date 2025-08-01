@@ -43,6 +43,13 @@ public class ObjectPoolingManager : Singleton<ObjectPoolingManager>
         return obj;
     }
 
+
+    public GameObject Get(GameObject prefab, Vector3 pos)
+    {
+        return Get(prefab, pos, Quaternion.identity);
+    }
+
+
     // 오브젝트를 반환하는 메서드
     public void Return(GameObject obj)
     {

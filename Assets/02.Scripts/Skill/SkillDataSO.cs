@@ -63,6 +63,10 @@ public class SkillDataSO : ScriptableObject
 
     public void LevelUp()
     {
+        foreach (var effect in CurrentSkillData.effects)
+            effect.Deactivate(); // 레벨업 시 현재 레벨의 효과 비활성화
+
+
         if (currentLevel >= MaxLevel) return;
 
         currentLevel++;
