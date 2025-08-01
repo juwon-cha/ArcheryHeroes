@@ -45,8 +45,9 @@ public class DungeonDoor : MonoBehaviour
         // 문이 열려있는 상태이고, 플레이어일 때
         if(isDoorOpen && collision.CompareTag("Player"))
         {
+            Debug.Log("플레이어가 다음 스테이지로 이동합니다.");
             // 던전 매니저에게 다음 방을 생성해 달라고 요청
-            //DungeonManager.Instance.LoadNextRoom();
+            DungeonManager.Instance.LoadNextRoom();
         }
     }
 }
