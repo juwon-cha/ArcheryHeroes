@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BaseController : MonoBehaviour
@@ -163,11 +164,38 @@ public class BaseController : MonoBehaviour
             renderer.color = color;
         }
 
-        foreach (Behaviour component in transform.GetComponentsInChildren<Behaviour>())
+        // 정진규 수정
+        // 오브젝트 풀링에서 SetActive(false)를 하기 때문에 비화성화했습니다.
+        //foreach (Behaviour component in transform.GetComponentsInChildren<Behaviour>())
+        //{
+        //    component.enabled = false; // 나머지 컴포넌트 비활성화
+        //}
+
+        // 정진규 임시 수정
+        if (this.gameObject.CompareTag("Player"))
+            Destroy(gameObject, 2f); // 2초 후에 오브젝트 삭제
+        else if (this.gameObject.CompareTag("Monster"))
+            ObjectPoolingManager.Instance.Return(this.gameObject);
+    }
+
+    public virtual void OnRestore()
+    {
+        // 스프라이트 투명도 복구
+        foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
         {
-            component.enabled = false; // 나머지 컴포넌트 비활성화
+            Color color = renderer.color;
+            color.a = 1.0f; // 알파값을 1 (불투명)으로 복구
+            renderer.color = color;
         }
 
-        Destroy(gameObject, 2f); // 2초 후에 오브젝트 삭제
+        // 애니메이션 상태 초기화
+        if (animationHandler != null && animationHandler.animator != null)
+        {
+            animationHandler.animator.Play(0, 0, 0f);
+        }
+
+        // 기타 상태 변수들을 초기화
+        timeSinceLastAttack = float.MaxValue;
+        knockBackDuration = 0.0f;
     }
 }

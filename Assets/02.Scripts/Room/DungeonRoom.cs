@@ -21,6 +21,9 @@ public class DungeonRoom : MonoBehaviour
     // 현재 방에서 살아있는 몬스터 리스트
     private List<EnemyController> activeEnemies = new List<EnemyController>();
 
+    // 디버그용 기즈모 임시 변수
+    private List<Vector2> debug_possibleSpawnPoints = new List<Vector2>();
+
     private void Start()
     {
         SpawnEnemies();
@@ -56,13 +59,16 @@ public class DungeonRoom : MonoBehaviour
                 {
                     // 해당 위치가 장애물에 막혀있지 않은지도 추가로 확인한다.
                     Vector2 worldPos = enemySpawnPoint.GetCellCenterWorld(tilePosition);
-                    if (IsPositionValid(worldPos, 1.0f))
+                    if (IsPositionValid(worldPos, 1.4f))
                     {
                         possibleSpawnPoints.Add(worldPos);
                     }
                 }
             }
         }
+
+        // 디버그용 기즈모 그리기
+        this.debug_possibleSpawnPoints = possibleSpawnPoints;
 
         // 만약 스폰 가능한 위치가 하나도 없다면, 즉시 클리어 처리
         if (possibleSpawnPoints.Count == 0)
@@ -78,13 +84,32 @@ public class DungeonRoom : MonoBehaviour
             // 유효한 위치 리스트에서 하나 가져온다
             Vector2 spawnPosition = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
 
-            GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity, enemyParent);
+            // 수정 전에는 Instantiate로 생성했었다.
+            GameObject enemyInstance = ObjectPoolingManager.Instance.Get(enemyPrefab, spawnPosition, Quaternion.identity);
+            //if(enemyParent != null)
+            //    enemyInstance.transform.SetParent(enemyParent);
+
             EnemyController enemyController = enemyInstance.GetComponent<EnemyController>();
 
             if (enemyController != null)
             {
                 enemyController.Init(playerTransform, this);
                 activeEnemies.Add(enemyController);
+            }
+        }
+    }
+
+    // 디버그용 기즈모 그리기 함수
+    private void OnDrawGizmosSelected()
+    {
+        // 만약 디버그용 리스트가 존재하고, 비어있지 않다면
+        if (debug_possibleSpawnPoints != null && debug_possibleSpawnPoints.Count > 0)
+        {
+            // 모든 유효한 스폰 위치에 초록색 원을 그립니다.
+            Gizmos.color = Color.green;
+            foreach (Vector2 point in debug_possibleSpawnPoints)
+            {
+                Gizmos.DrawWireSphere(point, 0.4f); // 0.4f는 원의 반지름
             }
         }
     }
@@ -132,6 +157,19 @@ public class DungeonRoom : MonoBehaviour
         if(activeEnemies.Count == 0)
         {
             door.OpenDoor();
+        }
+    }
+
+    // 오브젝트 풀링에서 다시 가져올 때
+    private void OnEnable()
+    {
+        // 1. 이전에 남아있던 몬스터 리스트를 깨끗하게 비웁니다.
+        activeEnemies.Clear();
+
+        // 2. 출구 문을 다시 닫습니다.
+        if (door != null)
+        {
+            door.CloseDoor();
         }
     }
 }

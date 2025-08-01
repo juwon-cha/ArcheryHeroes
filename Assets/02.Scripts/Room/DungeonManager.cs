@@ -33,18 +33,17 @@ public class DungeonManager : Singleton<DungeonManager>
     {
         currentStageIndex++;
 
-        // 방의 정보가 남아있다. 즉, 이전 방의 정보가 남아있다면
-        if(currentRoomInstance != null) 
+        // 방의 정보가 남아있다. 즉, 이전 방의 정보가 남아있다면 오브젝트 풀링으로 넣어준다.
+        if (currentRoomInstance != null)
         {
-            // 이전 방을 삭제한다
-            Destroy(currentRoomInstance);
+            ObjectPoolingManager.Instance.Return(currentRoomInstance);
         }
 
         // Todo: 여기서 방 현재 스테이지에 따라 보스방 or 특별방 을 가져오는 조건 추가하면 된다.
         // 방 프리팹중 한 개를 랜덤으로 가져온다.
         GameObject roomToLoad = roomPrefabs[Random.Range(0, roomPrefabs.Count)];
-        // 가져온 방 프리팹을 생성하여 현재 방 정보에 넣어준다.
-        currentRoomInstance = Instantiate(roomToLoad, Vector3.zero, Quaternion.identity);
+        // 가져온 방 프리팹을 오브젝트 풀링으로 현재 방 정보에 넣어준다.
+        currentRoomInstance = ObjectPoolingManager.Instance.Get(roomToLoad, Vector3.zero, Quaternion.identity);
 
         // 현재 방 정보에서 DungeonRoom 컴포넌트를 가져온다.
         DungeonRoom newDungeonRoom = currentRoomInstance.GetComponent<DungeonRoom>();
