@@ -18,6 +18,7 @@ public class UIManager : Singleton<UIManager>
 {
     private StartUI startUI;
     private SettingUI settingUI;
+    private MainUI mainUI;
     private PlayUI playUI;
     private LevelUpUI levelUpUI;
     private GameOverUI gameOverUI;
@@ -30,6 +31,7 @@ public class UIManager : Singleton<UIManager>
         base.Initialize();
         startUI = GetComponentInChildren<StartUI>(true);
         settingUI = GetComponentInChildren<SettingUI>(true);
+        mainUI = GetComponentInChildren<MainUI>(true);
         playUI = GetComponentInChildren<PlayUI>(true);
         levelUpUI = GetComponentInChildren<LevelUpUI>(true);
         gameOverUI = GetComponentInChildren<GameOverUI>(true);
@@ -39,6 +41,7 @@ public class UIManager : Singleton<UIManager>
         {
             { UIType.Start, startUI.gameObject },
             { UIType.Setting, settingUI.gameObject },
+            { UIType.Main, mainUI.gameObject },
             { UIType.Play, playUI.gameObject },
             { UIType.LevelUp, levelUpUI.gameObject },
             { UIType.GameOver, gameOverUI.gameObject },
