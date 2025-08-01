@@ -64,7 +64,8 @@ public class RadialShotPatternSO : BossAttackSO
                 // 오른쪽 방향을 currentAngle만큼 회전시킨 새로운 방향 벡터를 만들어 냄
                 Vector2 direction = rotation * Vector2.right;
 
-                GameObject projectileGO = Object.Instantiate(projectilePrefab, boss.transform.position, rotation);
+                //GameObject projectileGO = Object.Instantiate(projectilePrefab, boss.transform.position, rotation);
+                GameObject projectileGO = ObjectPoolingManager.Instance.Get(projectilePrefab, boss.transform.position, rotation);
 
                 BossProjectileController projectile = projectileGO.GetComponent<BossProjectileController>();
                 if (projectile != null)

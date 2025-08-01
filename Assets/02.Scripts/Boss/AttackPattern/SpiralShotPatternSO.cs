@@ -64,9 +64,10 @@ public class SpiralShotPatternSO : BossAttackSO
                 Vector2 direction = rotation * Vector2.right;
 
                 // 투사체 생성
-                GameObject projectileGO = Object.Instantiate(projectilePrefab, boss.transform.position, Quaternion.identity);
-                BossProjectileController projectile = projectileGO.GetComponent<BossProjectileController>();
+                //GameObject projectileGO = Object.Instantiate(projectilePrefab, boss.transform.position, Quaternion.identity);
+                GameObject projectileGO = ObjectPoolingManager.Instance.Get(projectilePrefab, boss.transform.position, rotation);
 
+                BossProjectileController projectile = projectileGO.GetComponent<BossProjectileController>();
                 if (projectile != null)
                 {
                     projectile.Init(direction, projectileSpeed, projectileDuration, projectilePower, targetLayer,

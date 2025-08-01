@@ -119,6 +119,8 @@ public class BossProjectileController : MonoBehaviour
         isReady = false;
 
         // TODO: 파티클 이펙트나 사운드를 재생
-        Destroy(gameObject);
+
+        //Destroy(gameObject);
+        gameObject.SetActive(false); // 오브젝트 풀링을 사용
     }
 }

@@ -20,3 +20,6 @@ MonoBehaviour:
   power: 5
   indicatorPrefab: {fileID: 781756062407420853, guid: 2165b709f43728e40a375d6ee2fbb6c1, type: 3}
   chargeWidth: 2
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 536870912
