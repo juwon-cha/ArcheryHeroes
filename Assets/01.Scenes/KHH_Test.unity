@@ -696,14 +696,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7625531750980347477, guid: b2c7c9ca230216146842c399642fc15e, type: 3}
-      propertyPath: allAbilities.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625531750980347477, guid: b2c7c9ca230216146842c399642fc15e, type: 3}
-      propertyPath: allAbilities.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5f1167cc4549acb40be9f3e84c117538, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

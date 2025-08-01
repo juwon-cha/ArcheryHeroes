@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2571665014790509317}
   - component: {fileID: 2050546366519441445}
   - component: {fileID: 8876570328172197489}
+  - component: {fileID: 2945337554133008641}
   m_Layer: 0
   m_Name: Orb
   m_TagString: Untagged
@@ -114,9 +115,23 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
+--- !u!114 &2945337554133008641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995127850393183158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a980a649d3e5540931d1582babf42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamType: 1
+  damage: 5

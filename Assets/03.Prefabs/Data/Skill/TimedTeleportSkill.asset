@@ -15,15 +15,15 @@ MonoBehaviour:
   skillName: "\uD3EC\uD0C8 \uC0DD\uC131"
   ignoreCooldown: 0
   skillDatas:
+  - cooldown: 20
+    conditions: []
+    effects:
+    - {fileID: 11400000, guid: bcfd38194eec0dc4a953d5a4500e838b, type: 2}
   - cooldown: 15
     conditions: []
     effects:
     - {fileID: 11400000, guid: bcfd38194eec0dc4a953d5a4500e838b, type: 2}
   - cooldown: 10
-    conditions: []
-    effects:
-    - {fileID: 11400000, guid: bcfd38194eec0dc4a953d5a4500e838b, type: 2}
-  - cooldown: 5
     conditions: []
     effects:
     - {fileID: 11400000, guid: bcfd38194eec0dc4a953d5a4500e838b, type: 2}
