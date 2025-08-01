@@ -60,6 +60,12 @@ public class ResourceController : MonoBehaviour
         }
     }
 
+    public void Resurrect()
+    {
+        CurrentHealth = MaxHealth;
+        timeSinceLastHealthChange = 0f; // 무적 상태 시작
+    }
+
     public bool ChangeHealth(float change, ElementType elementType = ElementType.None)
     {
         if (change == 0 || timeSinceLastHealthChange < _healthChangeDelay)
