@@ -16,7 +16,7 @@ public class DungeonDoor : MonoBehaviour
 
     private void Awake()
     {
-        doorCollider = GetComponent<BoxCollider2D>();
+        doorCollider = GetComponentInChildren<BoxCollider2D>();
     }
 
     private void Start()
