@@ -197,8 +197,8 @@ MonoBehaviour:
   characterRenderer: {fileID: 2680468871832475754}
   weaponPivot: {fileID: 5272366717956779933}
   weaponPrefab: {fileID: 3434713312661476415, guid: 3f807b88c3e74ed42bf1c6fb5f34250d, type: 3}
+  enemyData: {fileID: 11400000, guid: b90a0be1cec2b9445af7535b55d6a3a6, type: 2}
   showGizmos: 1
-  followRange: 15
 --- !u!1 &3015333807292570419
 GameObject:
   m_ObjectHideFlags: 0
