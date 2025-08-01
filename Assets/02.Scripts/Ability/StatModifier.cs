@@ -10,6 +10,7 @@ public enum StatModifierType
     CurrentHP,
     ExpGainRate, // 경험치 획득량 증가율 (예: +20%라면 1.2배 경험치)
     BackArrow, // 뒤로 화살 발사 (예: 1일 때 1개)
+    Lightning, // 번개 효과
 }
 
 

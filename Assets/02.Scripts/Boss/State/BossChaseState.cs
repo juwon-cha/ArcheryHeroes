@@ -53,7 +53,7 @@ public class BossChaseState : BossState
     {
         boss.StopMovement(); // 상태가 바뀔 때 움직임을 멈추는 것이 안전함
 
-        // TODO: 추적 애니메이션 종료
-        // boss.animator.SetBool("IsChasing", false);
+        // 추적 애니메이션 종료
+        boss.AnimationHandler.Move(boss.Rigidbody.velocity);
     }
 }

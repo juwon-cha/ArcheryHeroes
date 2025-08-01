@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using static UnityEngine.UI.Image;
 
 [CreateAssetMenu(fileName = "NewLaserBeamPattern", menuName = "Boss/Attack Patterns/Laser Beam")]
@@ -15,6 +16,7 @@ public class LaserBeamPatternSO : BossAttackSO
 
     [Header("레이저 외형")]
     [SerializeField] private GameObject laserSpritePrefab; // 사용할 레이저 스프라이트 프리팹
+    [SerializeField] private LayerMask wallLayer; // 레이저가 충돌할 벽 레이어
 
     public override void Execute(BossController boss)
     {
@@ -61,12 +63,43 @@ public class LaserBeamPatternSO : BossAttackSO
                 lasers[i].transform.position = boss.transform.position;
                 // 계산된 각도로 회전
                 lasers[i].transform.rotation = Quaternion.Euler(0, 0, currentAngle);
-                // 고정된 길이와 너비로 스케일 설정
-                lasers[i].transform.localScale = new Vector3(laserLength, laserWidth, 1f);
+
+                // 레이저 길이 동적 계산
+                Vector2 origin = boss.transform.position;
+                Vector2 direction = lasers[i].transform.right; // 레이저의 정면 방향
+                float currentMaxDistance = laserLength; // 기본 최대 길이
+
+                // 장애물 레이어에 Raycast를 쏴서 부딪히는지 확인
+                RaycastHit2D obstacleHit = Physics2D.Raycast(origin, direction, laserLength, wallLayer);
+
+                if (obstacleHit.collider != null)
+                {
+                    // 부딪힌 오브젝트가 Tilemap인지 확인
+                    if (obstacleHit.collider.TryGetComponent<Tilemap>(out Tilemap tilemap))
+                    {
+                        // 레이가 타일 안으로 살짝 들어간 위치 계산 (정확한 타일 식별을 위해)
+                        Vector3 insidePoint = obstacleHit.point - (direction * 0.01f);
+
+                        // 월드 좌표를 타일맵의 셀 좌표로 변환
+                        Vector3Int hitCellPosition = tilemap.WorldToCell(insidePoint);
+
+                        // 셀 좌표를 이용해 해당 타일의 월드 좌표 기준 중앙 위치를 가져옴
+                        Vector3 cellCenter = tilemap.GetCellCenterWorld(hitCellPosition);
+
+                        // 보스 위치부터 타일 중앙까지의 거리를 레이저의 최종 길이로 설정
+                        currentMaxDistance = Vector2.Distance(origin, cellCenter);
+                    }
+                    else
+                    {
+                        // Tilemap이 아닌 다른 장애물(일반 벽 등)에 부딪혔을 경우
+                        currentMaxDistance = obstacleHit.distance;
+                    }
+                }
+
+                // 계산된 길이로 레이저 스케일 조절
+                lasers[i].transform.localScale = new Vector3(currentMaxDistance, laserWidth, 1f);
 
                 // 충돌 처리
-                Vector2 origin = boss.transform.position;
-                Vector2 direction = lasers[i].transform.right; // 현재 레이저가 향하는 방향
                 RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, laserLength);
                 Debug.DrawRay(origin, direction * laserLength, Color.red);
 

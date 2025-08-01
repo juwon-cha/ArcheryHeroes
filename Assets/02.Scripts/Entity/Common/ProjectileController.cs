@@ -54,7 +54,7 @@ public class ProjectileController : MonoBehaviour
             ResourceController targetResource = collision.GetComponent<ResourceController>();
             if (targetResource != null)
             {
-                targetResource.ChangeHealth(-rangeWeaponHandler.Power);
+                targetResource.ChangeHealth(-rangeWeaponHandler.Power, rangeWeaponHandler.ElementType);
                 if (rangeWeaponHandler.IsOnKnockBack)
                 {
                     // 넉백 처리

@@ -44,6 +44,10 @@ public class AbilityApplier
             case StatModifierType.BackArrow:
                 rangedWeaponHandler.numberOfProjectilesPerShot_Back = (int)statModifier.GetValueByLevel(data.currentLevel);
                 break;
+            case StatModifierType.Lightning:
+                rangedWeaponHandler.ElementType = ElementType.Lightning;
+                break;
+
         }
     }
 }

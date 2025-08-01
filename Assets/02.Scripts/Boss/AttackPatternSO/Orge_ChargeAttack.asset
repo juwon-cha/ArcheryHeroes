@@ -17,6 +17,9 @@ MonoBehaviour:
   aimDuration: 1.2
   chargeSpeed: 20
   chargeDistance: 9
-  bossBodyRadius: 0.5
+  power: 2
   indicatorPrefab: {fileID: 781756062407420853, guid: 2165b709f43728e40a375d6ee2fbb6c1, type: 3}
   chargeWidth: 2
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 536870912

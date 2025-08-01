@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackName: LaserBeam
   Cooldown: 1.5
+  laserCount: 3
   rotationDuration: 5
   laserLength: 8
   laserWidth: 2
   laserDamage: 5
   laserSpritePrefab: {fileID: 6457295328378908385, guid: 0086b861783200444a6ddaa9842c8706, type: 3}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 536870912

@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01c964f236c248044a604db3970f9f19, type: 3}
-  m_Name: OrbitingOrbEffect_Lv3
+  m_Script: {fileID: 11500000, guid: d3271d5f964020c4fb5257ec731989bb, type: 3}
+  m_Name: ResurrectEffect_Lv1
   m_EditorClassIdentifier: 
-  orbPrefab: {fileID: 3995127850393183158, guid: bd8ca5d4157137446807c3e64811edb8, type: 3}
-  orbCount: 7
-  orbitRadius: 3
-  orbitSpeed: 2
+  resurrectEffect: {fileID: 7480580264258753836, guid: b3a10809b0043a34e95d751b4402e029, type: 3}
+  resurrectChance: 0.4

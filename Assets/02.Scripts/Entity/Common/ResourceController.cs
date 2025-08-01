@@ -60,7 +60,13 @@ public class ResourceController : MonoBehaviour
         }
     }
 
-    public bool ChangeHealth(float change)
+    public void Resurrect()
+    {
+        CurrentHealth = MaxHealth;
+        timeSinceLastHealthChange = 0f; // 무적 상태 시작
+    }
+
+    public bool ChangeHealth(float change, ElementType elementType = ElementType.None)
     {
         if (change == 0 || timeSinceLastHealthChange < _healthChangeDelay)
         {
@@ -73,6 +79,7 @@ public class ResourceController : MonoBehaviour
         CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth; // 최대 체력 초과 방지
         CurrentHealth = CurrentHealth < 0 ? 0 : CurrentHealth; // 최소 체력 0으로 제한
 
+        ElementEffectManager.Instance.ApplyElementEffect(this, change, elementType); // 엘리먼트 효과 적용
         OnChangeHealth?.Invoke(CurrentHealth, MaxHealth); // 체력 변경 이벤트 호출
 
         if (CurrentHealth <= 0)
@@ -91,6 +98,7 @@ public class ResourceController : MonoBehaviour
 
         return true;
     }
+
 
     private void Death()
     {
