@@ -797,7 +797,7 @@ MonoBehaviour:
   minEnemies: 3
   maxEnemies: 10
   enemyParent: {fileID: 4059193364345885611}
-  door: {fileID: 1662200486748128052}
+  door: {fileID: 8818432114135873064}
   playerSpawnPosition: {fileID: 1006989089318756411}
 --- !u!1 &1454200759118977334
 GameObject:
@@ -808,7 +808,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2036331725931865600}
-  - component: {fileID: 1662200486748128052}
   m_Layer: 0
   m_Name: NextDoor
   m_TagString: Untagged
@@ -832,22 +831,6 @@ Transform:
   - {fileID: 9015806732753932059}
   m_Father: {fileID: 892520320164384182}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1662200486748128052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1454200759118977334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6eeec30fe4fce4d8974c02a988569a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openDoor: {fileID: 21300000, guid: 5ee715b95847af942b832ca802b8d6da, type: 3}
-  closedDoor: {fileID: 21300000, guid: e82e4f63dbeaed3438fcbfd550c63853, type: 3}
-  doorSprite: {fileID: 2494440942042579150}
-  isDoorOpen: 0
 --- !u!1 &2519197328660703532
 GameObject:
   m_ObjectHideFlags: 0
@@ -10058,11 +10041,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fb77e05df250164899534a3d9131557, type: 3}
---- !u!212 &2494440942042579150 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 666359643006037845, guid: 7fb77e05df250164899534a3d9131557, type: 3}
+--- !u!114 &8818432114135873064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5890768835792034227, guid: 7fb77e05df250164899534a3d9131557, type: 3}
   m_PrefabInstance: {fileID: 3143910848756739995}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6eeec30fe4fce4d8974c02a988569a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9015806732753932059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6250994316315713664, guid: 7fb77e05df250164899534a3d9131557, type: 3}

@@ -43,6 +43,7 @@ public class DungeonDoor : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 문이 열려있는 상태이고, 플레이어일 때
+        Debug.Log("플레이어가 문 트리거에 닿음");
         if(isDoorOpen && collision.CompareTag("Player"))
         {
             Debug.Log("플레이어가 다음 스테이지로 이동합니다.");
