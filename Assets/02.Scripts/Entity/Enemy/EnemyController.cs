@@ -26,7 +26,8 @@ public class EnemyController : BaseController
 
     public override void OnDead()
     {
-        EnemyManager.Instance.RemoveEnemyOnDead(this);
+        parentRoom.OnEnemyKill(this);
+        base.OnDead();
     }
 
     protected float DistanceToTarget()
