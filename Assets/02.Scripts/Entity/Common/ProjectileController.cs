@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     [SerializeField] private LayerMask levelCollisionLayer;
+    private int bounceCount = 0; // 충돌 시 튕길 횟수
 
     private RangedWeaponHandler rangeWeaponHandler;
 
@@ -45,7 +46,31 @@ public class ProjectileController : MonoBehaviour
         // 벽 충돌
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
         {
-            DestroyProjectile();
+            if (bounceCount <= 0)
+            {
+                DestroyProjectile();
+            }
+            else
+            {
+                // 방향의 정반대 방향으로 raycast 쏴서 법선 추정
+                Vector2 rayOrigin = (Vector2)transform.position + direction * 0.1f;
+                RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, direction, 0.5f, levelCollisionLayer);
+
+                foreach (var hit in hits)
+                {
+                    if (hit.collider.gameObject == gameObject) continue; // 자기 자신 무시
+
+                    // 첫 번째 유효한 충돌 처리
+                    Vector2 normal = hit.normal;
+                    direction = Vector2.Reflect(direction.normalized, normal).normalized;
+
+                    Init(direction, rangeWeaponHandler);
+                    transform.position += (Vector3)normal * 0.2f;
+                    bounceCount--;
+                    break;
+                }
+
+            }
         }
         // 타겟과 충돌
         else if (rangeWeaponHandler.Target.value == (rangeWeaponHandler.Target.value | (1 << collision.gameObject.layer)))
@@ -93,6 +118,8 @@ public class ProjectileController : MonoBehaviour
         }
 
         isReady = true;
+
+        bounceCount = rangeWeaponHandler.bounceCount; // 튕길 횟수 초기화
     }
 
     private void DestroyProjectile()

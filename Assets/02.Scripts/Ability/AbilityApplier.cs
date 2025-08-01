@@ -47,6 +47,9 @@ public class AbilityApplier
             case StatModifierType.Lightning:
                 rangedWeaponHandler.ElementType = ElementType.Lightning;
                 break;
+            case StatModifierType.Bounce:
+                rangedWeaponHandler.bounceCount = (int)statModifier.GetValueByLevel(data.currentLevel);
+                break;
 
         }
     }
