@@ -29,6 +29,7 @@ public class RangedWeaponHandler : WeaponHandler
     public Color ProjectileColor { get { return projectileColor; } }
 
     public int numberOfProjectilesPerShot_Back = 0; // 공격시 뒤로 발사할 총알 개수
+    public int bounceCount = 0; // 총알이 벽에 부딪혔을 때 튕길 횟수
 
     protected override void Start()
     {
