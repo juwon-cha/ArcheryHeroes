@@ -8,9 +8,9 @@ public class EnemyController : BaseController
     private Transform _target;
 
     [SerializeField] private float followRange = 15f;
-    Room parentRoom; // 몬스터가 속한 방
+    DungeonRoom parentRoom; // 몬스터가 속한 방
 
-    public void Init(Transform target, Room room)
+    public void Init(Transform target, DungeonRoom room)
     {
         _target = target;
         parentRoom = room;
@@ -26,7 +26,8 @@ public class EnemyController : BaseController
 
     public override void OnDead()
     {
-        EnemyManager.Instance.RemoveEnemyOnDead(this);
+        parentRoom.OnEnemyKill(this);
+        base.OnDead();
     }
 
     protected float DistanceToTarget()

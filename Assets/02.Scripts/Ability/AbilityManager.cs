@@ -11,6 +11,7 @@ public class AbilityManager : Singleton<AbilityManager>
 
     private Dictionary<AbilityDataSO, AbilityData> abilityDataDict = new();
     private AbilityRandomSelector selector;
+    private AbilityApplier abilityApplier;
 
     protected override void Initialize()
     {
@@ -21,15 +22,16 @@ public class AbilityManager : Singleton<AbilityManager>
             abilityDataDict[skillSO] = new(skillSO);
 
         selector = new(abilityDataDict.Values);
+        abilityApplier = new();
     }
 
-    // ·£´ıÀ¸·Î ½ºÅ³ µ¥ÀÌÅÍµé °¡Á®¿À±â
+    // ëœë¤ìœ¼ë¡œ ìŠ¤í‚¬ ë°ì´í„°ë“¤ ê°€ì ¸ì˜¤ê¸°
     public List<AbilityData> GetRandomAbilities(int count)
     {
         return selector.SelectRandomAbilities(count);
     }
 
-    // Æ¯Á¤ ½ºÅ³ µ¥ÀÌÅÍ °¡Á®¿À±â
+    // íŠ¹ì • ìŠ¤í‚¬ ë°ì´í„° ê°€ì ¸ì˜¤ê¸°
     public AbilityData GetAbilityData(AbilityDataSO abilitySO)
     {
         if (abilitySO == null)
@@ -44,14 +46,14 @@ public class AbilityManager : Singleton<AbilityManager>
         }
         else
         {
-            Debug.LogError($"SkillData for {abilitySO.skillName} not found.");
+            Debug.LogError($"SkillData for {abilitySO.abilityName} not found.");
             return null;
         }
     }
 
 
 
-    // Æ¯Á¤ ½ºÅ³ ·¹º§¾÷
+    // íŠ¹ì • ìŠ¤í‚¬ ë ˆë²¨ì—…
     public void LevelUpSkill(AbilityDataSO abilitySO)
     {
         if(abilitySO == null )
@@ -63,8 +65,9 @@ public class AbilityManager : Singleton<AbilityManager>
         if (abilityDataDict.TryGetValue(abilitySO, out var abilityData))
         {
             abilityData.LevelUp();
+            abilityApplier.ApplyAbility(abilityData);
             OnAbilityLevelUp?.Invoke(abilityData);
-            Debug.Log($"{abilitySO.skillName} ·¹º§¾÷: {abilityData.currentLevel}");
+            Debug.Log($"{abilitySO.abilityName} ë ˆë²¨ì—…: {abilityData.currentLevel}");
         }
     }
 }

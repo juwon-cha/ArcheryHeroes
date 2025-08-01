@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class TestWeaponHandler : WeaponHandler
 {
-    public SkillBase skill;
+    public SkillDataSO skill;
 
     public override void Attack()
     {
         base.Attack();
 
-        skill.Use(gameObject);
+        EffectContext effectContext = new EffectContext(transform.position, gameObject);
+        skill.Use(effectContext);
     }
 
 

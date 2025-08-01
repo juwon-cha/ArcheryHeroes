@@ -56,7 +56,7 @@ MonoBehaviour:
   isOnKnockBack: 0
   knockBackPower: 0.1
   knockBackDuration: 0.5
-  skill: {fileID: 11400000, guid: 579d9e85dd0d61545a807f1b47d89379, type: 2}
+  skill: {fileID: 11400000, guid: ac70d72aa880c2e48aea57481e2b3242, type: 2}
 --- !u!1 &7669543949121274929
 GameObject:
   m_ObjectHideFlags: 0

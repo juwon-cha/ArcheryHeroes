@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class StartUI : MonoBehaviour
 {
-    [SerializeField] private string sceneName = "CJW_Test";
-    [SerializeField] private GameObject settingUI;
+    [SerializeField] private string sceneName = "MainScene";
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button settingButton;
+    [SerializeField] private Button exitButton;
+
+    private void Awake()
+    {
+        startButton.onClick.AddListener(OnStart);
+        settingButton.onClick.AddListener(OnSetting);
+        exitButton.onClick.AddListener(OnExit);
+    }
 
     public void OnStart()
     {
@@ -15,7 +25,7 @@ public class StartUI : MonoBehaviour
 
     public void OnSetting()
     {
-        settingUI.SetActive(true);
+        UIManager.Instance.ShowUI(UIType.Setting);
     }
 
     public void OnExit()

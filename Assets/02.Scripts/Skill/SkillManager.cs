@@ -4,42 +4,61 @@ using UnityEngine;
 
 public class SkillManager : Singleton<SkillManager>
 {
-    [SerializeField] private List<SkillBase> skills;
-    private HashSet<SkillBase> acquiredSkills; // 획득한 스킬들
+    private HashSet<SkillDataSO> acquiredSkills; // 획득한 스킬들
 
     protected override void Initialize()
     {
         base.Initialize();
 
-        acquiredSkills = new HashSet<SkillBase>();
-
-        foreach (var skill in skills)
-            AddSkill(skill);
+        acquiredSkills = new();
     }
 
     private void Update()
     {
-        UseSkills(gameObject);
+        UseSkills();
     }
 
-    public void UseSkills(GameObject player)
+    public void UseSkills()
     {
         foreach (var skill in acquiredSkills)
         {
-            if (!skill.CanUse) continue;
+            if (skill == null) continue;
 
-            skill.Use(player);
-            skill.SetLastUsedTime(Time.time);
+            skill.Use();
         }
     }
 
-    public void AddSkill(SkillBase skill)
+    public void AddSkill(SkillDataSO skill)
     {
-        skill.Initialize();
-        acquiredSkills.Add(skill);
+        if(acquiredSkills.Contains(skill))
+        {
+            skill.LevelUp();
+        }
+        else
+        {
+            skill.Initialize();
+            acquiredSkills.Add(skill);
+        }
     }
 
-    public void RemoveSkill(SkillBase skill)
+    public void LevelUpSkill(SkillDataSO skill)
+    {
+        if (skill == null)
+        {
+            Debug.LogError("SkillDataSO is null.");
+            return;
+        }
+
+        if (!acquiredSkills.Contains(skill))
+        {
+            Debug.LogError($"Skill {skill.skillName} not acquired yet.");
+            return;
+        }
+
+        skill.LevelUp(); // 스킬 레벨업
+    }
+
+    public void RemoveSkill(SkillDataSO skill)
     {
         acquiredSkills.Remove(skill);
     }
