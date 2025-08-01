@@ -8,7 +8,8 @@ public class AnimationHandler : MonoBehaviour
     private static readonly int isMoving = Animator.StringToHash("IsMove");
     private static readonly int isDamage = Animator.StringToHash("IsDamage");
 
-    protected Animator animator;
+    // 정진규 protected 에서 public 파라미터로 수정
+    public Animator animator { get; private set; }
 
     private void Awake()
     {

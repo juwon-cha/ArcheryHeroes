@@ -107,4 +107,20 @@ public class ResourceController : MonoBehaviour
     {
         OnChangeHealth -= action;
     }
+
+    // 정진규 추가
+    public void RestoreAndReset()
+    {
+        // 1. 피 회복
+        CurrentHealth = MaxHealth;
+
+        // 2. 무적 타이머 초기화
+        timeSinceLastHealthChange = float.MaxValue;
+
+        // 3. 피격 애니메이션 해제
+        animationHandler.InvincibilityEnd();
+
+        // 4. 체력 변경 이벤트 호출
+        OnChangeHealth?.Invoke(CurrentHealth, MaxHealth);
+    }
 }
