@@ -9,6 +9,13 @@ public class EnemyController : BaseController
 
     [SerializeField] private float followRange = 15f;
     DungeonRoom parentRoom; // 몬스터가 속한 방
+    ResourceController resourceController;
+
+    private void Awake()
+    {
+        base.Awake();
+        resourceController = GetComponent<ResourceController>();
+    }
 
     public void Init(Transform target, DungeonRoom room)
     {
@@ -101,5 +108,18 @@ public class EnemyController : BaseController
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, weaponHandler.AttackRange);
         }
+    }
+
+    private void OnEnable()
+    {
+        base.OnRestore(); // base에서 모든 부활 기능을 사용
+
+        if (resourceController != null)
+        {
+            resourceController.RestoreAndReset(); // 체력 등을 초기화
+        }
+
+        isAttacking = false;
+        movementDirection = Vector2.zero;
     }
 }

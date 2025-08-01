@@ -86,8 +86,8 @@ public class DungeonRoom : MonoBehaviour
 
             // 수정 전에는 Instantiate로 생성했었다.
             GameObject enemyInstance = ObjectPoolingManager.Instance.Get(enemyPrefab, spawnPosition, Quaternion.identity);
-            if(enemyParent != null)
-                enemyInstance.transform.SetParent(enemyParent);
+            //if(enemyParent != null)
+            //    enemyInstance.transform.SetParent(enemyParent);
 
             EnemyController enemyController = enemyInstance.GetComponent<EnemyController>();
 
@@ -157,6 +157,19 @@ public class DungeonRoom : MonoBehaviour
         if(activeEnemies.Count == 0)
         {
             door.OpenDoor();
+        }
+    }
+
+    // 오브젝트 풀링에서 다시 가져올 때
+    private void OnEnable()
+    {
+        // 1. 이전에 남아있던 몬스터 리스트를 깨끗하게 비웁니다.
+        activeEnemies.Clear();
+
+        // 2. 출구 문을 다시 닫습니다.
+        if (door != null)
+        {
+            door.CloseDoor();
         }
     }
 }
