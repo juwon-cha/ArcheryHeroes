@@ -8,12 +8,42 @@ public class AbilityApplier
     {
         if (data.abilitySO is StatAbilityDataSO statAbilityData)
         {
-            // player.ApplyStatModifier(data.GetCurrentModifier());
+            foreach (var statModifier in statAbilityData.modifiers)
+                ApplyStat(statModifier, data);
 
+            // player.ApplyStatModifier(data.GetCurrentModifier());
         }
         else if (data.abilitySO is SkillAbilityDataSO skillAbilityData)
         {
             SkillManager.Instance.AddSkill(skillAbilityData.skillDataSO);
+        }
+    }
+
+    void ApplyStat(StatModifier statModifier, AbilityData data)
+    {
+        GameManager gameManager = GameManager.Instance;
+        PlayerController player = gameManager.Player.GetComponent<PlayerController>();
+        RangedWeaponHandler rangedWeaponHandler = player.GetComponentInChildren<RangedWeaponHandler>(true);
+
+        switch (statModifier.type)
+        {
+            case StatModifierType.AttackSpeed:
+                break;
+            case StatModifierType.MoveSpeed:
+                break;
+            case StatModifierType.Damage:
+                break;
+            case StatModifierType.Cooldown:
+                break;
+            case StatModifierType.MaxHP:
+                break;
+            case StatModifierType.CurrentHP:
+                break;
+            case StatModifierType.ExpGainRate:
+                break;
+            case StatModifierType.BackArrow:
+                rangedWeaponHandler.numberOfProjectilesPerShot_Back = (int)statModifier.GetValueByLevel(data.currentLevel);
+                break;
         }
     }
 }
