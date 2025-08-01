@@ -75,7 +75,11 @@ public class ResourceController : MonoBehaviour
 
         OnChangeHealth?.Invoke(CurrentHealth, MaxHealth); // 체력 변경 이벤트 호출
 
-        if (change < 0)
+        if (CurrentHealth <= 0)
+        {
+            Death();
+        }
+        else if (change < 0)
         {
             animationHandler.Damage(); // 데미지 애니메이션 실행
 
@@ -83,11 +87,6 @@ public class ResourceController : MonoBehaviour
             {
                 // 데미지 사운드 재생
             }
-        }
-
-        if (CurrentHealth <= 0)
-        {
-            Death();
         }
 
         return true;

@@ -180,18 +180,18 @@ public class BaseController : MonoBehaviour
 
     public virtual void OnRestore()
     {
+        // 애니메이션 상태 초기화
+        if (animationHandler != null && animationHandler.animator != null)
+        {
+            animationHandler.animator.Play(0, 0, 0f);
+        }
+
         // 스프라이트 투명도 복구
         foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
         {
             Color color = renderer.color;
             color.a = 1.0f; // 알파값을 1 (불투명)으로 복구
             renderer.color = color;
-        }
-
-        // 애니메이션 상태 초기화
-        if (animationHandler != null && animationHandler.animator != null)
-        {
-            animationHandler.animator.Play(0, 0, 0f);
         }
 
         // 기타 상태 변수들을 초기화

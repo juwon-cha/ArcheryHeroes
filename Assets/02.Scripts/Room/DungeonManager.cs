@@ -32,7 +32,7 @@ public class DungeonManager : Singleton<DungeonManager>
     public void LoadNextRoom()
     {
         currentStageIndex++;
-
+        Debug.Log($"현재 스테이지는 {currentStageIndex} 스테이지");
         // 방의 정보가 남아있다. 즉, 이전 방의 정보가 남아있다면 오브젝트 풀링으로 넣어준다.
         if (currentRoomInstance != null)
         {

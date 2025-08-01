@@ -33,8 +33,8 @@ public class EnemyController : BaseController
 
     public override void OnDead()
     {
-        parentRoom.OnEnemyKill(this);
         base.OnDead();
+        parentRoom.OnEnemyKill(this);
     }
 
     protected float DistanceToTarget()
