@@ -46,9 +46,9 @@ GameObject:
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
   - component: {fileID: 8029843810610918852}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: Bow_Goblin
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

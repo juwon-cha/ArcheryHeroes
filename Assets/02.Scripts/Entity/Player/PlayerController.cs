@@ -67,6 +67,7 @@ public class PlayerController : BaseController
         if (movementDirection == Vector2.zero)
         {
             weaponHandler?.Attack();
+            Debug.Log("공격중");
         }
     }
 
