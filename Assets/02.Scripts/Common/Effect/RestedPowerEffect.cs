@@ -75,7 +75,6 @@ public class RestedPowerEffect : EffectSO
     void ApplyRestedPower()
     {
         float t = Mathf.Clamp(currentRestedTime / maxRestedTime, 0f, 1f);
-        Debug.Log($"Rested Power: {t * restedPowerMultiplier} (Current Rested Time: {currentRestedTime})");
         float restedPower = t * restedPowerMultiplier; // 휴식 시간에 따른 힘 배수 적용
         SetEffectColor(t);
         // playerController.ApplyRestedPower(restedPower);
