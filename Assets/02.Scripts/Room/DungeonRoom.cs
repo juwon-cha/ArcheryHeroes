@@ -24,10 +24,11 @@ public class DungeonRoom : MonoBehaviour
     // 디버그용 기즈모 임시 변수
     private List<Vector2> debug_possibleSpawnPoints = new List<Vector2>();
 
-    private void Start()
-    {
-        SpawnEnemies();
-    }
+    // OnEnable에서 동작함
+    //private void Start()
+    //{
+    //    SpawnEnemies();
+    //}
 
     private void SpawnEnemies()
     {
@@ -171,5 +172,7 @@ public class DungeonRoom : MonoBehaviour
         {
             door.CloseDoor();
         }
+
+        SpawnEnemies();
     }
 }
