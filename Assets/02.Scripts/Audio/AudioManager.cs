@@ -111,6 +111,18 @@ public class AudioManager : Singleton<AudioManager>
         sfxSource.PlayOneShot(clip);
     }
 
+    public static void SetBGMMute(bool isOn)
+    {
+        if (Instance.bgmSource == null) return;
+        Instance.bgmSource.mute = isOn;
+    }
+
+    public static void SetSFXMute(bool isOn)
+    {
+        if (Instance.sfxSource == null) return;
+        Instance.sfxSource.mute = isOn;
+    }
+
     private AudioClip GetRandomClip(SoundDataSO data)
     {
         if (data.audioClips == null || data.audioClips.Length == 0) return null;
