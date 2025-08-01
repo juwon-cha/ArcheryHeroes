@@ -53,7 +53,7 @@ MonoBehaviour:
   attackRange: 5
   Target:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 268435456
   isOnKnockBack: 0
   knockBackPower: 1
   knockBackDuration: 0.1
