@@ -3658,8 +3658,12 @@ PrefabInstance:
       objectReference: {fileID: 267289054}
     - target: {fileID: 119583954426625805, guid: 027f879da16278b4d89f47c31f0fdaf7, type: 3}
       propertyPath: attackPatterns.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 119583954426625805, guid: 027f879da16278b4d89f47c31f0fdaf7, type: 3}
+      propertyPath: attackPatterns.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 81f1103815f23c349bd823a0a0adfcf3, type: 2}
     - target: {fileID: 119583954426625805, guid: 027f879da16278b4d89f47c31f0fdaf7, type: 3}
       propertyPath: attackPatterns.Array.data[1]
       value: 
@@ -3679,6 +3683,10 @@ PrefabInstance:
     - target: {fileID: 249625004468040122, guid: 027f879da16278b4d89f47c31f0fdaf7, type: 3}
       propertyPath: m_Name
       value: BigDemon
+      objectReference: {fileID: 0}
+    - target: {fileID: 249625004468040122, guid: 027f879da16278b4d89f47c31f0fdaf7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3996544131451030108, guid: 027f879da16278b4d89f47c31f0fdaf7, type: 3}
       propertyPath: m_LocalPosition.x
