@@ -1208,6 +1208,37 @@ MonoBehaviour:
   closedDoor: {fileID: 21300000, guid: e82e4f63dbeaed3438fcbfd550c63853, type: 3}
   doorSprite: {fileID: 7766504316657867453}
   isDoorOpen: 0
+--- !u!1 &2820579932907479719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7757347831481611766}
+  m_Layer: 0
+  m_Name: PlayerSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7757347831481611766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2820579932907479719}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2337688392619165231}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3831951881513800927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,6 +2495,7 @@ MonoBehaviour:
   maxEnemies: 10
   enemyParent: {fileID: 2505102605167655236}
   door: {fileID: 4584274607839551105}
+  playerSpawnPosition: {fileID: 7757347831481611766}
 --- !u!1 &5579354899323961732
 GameObject:
   m_ObjectHideFlags: 0
@@ -10728,6 +10760,7 @@ Transform:
   - {fileID: 2385802130957810762}
   - {fileID: 6325078261190601162}
   - {fileID: 2505102605167655236}
+  - {fileID: 7757347831481611766}
   - {fileID: 5109162574158953114}
   - {fileID: 4760253389729847274}
   - {fileID: 5249391184728810584}

@@ -15,6 +15,9 @@ public class DungeonRoom : MonoBehaviour
     [Header("다음 문 설정")]
     [SerializeField] private DungeonDoor door;
 
+    [Header("플레이어 스폰 위치")]
+    [SerializeField] private Transform playerSpawnPosition;
+
     // 현재 방에서 살아있는 몬스터 리스트
     private List<EnemyController> activeEnemies = new List<EnemyController>();
 
@@ -114,7 +117,13 @@ public class DungeonRoom : MonoBehaviour
     {
         // 방 진입 시 플레이어가 생성될 위치를 구한다.
         // 방마다 다를 수 있기 때문에
-        return door.transform;
+        if (playerSpawnPosition != null)
+            return playerSpawnPosition;
+        else
+        {
+            Debug.Log("PlayerSpawnPostion이 지정되지 않았습니다.");
+            return this.transform;
+        }
     }
 
     // 방에 남은 몬스터를 체크하는 메서드

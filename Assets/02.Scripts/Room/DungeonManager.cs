@@ -13,21 +13,18 @@ public class DungeonManager : Singleton<DungeonManager>
     private GameObject player; // 플레이어 정보
     private Transform playerTransform; // 플레이어의 위치
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
-    }
-
-    protected override void Initialize()
-    {
-        base.Initialize();
         player = GameManager.Instance.Player;
 
-        if(player != null)
+        if (player != null)
         {
-            playerTransform = player.transform;
+            playerTransform = GameManager.Instance.Player.transform;
         }
-
+        else
+        {
+            Debug.Log("GameManager에서 Player를 찾을 수 없습니다.");
+        }
         LoadNextRoom();
     }
 

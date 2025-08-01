@@ -1360,6 +1360,37 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!1 &1174434971241745075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7219851305264543033}
+  m_Layer: 0
+  m_Name: PlayerSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7219851305264543033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174434971241745075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5506529060630231804}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473660391207824792
 GameObject:
   m_ObjectHideFlags: 0
@@ -7087,6 +7118,7 @@ MonoBehaviour:
   maxEnemies: 10
   enemyParent: {fileID: 1147670352469108160}
   door: {fileID: 6475806706359679457}
+  playerSpawnPosition: {fileID: 7219851305264543033}
 --- !u!1 &8316259551983161572
 GameObject:
   m_ObjectHideFlags: 0
@@ -9531,6 +9563,7 @@ Transform:
   - {fileID: 7294519830165063723}
   - {fileID: 8250195268190370396}
   - {fileID: 1147670352469108160}
+  - {fileID: 7219851305264543033}
   - {fileID: 7016149456267190594}
   - {fileID: 1163528047745888310}
   - {fileID: 2893477949309626862}
