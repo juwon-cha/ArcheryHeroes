@@ -11,11 +11,19 @@ public static class EffectContextFactory
         GameObject caster = null;
         GameObject target = null;
 
-        if(effectSO is SpawnEffect effect)
+        GameManager gameManager = GameManager.Instance;
+
+        if(effectSO is SpawnEffect)
         {
-            pos = GameManager.Instance.Player.transform.position;
-            caster = GameManager.Instance.Player.gameObject;
-            target = GameManager.Instance.Player.gameObject;
+            pos = gameManager.Player.transform.position;
+            caster = gameManager.Player.gameObject;
+            target = gameManager.Player.gameObject;
+        }
+        else if (effectSO is TimedTeleport)
+        {
+            pos = gameManager.Player.transform.position;
+            caster = gameManager.Player.gameObject;
+            target = gameManager.Player.gameObject;
         }
 
         return new(pos, caster, target);

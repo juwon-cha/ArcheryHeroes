@@ -40,6 +40,21 @@ public static class Utility
         return self.gameObject.activeInHierarchy;
     }
 
+
+    public static Vector3 GetPosition(this GameObject self)
+    {
+        if (self == null) return Vector3.zero;
+
+        return self.transform.position;
+    }
+
+    public static void SetPosition(this GameObject self, Vector3 pos)
+    {
+        if (self == null) return;
+        self.transform.position = pos;
+    }
+
+
     #endregion
 
     #region string Extensions
