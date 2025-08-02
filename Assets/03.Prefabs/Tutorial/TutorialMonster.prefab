@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 5763594817542096792}
   - component: {fileID: -3654816220650057669}
   - component: {fileID: 3238705199524081944}
+  - component: {fileID: 7638235365511890374}
+  - component: {fileID: 9075955461953151842}
   m_Layer: 28
   m_Name: TutorialMonster
   m_TagString: Monster
@@ -190,3 +192,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7638235365511890374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8230776324972019837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e41f08a78c72a46be7b09ef2b290cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  speed: 3
+--- !u!114 &9075955461953151842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8230776324972019837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc4170ea7a655d46b84db53dbf74368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthChangeDelay: 0.5
+  DamageClip: {fileID: 0}
