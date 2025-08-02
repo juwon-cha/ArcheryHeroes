@@ -17,13 +17,6 @@ public class DamageText : MonoBehaviour
         StartCoroutine(FadeAndReturn(fadeDuration));
     }
 
-    private void Update()
-    {
-        Move();
-    }
-
-    void Move() => transform.position += moveSpeed * Time.deltaTime * Vector3.up;
-
     private IEnumerator FadeAndReturn(float fadeDuration)
     {
         // 텍스트의 알파 값을 0으로 서서히 줄여나가기
@@ -33,8 +26,9 @@ public class DamageText : MonoBehaviour
         while (elapsedTime < fadeDuration)
         {
             color.a = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
-            text.color = color;
-            elapsedTime += Time.deltaTime;
+            text.color = color; // 색상 업데이트
+            transform.position += moveSpeed * Time.deltaTime * Vector3.up; // 위로 이동
+            elapsedTime += Time.deltaTime; // 시간 경과 업데이트
             yield return null;
         }
 
