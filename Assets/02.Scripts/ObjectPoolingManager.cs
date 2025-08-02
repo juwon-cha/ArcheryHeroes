@@ -25,7 +25,6 @@ public class ObjectPoolingManager : Singleton<ObjectPoolingManager>
     public GameObject Get(GameObject prefab, Vector3 pos, Quaternion rot)
     {
         if (prefab == null) return null;
-
         // Dictionary에 prefab이 없으면 새로 생성
         if (!pools.TryGetValue(prefab, out var pool))
         {
@@ -47,6 +46,17 @@ public class ObjectPoolingManager : Singleton<ObjectPoolingManager>
     public GameObject Get(GameObject prefab, Vector3 pos)
     {
         return Get(prefab, pos, Quaternion.identity);
+    }
+
+    public T Get<T>(GameObject prefab, Vector3 pos, Quaternion rot) where T : Component
+    {
+        GameObject obj = Get(prefab, pos, rot);
+        return obj != null ? obj.GetComponent<T>() : null;
+    }
+
+    public T Get<T>(GameObject prefab, Vector3 pos) where T : Component
+    {
+        return Get<T>(prefab, pos, Quaternion.identity);
     }
 
 

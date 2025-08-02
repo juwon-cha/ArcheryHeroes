@@ -88,6 +88,8 @@ public class ResourceController : MonoBehaviour
         }
         else if (change < 0)
         {
+            DamageTextManager.Instance.ShowDamageText((int)-change, transform.position); // 데미지 텍스트 표시
+
             animationHandler.Damage(); // 데미지 애니메이션 실행
 
             if (DamageClip != null)

@@ -78,7 +78,6 @@ public class UIManager : Singleton<UIManager>
         ShowUI(type);
     }
 
-
     public void HideUI(UIType uiType)
     {
         if (uiDictionary.TryGetValue(uiType, out GameObject uiObject))
@@ -90,6 +89,4 @@ public class UIManager : Singleton<UIManager>
         foreach (var ui in uiDictionary.Values)
             ui.SetActive(false);
     }
-
-
 }
