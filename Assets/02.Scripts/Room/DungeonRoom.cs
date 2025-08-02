@@ -60,7 +60,7 @@ public class DungeonRoom : MonoBehaviour
                 {
                     // 해당 위치가 장애물에 막혀있지 않은지도 추가로 확인한다.
                     Vector2 worldPos = enemySpawnPoint.GetCellCenterWorld(tilePosition);
-                    if (IsPositionValid(worldPos, 1.4f))
+                    if (IsPositionValid(worldPos))
                     {
                         possibleSpawnPoints.Add(worldPos);
                     }
@@ -116,12 +116,12 @@ public class DungeonRoom : MonoBehaviour
     }
 
     // 해당 위치에 장애물이 있는지 확인한다.
-    private bool IsPositionValid(Vector2 position, float checkSize)
+    private bool IsPositionValid(Vector2 position)
     {
         // 레이어 Obstacle을 int로 반환한다
         int obstacleLayerMask = LayerMask.GetMask("Obstacle");
-        // position에 범위 checkSize만큼 확인해서 obstacleLayerMask 레이어의 오브젝트가 있는지 확인한다.
-        Collider2D blockingCollider = Physics2D.OverlapCircle(position, checkSize, obstacleLayerMask);
+        // 콜라이더의 내부에 있는지 정확하게 확인한다.
+        Collider2D blockingCollider = Physics2D.OverlapPoint(position, obstacleLayerMask);
         return blockingCollider == null; // null이라는 것은 해당 범위에 장애물이 없는 소환 가능한 공간이라는 것이다.
     }
 
