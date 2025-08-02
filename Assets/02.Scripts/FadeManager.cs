@@ -17,7 +17,7 @@ public class FadeManager : Singleton<FadeManager>
         fadeImage = GetComponentInChildren<Image>(true);
 
         FadeIn();
-        SceneManager.sceneLoaded += (_, __) => FadeIn(); // 씬이 변경될 때마다 페이드 아웃
+        SceneManager.sceneLoaded += (_, __) => FadeIn(); // 씬이 변경될 때마다 페이드 인
     }
 
     // 씬 이동
