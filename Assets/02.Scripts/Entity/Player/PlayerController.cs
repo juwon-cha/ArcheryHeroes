@@ -13,6 +13,8 @@ public class PlayerController : BaseController
 
     private float minDistance;
 
+    private bool isInterAct;
+
     protected override void Start()
     {
         base.Start();
@@ -94,5 +96,10 @@ public class PlayerController : BaseController
     {
         movementDirection = inputValue.Get<Vector2>();
         movementDirection = movementDirection.normalized;
+    }
+
+    private void OnInterAct(InputValue inputValue)
+    {
+        isInterAct = true;
     }
 }

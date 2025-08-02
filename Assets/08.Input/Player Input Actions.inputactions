@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "InterAct",
+                    "type": "Value",
+                    "id": "9248c148-e5e1-48dd-a9e3-0046b078c0a3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -70,6 +79,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "188d628d-acff-4630-ac4d-1ba539d9ac65",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InterAct",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
