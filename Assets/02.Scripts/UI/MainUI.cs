@@ -30,7 +30,8 @@ public class MainUI : MonoBehaviour
 
     public void OnStartStage()
     {
-        FadeManager.LoadScene("PlayScene");
+        //FadeManager.LoadScene("PlayScene");
+        FadeManager.LoadScene("PlayScene_TestJJG"); // 임시 테스트용
     }
 
     public void OnExitGame()
