@@ -12,6 +12,7 @@ public class TutorialDungeonManager : Singleton<TutorialDungeonManager>
     public int currentStageIndex = 0; // 현재 스테이지 정보
     private GameObject player; // 플레이어 정보
     private Transform playerTransform; // 플레이어의 위치
+    private StatHandler playerStatHandler; //플레이어 스텟
 
     private void Start()
     {
@@ -20,6 +21,8 @@ public class TutorialDungeonManager : Singleton<TutorialDungeonManager>
         if (player != null)
         {
             playerTransform = GameManager.Instance.Player.transform;
+            playerStatHandler = GameManager.Instance.Player.GetComponent<StatHandler>();
+            playerStatHandler.Health = 100;
         }
         else
         {

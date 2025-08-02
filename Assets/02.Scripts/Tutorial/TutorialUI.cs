@@ -71,11 +71,9 @@ public class TutorialUI : MonoBehaviour
 
     private void DisplayMonster()
     {
-        Debug.Log("몬실");
         toMoster.SetActive(true);
         if (isClose)
         {
-            Debug.Log("몬삭");
             toMoster.SetActive(false);
             isMonster = true;
         }
@@ -99,7 +97,7 @@ public class TutorialUI : MonoBehaviour
 
     private void DistanceCheck()
     {
-        Collider2D obj = Physics2D.OverlapCircle(player.transform.position, 10);
+        Collider2D obj = Physics2D.OverlapCircle(player.transform.position, 7);
         if (obj != null && obj.CompareTag("Monster"))
             isClose = true;
         else
