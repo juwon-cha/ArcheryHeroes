@@ -42,6 +42,11 @@ public class ResourceController : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        HPBarManager.Instance.CreateHPBar(this); // HPBar 생성
+    }
+
     private void Start()
     {
         CurrentHealth = statHandler.Health;

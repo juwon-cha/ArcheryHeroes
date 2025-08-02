@@ -14,10 +14,10 @@ public class PlayUI : MonoBehaviour
         stageText.text = content;
     }
 
-    public void SetExpBar(float expPercentage)
+    public void SetExpBar(float currentExp, float maxExp)
     {
         if (expBar == null) return;
 
-        expBar.SetFillAmount(expPercentage);
+        expBar.SetFillAmount(currentExp, maxExp);
     }
 }
