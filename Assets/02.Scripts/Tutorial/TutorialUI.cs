@@ -100,9 +100,10 @@ public class TutorialUI : MonoBehaviour
 
     private void DisplayNext()
     {
-        if(isStop && !isNext && isClose)
+        if(isStop && !isNext)
         {
             next.SetActive(true);
+            isNext = true;
         }
     }
 
