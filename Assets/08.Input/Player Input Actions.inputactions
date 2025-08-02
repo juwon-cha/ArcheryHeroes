@@ -16,9 +16,9 @@
                 },
                 {
                     "name": "InterAct",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "9248c148-e5e1-48dd-a9e3-0046b078c0a3",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

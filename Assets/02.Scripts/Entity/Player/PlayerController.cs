@@ -13,7 +13,7 @@ public class PlayerController : BaseController
 
     private float minDistance;
 
-    private bool isInterAct;
+    public bool isInterAct;
 
     protected override void Start()
     {

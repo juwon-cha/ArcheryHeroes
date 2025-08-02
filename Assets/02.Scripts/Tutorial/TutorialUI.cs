@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor.Search;
 using UnityEngine;
 
 public class TutorialUI : MonoBehaviour
 {
     public GameObject move;
-    public GameObject toRight;
+    public GameObject spawnMonster;
     public GameObject toMoster;
     public GameObject stop;
     public GameObject next;
@@ -14,9 +15,9 @@ public class TutorialUI : MonoBehaviour
     public PlayerController player;
 
     private bool isMove;
-    private bool isRight;
+    private bool isSpawn;
     private bool isMonster;
-    private bool isStop;
+    public bool isStop;
     private bool isNext;
 
     public bool isClose;
@@ -29,87 +30,76 @@ public class TutorialUI : MonoBehaviour
 
     private void Update()
     {
-        DisplayMove();
+        if (!isMove)
+            DisplayMove();
 
-        DisplayRight();
+        if (isMove && !isSpawn)
+            DisplaySpawnMontser();
 
-        DisplayMonster();
+        if (isSpawn && !isMonster)
+            DisplayMonster();
 
         DistanceCheck();
-        
-        DisplayStop();
 
-        DisplayNext();
+        if (isMonster && !isStop)
+            DisplayStop();
+
+        if (isStop && !isNext)
+            DisplayNext();
     }
 
     private void DisplayMove()
     {
-        if (!isMove)
+        move.SetActive(true);
+        if (player.isInterAct)
         {
-            move.SetActive(true);
-            if (player.MovementDirection != Vector2.zero)
-            {
-                move.SetActive(false);
-                isMove = true;
-            }
+            move.SetActive(false);
+            isMove = true;
+            player.isInterAct = false;
         }
     }
 
-    private void DisplayRight()
+    private void DisplaySpawnMontser()
     {
-        if(isMove && !isRight)
+        spawnMonster.SetActive(true);
+        if (player.isInterAct == true)
         {
-            Vector3 pivot = new Vector3(5, 0, 0);
-            toRight.SetActive(true);
-            if(player.transform.position.x > pivot.x)
-            {
-                toRight.SetActive(false);
-                isRight = true;
-            }
-        }    
+            spawnMonster.SetActive(false);
+            isSpawn = true;
+        }
     }
 
     private void DisplayMonster()
     {
-        if(isRight && !isMonster)
+        Debug.Log("몬실");
+        toMoster.SetActive(true);
+        if (isClose)
         {
-            toMoster.SetActive(true);
-            if(isClose)
-            {
-                toMoster.SetActive(false);
-                isMonster = true;
-            }
+            Debug.Log("몬삭");
+            toMoster.SetActive(false);
+            isMonster = true;
         }
     }
 
     private void DisplayStop()
     {
-        if(isMonster && !isStop)
+        stop.SetActive(true);
+        if (player.isInterAct)
         {
-            if (isClose)
-            {
-                stop.SetActive(true);
-                if(player.MovementDirection == Vector2.zero)
-                {
-                    stop.SetActive(false);
-                    isStop = true;
-                }
-            }
+            stop.SetActive(false);
+            isStop = true;
         }
     }
 
     private void DisplayNext()
     {
-        if(isStop && !isNext)
-        {
-            next.SetActive(true);
-            isNext = true;
-        }
+        next.SetActive(true);
+        isNext = true;
     }
 
     private void DistanceCheck()
     {
-        Collider2D obj = Physics2D.OverlapCircle(player.transform.position, 5);
+        Collider2D obj = Physics2D.OverlapCircle(player.transform.position, 10);
         if (obj != null && obj.CompareTag("Monster"))
             isClose = true;
         else

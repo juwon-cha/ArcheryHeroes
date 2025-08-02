@@ -204,6 +204,11 @@ MonoBehaviour:
   projectilePrefabs:
   - {fileID: 8643473914380838996, guid: 0c302a517b6d75f43888d0b2443de37d, type: 3}
   - {fileID: 8643473914380838996, guid: 21f2ca9b273f4e64fbf1ecf3bd68de3c, type: 3}
+--- !u!1 &330364638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4928805267648788624, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+  m_PrefabInstance: {fileID: 7982358335999377209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &903333983 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1628744871889445897, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
@@ -673,13 +678,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3646274327201972800, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: spawnMonster
+      value: 
+      objectReference: {fileID: 330364638}
+    - target: {fileID: 3942604584500262959, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_Text
+      value: "WASD\uB97C \uC0AC\uC6A9\uD574\uC11C \uC6C0\uC9C1\uC774\uC138\uC694\n'F'
+        \uD0A4\uB97C \uB20C\uB7EC \uB2E4\uC74C\uC73C\uB85C \uB118\uC5B4\uAC00\uC138\uC694"
+      objectReference: {fileID: 0}
     - target: {fileID: 3942604584500262959, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 3942604584500262959, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 70
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4040757519608613258, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928805267648788624, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_Name
+      value: SpawnMonster
       objectReference: {fileID: 0}
     - target: {fileID: 4928805267648788624, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_IsActive
@@ -706,12 +728,21 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 6664900370994501205, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_Text
+      value: "\uC815\uC9C0\uC2DC \uACF5\uACA9\uD569\uB2C8\uB2E4\n'F' \uD0A4\uB97C
+        \uB20C\uB7EC \uB2E4\uC74C\uC73C\uB85C \uB118\uC5B4\uAC00\uC138\uC694"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6664900370994501205, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 6664900370994501205, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 70
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904759235273862810, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_Text
+      value: "'F' \uD0A4\uB97C \uB20C\uB7EC\n\uBAAC\uC2A4\uD130\uB97C \uC18C\uD658\uD558\uC2ED\uC2DC\uC624"
       objectReference: {fileID: 0}
     - target: {fileID: 6904759235273862810, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_MaxSize

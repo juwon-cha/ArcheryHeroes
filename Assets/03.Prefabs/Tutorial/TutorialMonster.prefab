@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 695190646256884574}
   - component: {fileID: 5911161929882410964}
+  - component: {fileID: 3350771195682157811}
   m_Layer: 28
   m_Name: MainSprite
   m_TagString: Untagged
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3350771195682157811
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188114788717097360}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1a735e3e1340904c891352b1a54d9d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8230776324972019837
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +119,8 @@ GameObject:
   - component: {fileID: 3238705199524081944}
   - component: {fileID: 7638235365511890374}
   - component: {fileID: 9075955461953151842}
+  - component: {fileID: -9113180496141692533}
+  - component: {fileID: 8120866896432242236}
   m_Layer: 28
   m_Name: TutorialMonster
   m_TagString: Monster
@@ -204,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e41f08a78c72a46be7b09ef2b290cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   speed: 3
 --- !u!114 &9075955461953151842
 MonoBehaviour:
@@ -220,3 +244,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthChangeDelay: 0.5
   DamageClip: {fileID: 0}
+--- !u!114 &-9113180496141692533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8230776324972019837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0752a889e7951c44f9929a7419953810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8120866896432242236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8230776324972019837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af66bd0303f8c664198aa81fd92cf1be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 5911161929882410964}
+  weaponPivot: {fileID: 0}
+  weaponPrefab: {fileID: 0}

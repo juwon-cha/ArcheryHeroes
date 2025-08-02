@@ -22,46 +22,54 @@ public class TutorialDungeonRoom : MonoBehaviour
 
 
     private GameObject player;
+    private PlayerController playerController;
 
-    private bool isReady;
-    private bool isCheck;
+    private bool isRight;
+    private bool isSpawned;
 
     private List<GameObject> spawnedMonsters = new();
 
     private void Start()
     {
         player = GameManager.Instance.Player;
+        playerController = player.GetComponent<PlayerController>();
         tutorialUI = FindObjectOfType<TutorialUI>();
     }
     private void Update()
     {
-        if (!isCheck)
-        {
-            CheckPlayerPosition();
-        }
+        CheckPlayerPosition();
 
-        if (isReady == true)
+        if (playerController.isInterAct && !isSpawned)
         {
             SpawnEnemy();
-            isReady = false;
+            playerController.isInterAct = false;
         }
         CheckClearCondition();
     }
     private void CheckPlayerPosition()
     {
-        Vector3 pivot = new Vector3(5, 0, 0);
+        Vector3 pivot = Vector2.zero;
         if(player.transform.position.x > pivot.x)
         {
-            isReady = true;
-            isCheck = true;
+            isRight = true;
+        }
+        else
+        {
+            isRight = false;
         }
     }
 
     private void SpawnEnemy()
     {
-        Vector3 spawnPoint = new Vector3(-5, 0, 0);
-        var enemy = ObjectPoolingManager.Instance.Get(enemyPrefab, spawnPoint, Quaternion.identity);
+        Vector3 spawnPoint;
+        if (isRight)
+            spawnPoint = new Vector3(-5, 0, 0);
+        else
+            spawnPoint = new Vector3(5, 0, 0);
+
+            var enemy = ObjectPoolingManager.Instance.Get(enemyPrefab, spawnPoint, Quaternion.identity);
         spawnedMonsters.Add(enemy);
+        isSpawned = true;
     }
 
 
@@ -82,7 +90,7 @@ public class TutorialDungeonRoom : MonoBehaviour
     // 방에 남은 몬스터를 체크하는 메서드
     private void CheckClearCondition()
     {
-        if(tutorialUI.isClose)
+        if(tutorialUI.isStop)
         {
             door.OpenDoor();
         }
