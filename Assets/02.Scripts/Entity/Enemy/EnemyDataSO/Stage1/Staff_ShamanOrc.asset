@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: ShamanOrc
   xpValue: 5
+  enemyType: 4
   maxHealth: 5
   speed: 3
   followRange: 15

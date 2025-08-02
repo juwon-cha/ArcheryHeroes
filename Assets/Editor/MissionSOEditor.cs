@@ -29,7 +29,6 @@ public class MissionSOEditor : Editor
         serializedObject.Update();
 
         // 기본 정보
-        EditorGUILayout.LabelField("기본 정보", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(missionIDProp);
         EditorGUILayout.PropertyField(missionNameProp);
         EditorGUILayout.PropertyField(descriptionProp);
@@ -37,7 +36,6 @@ public class MissionSOEditor : Editor
         EditorGUILayout.Space(10); // 여백 추가
 
         // 달성 조건
-        EditorGUILayout.LabelField("달성 조건", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(typeProp); // ChallengeType enum 드롭다운
 
         // typeProp의 현재 값(enum index)을 가져와서 조건부로 필드를 표시
@@ -53,7 +51,6 @@ public class MissionSOEditor : Editor
         EditorGUILayout.Space(10);
 
         // 보상
-        EditorGUILayout.LabelField("보상", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(expRewardProp);
 
         // 수정한 프로퍼티 값들을 실제 객체에 적용

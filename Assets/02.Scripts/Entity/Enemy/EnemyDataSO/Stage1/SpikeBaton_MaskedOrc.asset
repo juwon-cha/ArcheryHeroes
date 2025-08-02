@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: MaskedOrc
   xpValue: 3
+  enemyType: 2
   maxHealth: 5
   speed: 3
   followRange: 15

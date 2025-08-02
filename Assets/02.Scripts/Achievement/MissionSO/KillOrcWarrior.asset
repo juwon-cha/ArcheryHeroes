@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d96be7833a77c97489ac22e05d4dc334, type: 3}
-  m_Name: Kill5Goblin
+  m_Name: KillOrcWarrior
   m_EditorClassIdentifier: 
-  MissionID: 1
-  Title: Kill5Goblin
-  Description: "\uACE0\uBE14\uB9B0 5\uB9C8\uB9AC \uCC98\uCE58"
-  ClearedIcon: {fileID: 0}
-  type: 0
-  targetValue: 5
-  expReward: 5
+  MissionID: 3
+  MissionName: "\uC624\uD06C \uC6CC\uB9AC\uC5B4 \uC18C\uD0D5"
+  Description: "\uC624\uD06C \uC6CC\uB9AC\uC5B4 3\uB9C8\uB9AC \uCC98\uCE58"
+  Type: 3
+  TargetValue: 5
+  TargetEnemyType: 4
+  ExpReward: 0

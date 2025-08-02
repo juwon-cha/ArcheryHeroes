@@ -6,7 +6,7 @@ using UnityEngine;
 public class AchievementManager : Singleton<AchievementManager>
 {
     // Achievement 폴더 안의 모든 ChallengeSO를 담을 리스트
-    public List<MissionSO> AllMissions;
+    public List<MissionSO> AllMissions = new List<MissionSO>();
 
     // 각 도전과제의 현재 진행도를 저장할 딕셔너리 (Key: 도전과제 ID, Value: 현재 달성 수치)
     private Dictionary<string, int> missionProgress = new Dictionary<string, int>();
@@ -17,7 +17,7 @@ public class AchievementManager : Singleton<AchievementManager>
     void Awake()
     {
         // 게임 시작 시 모든 도전과제 로드 및 초기화
-        LoadAllMissions();
+        //LoadAllMissions();
         InitializeProgress();
     }
 
@@ -25,7 +25,7 @@ public class AchievementManager : Singleton<AchievementManager>
     {
         // 간단하게 Resources 폴더에서 모든 ChallengeSO를 불러옴
         // 실무에서는 Addressable Asset System을 사용하는 것이 더 효율적
-        AllMissions = new List<MissionSO>(Resources.LoadAll<MissionSO>("Missions"));
+        //AllMissions = new List<MissionSO>(Resources.LoadAll<MissionSO>("02.Scripts/Achievement/MissionSO"));
     }
 
     private void InitializeProgress()
@@ -65,6 +65,30 @@ public class AchievementManager : Singleton<AchievementManager>
                 Debug.Log($"도전과제 '{mission.MissionName}' 진행도: {missionProgress[mission.MissionID]} / {mission.TargetValue}");
 
                 // 진행도가 변경될 때마다 이벤트 구독자에게 알림
+                OnChallengeProgressUpdated?.Invoke(mission.MissionID);
+            }
+        }
+    }
+
+    public void UpdateKillEnemyByTypeProgress(EnemyType killedEnemyType, int amount)
+    {
+        // ChallengeManager가 관리하는 모든 도전과제를 순회
+        foreach (var mission in AllMissions)
+        {
+            // 도전과제 타입이 타입별 몬스터 처치가 맞는지 확인
+            // 처치된 몬스터의 타입이 도전과제의 목표 타입과 일치하는지 확인
+            if (mission.Type == MissionType.KillEnemyByType && mission.TargetEnemyType == killedEnemyType)
+            {
+                // 이미 달성한 과제는 무시
+                if (GetProgress(mission.MissionID) >= mission.TargetValue)
+                {
+                    continue;
+                }
+
+                missionProgress[mission.MissionID] += amount;
+                Debug.Log($"'{mission.MissionName}' 진행도: {missionProgress[mission.MissionID]} / {mission.TargetValue}");
+
+                // 이벤트 호출하여 UI 등 실시간 업데이트
                 OnChallengeProgressUpdated?.Invoke(mission.MissionID);
             }
         }
