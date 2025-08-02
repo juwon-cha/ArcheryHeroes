@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f0cd8ee64e79e4cb42b801305371e9, type: 3}
   m_Name: ExpGainRateAbiility
   m_EditorClassIdentifier: 
-  abilityName: "\uAC00\uBCBC\uC6B4 \uBC1C\uAC78\uC74C"
+  abilityName: "\uACBD\uD5D8\uCE58 \uD76D\uB4DD\uB7C9 \uC99D\uAC00"
   description: 
   icon: {fileID: 21300000, guid: d5f1323d38d9a084cbc160602493bc4a, type: 3}
   isLevelUpEnabled: 1
