@@ -1,14 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    private Action<float, float> OnExperienceChanged; // 경험치 획득 이벤트
+
     // TEMP Player
     [SerializeField] private GameObject playerPrefab;
     public GameObject Player { get; private set; }
 
-    void Awake()
+    private float currentExp;
+    [SerializeField] private float maxExp = 100;
+
+    protected override void Initialize()
     {
         Player = playerPrefab;
 
@@ -24,9 +30,20 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    void Update()
+    public void GainExp(float exp)
     {
-        
+        currentExp += exp;
+        OnExperienceChanged?.Invoke(currentExp, maxExp);
+    }
+
+    public void AddExperienceChangedEvent(Action<float, float> action)
+    {
+        OnExperienceChanged += action;
+    }
+
+    public void RemoveExperienceChangedEventEvent(Action<float, float> action)
+    {
+        OnExperienceChanged -= action;
     }
 
     public void EndOfWave()

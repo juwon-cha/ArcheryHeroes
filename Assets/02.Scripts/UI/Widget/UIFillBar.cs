@@ -31,6 +31,7 @@ public class UIFillBar : MonoBehaviour
 
     public void SetDelayFillAmount(float fillPercentage)
     {
+        if (gameObject.activeInHierarchy == false) return;
         if (delayFillTarget == null || !useDelayFill) return;
         if (delayFillCoroutine != null)
             StopCoroutine(delayFillCoroutine);
