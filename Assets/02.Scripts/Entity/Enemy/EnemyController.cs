@@ -63,6 +63,7 @@ public class EnemyController : BaseController
         if(enemyData != null)
         {
             Debug.Log($"{enemyData.enemyName} 처치! 경험치 {enemyData.xpValue} 획득!");
+            GameManager.Instance.GainExp(enemyData.xpValue);
         }
 
         base.OnDead();

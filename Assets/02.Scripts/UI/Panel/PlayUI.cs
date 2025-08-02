@@ -7,6 +7,12 @@ public class PlayUI : MonoBehaviour
     [SerializeField] private TMP_Text stageText;
     [SerializeField] private UIFillBar expBar;
 
+    private void Awake()
+    {
+        GameManager.Instance.AddExperienceChangedEvent(SetExpBar);
+    }
+
+
     public void SetStageText(string content)
     {
         if (stageText == null) return;
