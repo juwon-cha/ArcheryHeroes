@@ -29,6 +29,9 @@ public class BossController : MonoBehaviour
     [SerializeField] private float knockbackDuration = 0.5f; // 넉백 지속 시간
     public float KnockbackDuration { get { return knockbackDuration; } }
 
+    [Header("기본 정보")]
+    public EnemyType enemyType;
+
     [Header("공격 패턴")]
     public List<BossAttackSO> attackPatterns; // 보스가 사용할 스킬 목록
 

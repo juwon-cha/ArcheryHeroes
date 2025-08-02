@@ -51,7 +51,7 @@ public class MissionUI : MonoBehaviour
 
         // AchievementManager에서 현재 진행도를 가져옴
         int currentProgress = AchievementManager.Instance.GetProgress(missionData.MissionID);
-        int targetValue = missionData.targetValue;
+        int targetValue = missionData.TargetValue;
 
         progressTxt.text = $"{currentProgress} / {targetValue}";
 

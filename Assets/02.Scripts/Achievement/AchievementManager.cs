@@ -59,10 +59,10 @@ public class AchievementManager : Singleton<AchievementManager>
     {
         foreach (var mission in AllMissions)
         {
-            if (mission.type == type)
+            if (mission.Type == type)
             {
                 missionProgress[mission.MissionID] += amount;
-                Debug.Log($"도전과제 '{mission.Title}' 진행도: {missionProgress[mission.MissionID]} / {mission.targetValue}");
+                Debug.Log($"도전과제 '{mission.MissionName}' 진행도: {missionProgress[mission.MissionID]} / {mission.TargetValue}");
 
                 // 진행도가 변경될 때마다 이벤트 구독자에게 알림
                 OnChallengeProgressUpdated?.Invoke(mission.MissionID);
