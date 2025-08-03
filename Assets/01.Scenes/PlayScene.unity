@@ -1017,6 +1017,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2015862871449318350, guid: cee5f57f5728a164aa2d120b2011c39f, type: 3}
+      propertyPath: soundDataList.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015862871449318350, guid: cee5f57f5728a164aa2d120b2011c39f, type: 3}
+      propertyPath: soundDataList.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f55828ddc2f0704eba29c59f9cb8663, type: 2}
+    - target: {fileID: 2015862871449318350, guid: cee5f57f5728a164aa2d120b2011c39f, type: 3}
+      propertyPath: soundDataList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 49c005aacff1c6f4db5aa0711ad1b48a, type: 2}
+    - target: {fileID: 2015862871449318350, guid: cee5f57f5728a164aa2d120b2011c39f, type: 3}
+      propertyPath: soundDataList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: c91e468e187ccc6498de5553eb014c17, type: 2}
+    - target: {fileID: 2015862871449318350, guid: cee5f57f5728a164aa2d120b2011c39f, type: 3}
+      propertyPath: soundDataList.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7a1e7243d2acfff4697e93d03f8f9710, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

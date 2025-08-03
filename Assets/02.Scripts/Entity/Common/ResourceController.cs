@@ -6,6 +6,8 @@ using UnityEngine;
 public class ResourceController : MonoBehaviour
 {
     [SerializeField] private float _healthChangeDelay = 0.5f; // 체력 변경 딜레이(무적)
+    [SerializeField] private SoundDataSO damageSFX; // 데미지 효과음
+    [SerializeField] private SoundDataSO deathSFX; // 사망 효과음
 
     private BaseController baseController;
     private StatHandler statHandler;
@@ -16,8 +18,6 @@ public class ResourceController : MonoBehaviour
 
     public float CurrentHealth { get; private set; }
     public float MaxHealth => statHandler.Health;
-
-    public AudioClip DamageClip;
 
     private Action<float, float> OnChangeHealth;
 
@@ -89,18 +89,15 @@ public class ResourceController : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
+            AudioManager.Instance.PlaySFX(deathSFX); // 사망 사운드 재생
             Death();
         }
         else if (change < 0)
         {
             DamageTextManager.Instance.ShowDamageText((int)-change, transform.position); // 데미지 텍스트 표시
 
+            AudioManager.Instance.PlaySFX(damageSFX); // 데미지 사운드 재생
             animationHandler.Damage(); // 데미지 애니메이션 실행
-
-            if (DamageClip != null)
-            {
-                // 데미지 사운드 재생
-            }
         }
 
         return true;
