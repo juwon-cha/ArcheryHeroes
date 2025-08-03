@@ -60,7 +60,17 @@ public class SkillManager : Singleton<SkillManager>
 
     public void RemoveSkill(SkillDataSO skill)
     {
+        skill.DeactivateEffects(); // 스킬 효과 비활성화
         acquiredSkills.Remove(skill);
+    }
+
+    public void ResetSkills()
+    {
+        foreach (var skill in acquiredSkills)
+        {
+            skill.Initialize(); // 스킬 초기화
+        }
+        acquiredSkills.Clear(); // 획득한 스킬 목록 초기화
     }
 
 }

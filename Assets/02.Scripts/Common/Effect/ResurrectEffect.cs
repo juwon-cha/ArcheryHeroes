@@ -41,6 +41,8 @@ public class ResurrectEffect : EffectSO
     public override void Deactivate()
     {
         isInitialized = false;
-        playerResourceController.RemoveHealthChangeEvent(OnHealthChanged);
+
+        if(playerResourceController != null)
+            playerResourceController.RemoveHealthChangeEvent(OnHealthChanged);
     }
 }

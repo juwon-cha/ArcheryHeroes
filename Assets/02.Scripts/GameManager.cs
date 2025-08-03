@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
         {
             if (player == null)
             {
-                player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+                player = ObjectPoolingManager.Instance.Get(playerPrefab, Vector3.zero);
                 player.name = "Player";
             }
 
@@ -28,7 +28,8 @@ public class GameManager : Singleton<GameManager>
     }
 
     private float currentExp;
-    [SerializeField] private float maxExp = 100;
+    private float maxExp;
+    [SerializeField] private float initMaxExp = 10f; // 초기 최대 경험치
 
     private bool isPaused = false;
 
@@ -36,10 +37,17 @@ public class GameManager : Singleton<GameManager>
     {
         currentLevel = 0;
         currentExp = 0f;
-
+        maxExp = initMaxExp;
+        OnExperienceChanged?.Invoke(currentExp, maxExp);
         Resume();
     }
 
+    public void ResetGame()
+    {
+        SkillManager.Instance.ResetSkills();
+        AbilityManager.Instance.ResetAbilities();
+        Initialize();
+    }
 
     public void GainExp(float exp)
     {

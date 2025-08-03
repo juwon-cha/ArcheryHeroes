@@ -39,6 +39,7 @@ public class TutorialDungeonManager : Singleton<TutorialDungeonManager>
         // 튜토리얼 끝나면 PlayScene으로 넘어간다.
         if( currentStageIndex > roomPrefabs.Count )
         {
+            GameManager.Instance.ResetGame();
             FadeManager.LoadScene("PlayScene");
             return;
         }

@@ -19,6 +19,8 @@ public class DungeonManager : Singleton<DungeonManager>
     private GameObject player; // 플레이어 정보
     private Transform playerTransform; // 플레이어의 위치
 
+    public int CurrentStageIndex { get => currentStageIndex; }
+
     protected override void Initialize()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -58,6 +60,7 @@ public class DungeonManager : Singleton<DungeonManager>
         {
             if (bossRoomPrefab != null)
             {
+                Debug.Log("보스 방을 불러옵니다.");
                 roomToLoad = bossRoomPrefab;
             }
         }
@@ -67,6 +70,7 @@ public class DungeonManager : Singleton<DungeonManager>
         {
             if(eventRoomPrefab != null)
             {
+                Debug.Log("이벤트 방을 불러옵니다.");
                 roomToLoad = eventRoomPrefab;
             }
         }

@@ -173,7 +173,12 @@ public class BaseController : MonoBehaviour
 
         // 정진규 임시 수정
         if (this.gameObject.CompareTag("Player"))
-            Destroy(gameObject, 2f); // 2초 후에 오브젝트 삭제
+        {
+            UIManager.Instance.ShowUI(UIType.GameOver);
+            SkillManager.Instance.ResetSkills(); // 스킬 초기화
+            ObjectPoolingManager.Instance.Return(this.gameObject);
+            // Destroy(gameObject, 2f); // 2초 후에 오브젝트 삭제
+        }
         else if (this.gameObject.CompareTag("Monster"))
             ObjectPoolingManager.Instance.Return(this.gameObject);
     }

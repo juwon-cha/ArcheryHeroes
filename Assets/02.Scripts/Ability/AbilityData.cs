@@ -18,6 +18,11 @@ public class AbilityData
         currentLevel = 0;
     }
 
+    public void Initialize()
+    {
+        currentLevel = 0; // 초기화 시 레벨을 0으로 설정
+    }
+
     public bool IsMaxLevel()
     {
         return currentLevel >= abilitySO.MaxLevel;

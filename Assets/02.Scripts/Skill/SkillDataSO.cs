@@ -40,6 +40,7 @@ public class SkillDataSO : ScriptableObject
     public virtual void Initialize()
     {
         ResetCooldown();
+        DeactivateEffects();
 
         currentLevel = 0; // 스킬 초기화 시 레벨을 0으로 설정
         foreach (var skillData in skillDatas)
@@ -61,11 +62,15 @@ public class SkillDataSO : ScriptableObject
         }
     }
 
-    public void LevelUp()
+    public void DeactivateEffects()
     {
         foreach (var effect in CurrentSkillData.effects)
-            effect.Deactivate(); // 레벨업 시 현재 레벨의 효과 비활성화
+            effect.Deactivate(); // 현재 레벨의 효과 비활성화
+    }
 
+    public void LevelUp()
+    {
+        DeactivateEffects();
 
         if (currentLevel >= MaxLevel) return;
 

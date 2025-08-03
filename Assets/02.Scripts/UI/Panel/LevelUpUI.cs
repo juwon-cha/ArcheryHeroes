@@ -16,6 +16,11 @@ public class LevelUpUI : MonoBehaviour
         Show();
     }
 
+    private void OnDisable()
+    {
+        Hide();
+    }
+
     public void Initialize()
     {
         GameManager.Instance.AddLevelUpEvent((_) => Show());
@@ -40,19 +45,19 @@ public class LevelUpUI : MonoBehaviour
         var abilityList = AbilityManager.Instance.GetRandomAbilities(maxSelectCount);
         int count = Mathf.Min(abilityList.Count, maxSelectCount);
 
+        // 능력 데이터 설정
         for (int i = 0; i < count; i++)
         {
             if (i < levelUpSelectButtons.Count)
             {
+                levelUpSelectButtons[i].gameObject.SetActive(true);
                 levelUpSelectButtons[i].SetAbilityData(abilityList[i]);
             }
         }
 
         // 나머지 버튼은 비활성화
         for (int i = count; i < levelUpSelectButtons.Count; i++)
-        {
             levelUpSelectButtons[i].gameObject.SetActive(false);
-        }
     }
 
     public void Show()

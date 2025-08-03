@@ -18,11 +18,17 @@ public class AbilityManager : Singleton<AbilityManager>
         base.Initialize();
 
         abilityDataDict = new();
-        foreach (var skillSO in allAbilities)
-            abilityDataDict[skillSO] = new(skillSO);
+        foreach (var abilitySO in allAbilities)
+            abilityDataDict[abilitySO] = new(abilitySO);
 
         selector = new(abilityDataDict.Values);
         abilityApplier = new();
+    }
+
+    public void ResetAbilities()
+    {
+        foreach (var abilitySO in allAbilities)
+            abilityDataDict[abilitySO].Initialize();
     }
 
     // 랜덤으로 스킬 데이터들 가져오기

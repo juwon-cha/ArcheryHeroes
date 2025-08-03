@@ -29,6 +29,7 @@ public class RestedPowerEffect : EffectSO
     public override void Initialize()
     {
         playerController = GameManager.Instance.Player.GetComponent<PlayerController>();
+        weaponHandler = playerController.GetComponentInChildren<WeaponHandler>(true);
         currentRestedTime = 0f;
         wasIdle = false;
     }
@@ -41,8 +42,6 @@ public class RestedPowerEffect : EffectSO
         {
             if (!wasIdle)
             {
-                weaponHandler = playerController.GetComponentInChildren<WeaponHandler>(true);
-
                 originalPower = weaponHandler.Power; // 원래 힘 저장
                 originalDelay = weaponHandler.Delay; // 원래 딜레이 저장
                 powerEffect = ObjectPoolingManager.Instance.Get(powerEffectPrefab, playerController.transform.position).GetComponent<ParticleSystem>();
