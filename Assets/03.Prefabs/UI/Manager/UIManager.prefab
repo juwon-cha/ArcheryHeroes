@@ -4837,6 +4837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7673246084748484211}
   - component: {fileID: 358844775977927311}
+  - component: {fileID: 7387656284053600037}
   m_Layer: 5
   m_Name: PlayUI
   m_TagString: Untagged
@@ -4879,6 +4880,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageText: {fileID: 8527122556833845954}
   expBar: {fileID: 3836354457434002607}
+--- !u!114 &7387656284053600037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7149043897014163725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65bffd724afb51341ac872adb97c3ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementPopupPrefab: {fileID: 475392552758777836, guid: 237c2927ffc4d554cb6f17e5e3a8cbfa, type: 3}
+  popupParent: {fileID: 7673246084748484211}
+  displayDuration: 2
 --- !u!1 &7160731486407057670
 GameObject:
   m_ObjectHideFlags: 0

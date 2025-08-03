@@ -8,6 +8,7 @@ public class EnemyDataSO : ScriptableObject
     [Header("기본 정보")]
     public string enemyName = "몬스터"; // 몬스터 이름
     public int xpValue = 10;           // 지급 경험치
+    public EnemyType enemyType = EnemyType.None; // 몬스터 타입
 
     [Header("전투 스탯")]
     public float maxHealth = 100f;     // 최대 체력

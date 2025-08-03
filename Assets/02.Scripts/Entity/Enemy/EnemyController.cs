@@ -63,6 +63,10 @@ public class EnemyController : BaseController
         if(enemyData != null)
         {
             Debug.Log($"{enemyData.enemyName} 처치! 경험치 {enemyData.xpValue} 획득!");
+
+            AchievementManager.Instance.UpdateKillEnemyByTypeProgress(enemyData.enemyType, 1);
+            AchievementManager.Instance.UpdateProgress(MissionType.KillEnemy, 1);
+
             GameManager.Instance.GainExp(enemyData.xpValue);
         }
 
