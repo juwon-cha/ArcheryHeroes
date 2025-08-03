@@ -51,6 +51,8 @@ MonoBehaviour:
   power: 5
   speed: 2
   attackRange: 5
+  elementType: 0
+  attackSFX: {fileID: 11400000, guid: a98a23f03b32e6940a996ec43a71085a, type: 2}
   Target:
     serializedVersion: 2
     m_Bits: 268435456
@@ -65,6 +67,8 @@ MonoBehaviour:
   numberOfProjectilesPerShot: 3
   multipleProjectileAngle: 3
   projectileColor: {r: 1, g: 1, b: 1, a: 1}
+  numberOfProjectilesPerShot_Back: 0
+  bounceCount: 0
 --- !u!1 &6095780711545954297
 GameObject:
   m_ObjectHideFlags: 0

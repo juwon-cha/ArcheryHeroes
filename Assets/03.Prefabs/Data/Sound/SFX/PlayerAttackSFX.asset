@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7568ba8cfa57044bb63660cb87e1a46, type: 3}
-  m_Name: OrcDamageSFX
+  m_Name: PlayerAttackSFX
   m_EditorClassIdentifier: 
-  soundName: OrcDamage
+  soundName: PlayerAttack
   audioClips:
-  - {fileID: 8300000, guid: 3612c0bcd868fbf4c92851bfebc58452, type: 3}
-  - {fileID: 8300000, guid: 3ab47042e25ed00409744d9e906ece20, type: 3}
-  - {fileID: 8300000, guid: 6af05b7e780669a4897fd9ac64f9a5de, type: 3}
+  - {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
+  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   volume: 0.5
   soundType: 1

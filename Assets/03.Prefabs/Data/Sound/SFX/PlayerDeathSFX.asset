@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7568ba8cfa57044bb63660cb87e1a46, type: 3}
   m_Name: PlayerDeathSFX
   m_EditorClassIdentifier: 
-  soundName: ChestOpen
+  soundName: PlayerDeath
   audioClips:
   - {fileID: 8300000, guid: dc9d4270b62290f47a3da62d5f45e0f3, type: 3}
   volume: 0.5

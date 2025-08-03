@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7568ba8cfa57044bb63660cb87e1a46, type: 3}
   m_Name: PlayerDamageSFX
   m_EditorClassIdentifier: 
-  soundName: ChestOpen
+  soundName: PlayerDamage
   audioClips:
   - {fileID: 8300000, guid: 307a9cc3c804db24b80e8b0992993112, type: 3}
   - {fileID: 8300000, guid: acc6404dfedb80941bf56f47a31746e3, type: 3}

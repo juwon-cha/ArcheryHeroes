@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7568ba8cfa57044bb63660cb87e1a46, type: 3}
   m_Name: OrcDeathSFX
   m_EditorClassIdentifier: 
-  soundName: ChestOpen
+  soundName: OrcDeath
   audioClips:
   - {fileID: 8300000, guid: c000d7c41e3093f488393328c18d459a, type: 3}
   volume: 0.5
