@@ -21,6 +21,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
+    public bool useDontDestroyOnLoad = true;
+
+
     protected virtual void Initialize() { }
 
     protected virtual void Awake()
@@ -33,7 +36,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             instance = this as T;
             Initialize();
-            DontDestroyOnLoad(gameObject);
+            if (useDontDestroyOnLoad)
+                DontDestroyOnLoad(gameObject);
         }
     }
 }

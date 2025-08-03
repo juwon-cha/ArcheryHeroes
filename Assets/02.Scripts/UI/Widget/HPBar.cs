@@ -6,6 +6,9 @@ public class HPBar : UIFillBar
 {
     [SerializeField] private float offset = 1f;
     private ResourceController target;
+    public ResourceController Target { get; private set; }
+
+
     private Vector3 initOffset;
 
     public void Initialize(Transform parent, ResourceController target, float offset = 0.5f)

@@ -35,6 +35,7 @@ public class TutorialDungeonRoom : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
         tutorialUI = FindObjectOfType<TutorialUI>();
     }
+
     private void Update()
     {
         CheckPlayerPosition();

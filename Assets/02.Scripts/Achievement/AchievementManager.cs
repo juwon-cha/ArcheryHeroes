@@ -18,9 +18,8 @@ public class AchievementManager : Singleton<AchievementManager>
     // 도전과제 달성 시 호출되는 이벤트
     public static event Action<MissionSO> OnMissionCompleted;
 
-    void Awake()
+    protected override void Initialize()
     {
-        // 게임 시작 시 모든 도전과제 초기화
         InitializeProgress();
     }
 

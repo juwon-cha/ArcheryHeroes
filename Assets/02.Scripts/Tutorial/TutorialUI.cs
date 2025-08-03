@@ -25,7 +25,8 @@ public class TutorialUI : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+        // player = FindObjectOfType<PlayerController>();
+        player = GameManager.Instance.Player.GetComponent<PlayerController>();
     }
 
     private void Update()

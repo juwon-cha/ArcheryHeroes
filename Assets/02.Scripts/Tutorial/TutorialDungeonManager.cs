@@ -36,6 +36,13 @@ public class TutorialDungeonManager : Singleton<TutorialDungeonManager>
     {
         currentStageIndex++;
 
+        // 튜토리얼 끝나면 PlayScene으로 넘어간다.
+        if( currentStageIndex > roomPrefabs.Count )
+        {
+            FadeManager.LoadScene("PlayScene");
+            return;
+        }
+
         // 방의 정보가 남아있다. 즉, 이전 방의 정보가 남아있다면 오브젝트 풀링으로 넣어준다.
         if (currentRoomInstance != null)
         {

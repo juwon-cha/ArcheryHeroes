@@ -26,7 +26,7 @@ public class DungeonManager : Singleton<DungeonManager>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "StartScene" || scene.name == "MainScene") return;
+        if (scene.name == "StartScene" || scene.name == "MainScene" || scene.name == "TutorialScene") return;
 
         player = GameManager.Instance.Player;
 

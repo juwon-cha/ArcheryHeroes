@@ -8,7 +8,8 @@ public class HPBarManager : Singleton<HPBarManager>
     [SerializeField] private Transform hpBarParent;
     [SerializeField] private float hpBarOffset = 0.5f; // HPBar의 Y축 오프셋
 
-    private List<HPBar> hpBars = new();
+    private Dictionary<GameObject, HPBar> hpBarDict = new();
+    // private List<HPBar> hpBars = new();
 
     private void Update()
     {
@@ -20,12 +21,22 @@ public class HPBarManager : Singleton<HPBarManager>
     {
         HPBar hpBar = ObjectPoolingManager.Instance.Get<HPBar>(hpBarPrefab, target.transform.position);
         hpBar.Initialize(hpBarParent, target, hpBarOffset);
-        hpBars.Add(hpBar);
+        hpBarDict[target.gameObject] = hpBar;
+        // hpBars.Add(hpBar);
+    }
+
+    public void RemoveHPBar(ResourceController target)
+    {
+        if (hpBarDict.TryGetValue(target.gameObject, out HPBar hpBar))
+        {
+            ObjectPoolingManager.Instance.Return(hpBar.gameObject);
+            hpBarDict.Remove(target.gameObject);
+        }
     }
 
     public void UpdateHPBars()
     {
-        foreach (var hpBar in hpBars)
+        foreach (var hpBar in hpBarDict.Values)
         {
             if (hpBar == null) continue;
             hpBar.UpdatePosition();
