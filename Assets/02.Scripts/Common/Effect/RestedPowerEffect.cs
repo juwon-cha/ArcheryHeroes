@@ -95,7 +95,7 @@ public class RestedPowerEffect : EffectSO
         weaponHandler.Power = originalPower * (1f + t * powerMultiplier);
         weaponHandler.Delay = originalDelay * (1f - t * delayMultiplier);
 
-        Debug.Log($"Rested Power: {weaponHandler.Power}, Delay: {weaponHandler.Delay}");
+        // Debug.Log($"Rested Power: {weaponHandler.Power}, Delay: {weaponHandler.Delay}");
         SetEffectColor(t);
     }
 
