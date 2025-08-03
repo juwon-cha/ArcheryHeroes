@@ -12,7 +12,20 @@ public class GameManager : Singleton<GameManager>
 
     // TEMP Player
     [SerializeField] private GameObject playerPrefab;
-    public GameObject Player { get; private set; }
+    private GameObject player;
+    public GameObject Player
+    {
+        get
+        {
+            if (player == null)
+            {
+                player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+                player.name = "Player";
+            }
+
+            return player;
+        }
+    }
 
     private float currentExp;
     [SerializeField] private float maxExp = 100;
@@ -23,28 +36,10 @@ public class GameManager : Singleton<GameManager>
     {
         currentLevel = 0;
         currentExp = 0f;
-        Player = playerPrefab;
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
 
         Resume();
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "StartScene" || scene.name == "MainScene") return;
-
-        // 임시 플레이어 인스턴스 생성
-        if (playerPrefab != null)
-        {
-            Player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            Player.name = "Player";
-        }
-        else
-        {
-            Debug.LogError("GameManager에 Player Prefab이 지정되지 않았습니다!");
-        }
-    }
 
     public void GainExp(float exp)
     {
