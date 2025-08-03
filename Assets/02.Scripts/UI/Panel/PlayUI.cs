@@ -7,14 +7,16 @@ public class PlayUI : MonoBehaviour
     [SerializeField] private TMP_Text stageText;
     [SerializeField] private UIFillBar expBar;
 
-    private void Awake()
+    public void Initialize()
     {
         GameManager.Instance.AddExperienceChangedEvent(SetExpBar);
+        DungeonManager.Instance.AddStageChangedEvent((dungeonIndex) => SetStageText($"현재 스테이지 {dungeonIndex}"));
     }
 
 
     public void SetStageText(string content)
     {
+        Debug.Log($"SetStageText: {content}");
         if (stageText == null) return;
 
         stageText.text = content;

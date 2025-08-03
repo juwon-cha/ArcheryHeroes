@@ -6,28 +6,26 @@ using TMPro;
 public class LevelUpUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text titleText;
-    [SerializeField] private int maxSelectCount = 3; // ÃÖ´ë ¼±ÅÃ °³¼ö
-    [SerializeField] private GameObject levelUpSelectButtonPrefab; // ·¹º§¾÷ ¼±ÅÃ ¹öÆ° ÇÁ¸®ÆÕ
+    [SerializeField] private int maxSelectCount = 3; // ìµœëŒ€ ì„ íƒ ê°œìˆ˜
+    [SerializeField] private GameObject levelUpSelectButtonPrefab; // ë ˆë²¨ì—… ì„ íƒ ë²„íŠ¼ í”„ë¦¬íŒ¹
     [SerializeField] private Transform selectButtonParents;
     private List<LevelUpSelectButton> levelUpSelectButtons;
-    private void Awake()
-    {
-        Initialize();
-    }
 
     private void OnEnable()
     {
-        SetSelectButtons();
+        Show();
     }
 
-    void Initialize()
+    public void Initialize()
     {
+        GameManager.Instance.AddLevelUpEvent((_) => Show());
+
         if (titleText != null)
             titleText.text = "Level Up";
 
         levelUpSelectButtons = new();
 
-        // ·¹º§¾÷ ¼±ÅÃ ¹öÆ° ÃÊ±âÈ­
+        // ë ˆë²¨ì—… ì„ íƒ ë²„íŠ¼ ì´ˆê¸°í™”
         for (int i = 0; i < maxSelectCount; i++)
         {
             var buttonObj = Instantiate(levelUpSelectButtonPrefab, selectButtonParents);
@@ -50,16 +48,25 @@ public class LevelUpUI : MonoBehaviour
             }
         }
 
-        // ³ª¸ÓÁö ¹öÆ°Àº ºñÈ°¼ºÈ­
+        // ë‚˜ë¨¸ì§€ ë²„íŠ¼ì€ ë¹„í™œì„±í™”
         for (int i = count; i < levelUpSelectButtons.Count; i++)
         {
             levelUpSelectButtons[i].gameObject.SetActive(false);
         }
     }
 
+    public void Show()
+    {
+        Debug.Log("ë ˆë²¨ì—… UI í‘œì‹œ");
+        GameManager.Instance.Pause(); // ê²Œì„ ì¼ì‹œ ì •ì§€
+        gameObject.SetActive(true);
+        SetSelectButtons(); // í™œì„±í™” ì‹œ ì„ íƒ ë²„íŠ¼ ì„¤ì •
+    }
+
 
     public void Hide()
     {
+        GameManager.Instance.Resume(); // ê²Œì„ ì¬ê°œ
         gameObject.SetActive(false);
     }
 }

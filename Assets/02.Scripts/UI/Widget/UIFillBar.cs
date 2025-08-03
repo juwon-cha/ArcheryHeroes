@@ -48,7 +48,7 @@ public class UIFillBar : MonoBehaviour
 
         while (elapsedTime < delayFillSpeed)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             float newFill = Mathf.Lerp(startFill, targetFill, elapsedTime / delayFillSpeed);
             delayFillTarget.fillAmount = Mathf.Clamp01(newFill);
             yield return null;

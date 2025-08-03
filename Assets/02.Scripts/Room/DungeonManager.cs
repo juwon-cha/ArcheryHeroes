@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DungeonManager : Singleton<DungeonManager>
 {
+    private Action<int> OnStageChanged; // 스테이지 변경 이벤트
+
     [Header("방 프리팹 목록")]
     [SerializeField] private List<GameObject> roomPrefabs;
     [SerializeField] private GameObject bossRoomPrefab;
@@ -80,5 +84,20 @@ public class DungeonManager : Singleton<DungeonManager>
             // 플레이어의 포지션을 던전 방의 스폰 포인트 위치로 변경한다.
             playerTransform.position = newDungeonRoom.GetPlayerSpawnPoint().position;
         }
+
+        // 스테이지 변경 이벤트를 호출한다.
+        OnStageChanged?.Invoke(currentStageIndex);
     }
+
+    // 현재 스테이지 인덱스를 반환하는 메서드
+    public void AddStageChangedEvent(Action<int> action)
+    {
+        OnStageChanged += action;
+    }
+
+    public void RemoveStageChangedEvent(Action<int> action)
+    {
+        OnStageChanged -= action;
+    }
+
 }

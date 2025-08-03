@@ -54,6 +54,10 @@ public class UIManager : Singleton<UIManager>
             { "PlayScene", UIType.Play }
         };
 
+
+        playUI.Initialize();
+        levelUpUI.Initialize();
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
