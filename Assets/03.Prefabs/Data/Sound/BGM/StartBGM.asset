@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7568ba8cfa57044bb63660cb87e1a46, type: 3}
-  m_Name: PlayBGM
+  m_Name: StartBGM
   m_EditorClassIdentifier: 
-  soundName: PlayBGM
+  soundName: StartBGM
   audioClips:
-  - {fileID: 8300000, guid: d2c4256ebe8fb91429f90af95e06d8e9, type: 3}
-  volume: 1
+  - {fileID: 8300000, guid: 89f935015cc98724a862a586326fdf21, type: 3}
+  volume: 0.5
   soundType: 0

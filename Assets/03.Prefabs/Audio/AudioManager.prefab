@@ -50,8 +50,9 @@ MonoBehaviour:
   bgmSource: {fileID: 8634112721530637364}
   sfxSource: {fileID: 3804257035014077015}
   soundDataList:
-  - {fileID: 11400000, guid: 845ca9cbb909828439fc69f73bc9fe6a, type: 2}
-  - {fileID: 11400000, guid: ba19ceeeda791cc4881a05a66b5b7a71, type: 2}
+  - {fileID: 11400000, guid: e132b2d91707d224583186ee5690b775, type: 2}
+  - {fileID: 11400000, guid: 4ab95e4b27e44c0499061621d713df61, type: 2}
+  - {fileID: 11400000, guid: 411efc05bcc957b4ca4a93d24fd4378d, type: 2}
 --- !u!1 &3754569512352138814
 GameObject:
   m_ObjectHideFlags: 0

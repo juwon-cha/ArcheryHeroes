@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class DungeonManager : Singleton<DungeonManager>
@@ -18,18 +19,22 @@ public class DungeonManager : Singleton<DungeonManager>
     private GameObject player; // 플레이어 정보
     private Transform playerTransform; // 플레이어의 위치
 
-    private void Start()
+    protected override void Initialize()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "StartScene" || scene.name == "MainScene") return;
+
         player = GameManager.Instance.Player;
 
         if (player != null)
-        {
             playerTransform = GameManager.Instance.Player.transform;
-        }
         else
-        {
             Debug.Log("GameManager에서 Player를 찾을 수 없습니다.");
-        }
+
         LoadNextRoom();
     }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -24,6 +25,15 @@ public class GameManager : Singleton<GameManager>
         currentExp = 0f;
         Player = playerPrefab;
 
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        Resume();
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "StartScene" || scene.name == "MainScene") return;
+
         // 임시 플레이어 인스턴스 생성
         if (playerPrefab != null)
         {
@@ -34,8 +44,6 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.LogError("GameManager에 Player Prefab이 지정되지 않았습니다!");
         }
-
-        Resume();
     }
 
     public void GainExp(float exp)
