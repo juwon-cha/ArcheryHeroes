@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6f19a6880d7e34ea06f5e40f4a48a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
+  delay: 0.5
   weaponSize: 1
-  power: 5
-  speed: 2
-  attackRange: 5
+  power: 10
+  speed: 5
+  attackRange: 20
   elementType: 0
   attackSFX: {fileID: 11400000, guid: a98a23f03b32e6940a996ec43a71085a, type: 2}
   Target:
