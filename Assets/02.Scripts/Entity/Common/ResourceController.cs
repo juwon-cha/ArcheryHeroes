@@ -90,6 +90,7 @@ public class ResourceController : MonoBehaviour
         CurrentHealth = CurrentHealth < 0 ? 0 : CurrentHealth; // 최소 체력 0으로 제한
 
         ElementEffectManager.Instance.ApplyElementEffect(this, change, elementType); // 엘리먼트 효과 적용
+        DamageTextManager.Instance.ShowDamageText((int)-change, transform.position); // 데미지 텍스트 표시
         OnChangeHealth?.Invoke(CurrentHealth, MaxHealth); // 체력 변경 이벤트 호출
 
         if (CurrentHealth <= 0)
@@ -99,8 +100,6 @@ public class ResourceController : MonoBehaviour
         }
         else if (change < 0)
         {
-            DamageTextManager.Instance.ShowDamageText((int)-change, transform.position); // 데미지 텍스트 표시
-
             AudioManager.Instance.PlaySFX(damageSFX); // 데미지 사운드 재생
             animationHandler.Damage(); // 데미지 애니메이션 실행
         }
