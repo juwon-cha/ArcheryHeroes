@@ -8,13 +8,14 @@ public class TimedTeleport : EffectSO
     [SerializeField] private float teleportTime = 3.0f;
     [SerializeField] private GameObject portalEffectPrefab;
     private GameObject portalEffect;
+    private Coroutine teleportCoroutine;
 
     public override void Initialize() { }
 
     public override void Execute(EffectContext effectContext = null)
     {
         GameObject caster = effectContext.Caster;
-        CoroutineRunner.Instance.StartCoroutine(TeleportAfterDelay(caster));
+        teleportCoroutine = CoroutineRunner.Instance.StartCoroutine(TeleportAfterDelay(caster));
     }
 
     private IEnumerator TeleportAfterDelay(GameObject target)
@@ -23,5 +24,14 @@ public class TimedTeleport : EffectSO
         yield return new WaitForSeconds(teleportTime);
         target.transform.position = portalEffect.GetPosition();
         portalEffect.SetActive(false);
+    }
+
+    public override void Deactivate()
+    {
+        if(teleportCoroutine != null)
+            CoroutineRunner.Instance.StopCoroutine(teleportCoroutine);
+
+        if (portalEffect != null)
+            ObjectPoolingManager.Instance.Return(portalEffect);
     }
 }
