@@ -9,7 +9,7 @@ public class ProjectileManager : Singleton<ProjectileManager>
     public void ShootBullet(RangedWeaponHandler rangeWeaponHandler, Vector2 startPosition, Vector2 direction)
     {
         GameObject origin = projectilePrefabs[rangeWeaponHandler.BulletIndex];
-        GameObject obj = Instantiate(origin, startPosition, Quaternion.identity);
+        GameObject obj = ObjectPoolingManager.Instance.Get(origin, startPosition, Quaternion.identity);
 
         ProjectileController projectileController = obj.GetComponent<ProjectileController>();
         projectileController.Init(direction, rangeWeaponHandler);
