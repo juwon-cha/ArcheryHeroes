@@ -19,4 +19,4 @@ MonoBehaviour:
   speed: 3
   followRange: 15
   attackRange: 3
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 8091848209504161090, guid: 8ba3d6c15432ba646bfde2d77225c60b, type: 3}
