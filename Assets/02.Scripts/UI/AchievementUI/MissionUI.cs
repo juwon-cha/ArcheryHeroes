@@ -12,12 +12,12 @@ public class MissionUI : MonoBehaviour
 
     private MissionSO missionData; // 도전과제 데이터
 
-    private void OnEnable()
+    private void Awake()
     {
         AchievementManager.OnChallengeProgressUpdated += HandleProgressUpdate;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         AchievementManager.OnChallengeProgressUpdated -= HandleProgressUpdate;
     }

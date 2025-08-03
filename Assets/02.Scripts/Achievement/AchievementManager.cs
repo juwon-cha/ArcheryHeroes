@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class AchievementManager : Singleton<AchievementManager>
 {
-    // Achievement 폴더 안의 모든 ChallengeSO를 담을 리스트
+    // Inspector창에서 MissionSO 연결
     public List<MissionSO> AllMissions = new List<MissionSO>();
 
     // 각 도전과제의 현재 진행도를 저장할 딕셔너리 (Key: 도전과제 ID, Value: 현재 달성 수치)
@@ -14,18 +15,13 @@ public class AchievementManager : Singleton<AchievementManager>
     // 도전과제 진행도 업데이트 시 호출되는 이벤트
     public static event Action<string> OnChallengeProgressUpdated;
 
+    // 도전과제 달성 시 호출되는 이벤트
+    public static event Action<MissionSO> OnMissionCompleted;
+
     void Awake()
     {
-        // 게임 시작 시 모든 도전과제 로드 및 초기화
-        //LoadAllMissions();
+        // 게임 시작 시 모든 도전과제 초기화
         InitializeProgress();
-    }
-
-    private void LoadAllMissions()
-    {
-        // 간단하게 Resources 폴더에서 모든 ChallengeSO를 불러옴
-        // 실무에서는 Addressable Asset System을 사용하는 것이 더 효율적
-        //AllMissions = new List<MissionSO>(Resources.LoadAll<MissionSO>("02.Scripts/Achievement/MissionSO"));
     }
 
     private void InitializeProgress()
@@ -42,7 +38,7 @@ public class AchievementManager : Singleton<AchievementManager>
 
     public int GetProgress(string missionID)
     {
-        // 특정 도전과제의 현재 진행도를 반환
+        // 특정 도전과제의 현재 진행도 반환
         if (missionProgress.ContainsKey(missionID))
         {
             return missionProgress[missionID];
@@ -54,43 +50,52 @@ public class AchievementManager : Singleton<AchievementManager>
         }
     }
 
-    // 게임 내에서 이벤트가 발생할 때 이 함수를 호출
+    // 게임 내에서 이벤트 발생할 때 이 메서드 호출
     public void UpdateProgress(MissionType type, int amount)
     {
         foreach (var mission in AllMissions)
         {
             if (mission.Type == type)
             {
-                missionProgress[mission.MissionID] += amount;
-                Debug.Log($"도전과제 '{mission.MissionName}' 진행도: {missionProgress[mission.MissionID]} / {mission.TargetValue}");
-
-                // 진행도가 변경될 때마다 이벤트 구독자에게 알림
-                OnChallengeProgressUpdated?.Invoke(mission.MissionID);
+                ProcessProgress(mission, amount);
             }
         }
     }
 
     public void UpdateKillEnemyByTypeProgress(EnemyType killedEnemyType, int amount)
     {
-        // ChallengeManager가 관리하는 모든 도전과제를 순회
+        // ChallengeManager가 관리하는 모든 도전과제 순회
         foreach (var mission in AllMissions)
         {
             // 도전과제 타입이 타입별 몬스터 처치가 맞는지 확인
             // 처치된 몬스터의 타입이 도전과제의 목표 타입과 일치하는지 확인
             if (mission.Type == MissionType.KillEnemyByType && mission.TargetEnemyType == killedEnemyType)
             {
-                // 이미 달성한 과제는 무시
-                if (GetProgress(mission.MissionID) >= mission.TargetValue)
-                {
-                    continue;
-                }
-
-                missionProgress[mission.MissionID] += amount;
-                Debug.Log($"'{mission.MissionName}' 진행도: {missionProgress[mission.MissionID]} / {mission.TargetValue}");
-
-                // 이벤트 호출하여 UI 등 실시간 업데이트
-                OnChallengeProgressUpdated?.Invoke(mission.MissionID);
+                ProcessProgress(mission, amount);
             }
+        }
+    }
+
+    private void ProcessProgress(MissionSO mission, int amount)
+    {
+        // 이미 달성한 과제는 무시
+        if (GetProgress(mission.MissionID) >= mission.TargetValue)
+        {
+            return;
+        }
+
+        // 진행도 증가 및 이벤트 호출
+        missionProgress[mission.MissionID] += amount;
+        int newProgress = missionProgress[mission.MissionID];
+        Debug.Log($"도전과제 '{mission.MissionName}' 진행도: {newProgress} / {mission.TargetValue}");
+
+        OnChallengeProgressUpdated?.Invoke(mission.MissionID);
+
+        // 완료 체크 및 이벤트 호출
+        if (newProgress >= mission.TargetValue)
+        {
+            Debug.Log($"미션 완료: {mission.MissionName}");
+            OnMissionCompleted?.Invoke(mission);
         }
     }
 }

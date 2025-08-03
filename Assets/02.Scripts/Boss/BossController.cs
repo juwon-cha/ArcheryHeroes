@@ -135,6 +135,7 @@ public class BossController : MonoBehaviour
     public void OnDead()
     {
         AchievementManager.Instance.UpdateKillEnemyByTypeProgress(enemyType, 1);
+        AchievementManager.Instance.UpdateProgress(MissionType.KillEnemy, 1);
 
         rigidBody.velocity = Vector3.zero;
 

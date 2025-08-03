@@ -16,6 +16,6 @@ MonoBehaviour:
   MissionName: "\uC624\uD06C \uC6CC\uB9AC\uC5B4 \uC18C\uD0D5"
   Description: "\uC624\uD06C \uC6CC\uB9AC\uC5B4 3\uB9C8\uB9AC \uCC98\uCE58"
   Type: 3
-  TargetValue: 5
-  TargetEnemyType: 4
+  TargetValue: 3
+  TargetEnemyType: 3
   ExpReward: 0
