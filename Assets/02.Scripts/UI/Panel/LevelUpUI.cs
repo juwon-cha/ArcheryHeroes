@@ -57,7 +57,6 @@ public class LevelUpUI : MonoBehaviour
 
     public void Show()
     {
-        Debug.Log("레벨업 UI 표시");
         GameManager.Instance.Pause(); // 게임 일시 정지
         gameObject.SetActive(true);
         SetSelectButtons(); // 활성화 시 선택 버튼 설정
