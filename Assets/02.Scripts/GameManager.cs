@@ -46,6 +46,7 @@ public class GameManager : Singleton<GameManager>
     {
         SkillManager.Instance.ResetSkills();
         AbilityManager.Instance.ResetAbilities();
+        DungeonManager.Instance.ResetDungeon();
         Initialize();
     }
 

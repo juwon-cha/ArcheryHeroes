@@ -43,6 +43,7 @@ public class GameOverUI : MonoBehaviour
 
     public void OnRestart()
     {
+        GameManager.Instance.ResetGame();
         FadeManager.LoadScene("PlayScene");
         UIManager.Instance.HideUI(UIType.GameOver);
     }
