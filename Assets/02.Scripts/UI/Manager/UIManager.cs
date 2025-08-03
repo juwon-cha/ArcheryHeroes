@@ -11,7 +11,8 @@ public enum UIType
     Play,
     LevelUp,
     GameOver,
-    GameClear
+    GameClear,
+    Achievement
 }
 
 public class UIManager : Singleton<UIManager>
@@ -23,6 +24,7 @@ public class UIManager : Singleton<UIManager>
     private LevelUpUI levelUpUI;
     private GameOverUI gameOverUI;
     private GameClearUI gameClearUI;
+    private AchievementListUI achievementListUI;
     private Dictionary<UIType, GameObject> uiDictionary;
     private Dictionary<string, UIType> sceneUIMapping;
 
@@ -36,6 +38,7 @@ public class UIManager : Singleton<UIManager>
         levelUpUI = GetComponentInChildren<LevelUpUI>(true);
         gameOverUI = GetComponentInChildren<GameOverUI>(true);
         gameClearUI = GetComponentInChildren<GameClearUI>(true);
+        achievementListUI = GetComponentInChildren<AchievementListUI>(true);
 
         uiDictionary = new Dictionary<UIType, GameObject>
         {
@@ -46,6 +49,7 @@ public class UIManager : Singleton<UIManager>
             { UIType.LevelUp, levelUpUI.gameObject },
             { UIType.GameOver, gameOverUI.gameObject },
             { UIType.GameClear, gameClearUI.gameObject },
+            { UIType.Achievement, achievementListUI.gameObject }
         };
         sceneUIMapping = new Dictionary<string, UIType>
         {

@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class MainUI : MonoBehaviour
 {
     [SerializeField] private Button customizingButton;
-    [SerializeField] private Button challengeButton;
+    [SerializeField] private Button achievementButton;
     [SerializeField] private Button startButton;
     [SerializeField] private Button exitButton;
 
     private void Awake()
     {
         customizingButton.onClick.AddListener(OnCustomizing);
-        challengeButton.onClick.AddListener(OnChallenge);
+        achievementButton.onClick.AddListener(OnAchievement);
         startButton.onClick.AddListener(OnStartStage);
         exitButton.onClick.AddListener(OnExitGame);
     }
@@ -23,9 +23,9 @@ public class MainUI : MonoBehaviour
         FadeManager.LoadScene("CustomizingScene");
     }
 
-    public void OnChallenge()
+    public void OnAchievement()
     {
-
+        UIManager.Instance.ShowUI(UIType.Achievement);
     }
 
     public void OnStartStage()

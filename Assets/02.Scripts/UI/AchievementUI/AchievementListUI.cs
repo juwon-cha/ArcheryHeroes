@@ -51,6 +51,6 @@ public class AchievementListUI : MonoBehaviour
 
     public void OnClose()
     {
-        //UIManager.Instance.HideUI(UIType.AchievementList);
+        UIManager.Instance.HideUI(UIType.Achievement);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HPBarManager : Singleton<HPBarManager>
 {
@@ -9,7 +10,12 @@ public class HPBarManager : Singleton<HPBarManager>
     [SerializeField] private float hpBarOffset = 0.5f; // HPBar의 Y축 오프셋
 
     private Dictionary<GameObject, HPBar> hpBarDict = new();
-    // private List<HPBar> hpBars = new();
+
+    protected override void Initialize()
+    {
+        hpBarDict.Clear();
+    }
+
 
     private void Update()
     {

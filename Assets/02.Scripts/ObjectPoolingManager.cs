@@ -75,7 +75,8 @@ public class ObjectPoolingManager : Singleton<ObjectPoolingManager>
         // 인스턴스가 프리팹에 매핑되어 있는지 확인
         if (!instanceToPrefab.TryGetValue(obj, out var prefab))
         {
-            Destroy(obj);
+            if(obj != null)
+                Destroy(obj);
             return;
         }
 
