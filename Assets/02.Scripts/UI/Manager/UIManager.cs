@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum UIType
 {
@@ -17,6 +18,8 @@ public enum UIType
 
 public class UIManager : Singleton<UIManager>
 {
+    [SerializeField] private SoundDataSO buttonClickSFX;
+
     private StartUI startUI;
     private SettingUI settingUI;
     private MainUI mainUI;
@@ -62,6 +65,8 @@ public class UIManager : Singleton<UIManager>
         playUI.Initialize();
         levelUpUI.Initialize();
 
+        InjectButtonSFX();
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -96,5 +101,13 @@ public class UIManager : Singleton<UIManager>
     {
         foreach (var ui in uiDictionary.Values)
             ui.SetActive(false);
+    }
+
+    // 모든 버튼에 효과음을 주입하는 메서드
+    private void InjectButtonSFX()
+    {
+        var allButtons = FindObjectsOfType<Button>(true);
+        foreach (var button in allButtons)
+            button.onClick.AddListener(() => AudioManager.Instance.PlaySFX(buttonClickSFX));
     }
 }

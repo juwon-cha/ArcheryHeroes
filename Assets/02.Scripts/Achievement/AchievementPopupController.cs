@@ -33,7 +33,7 @@ public class AchievementPopupController : MonoBehaviour
     private IEnumerator PopupRoutine(GameObject popupInstance, MissionSO missionData)
     {
         // 사운드 효과 재생
-        AudioManager.Instance.PlaySFX(popupSFX);
+            AudioManager.Instance.PlaySFX(popupSFX);
 
         AchievementPopupUI popupUI = popupInstance.GetComponent<AchievementPopupUI>();
         if(popupUI != null)

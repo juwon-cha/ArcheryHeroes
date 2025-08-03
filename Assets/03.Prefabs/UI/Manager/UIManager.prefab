@@ -1894,7 +1894,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB4A4\uD2C0\uB9B0 \uC232 2-1"
+  m_text: "\uD29C\uD1A0\uB9AC\uC5BC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af155ef2c51fffc49bf2b0feea2c1569, type: 2}
   m_sharedMaterial: {fileID: 5882052408459018460, guid: af155ef2c51fffc49bf2b0feea2c1569, type: 2}
@@ -3372,6 +3372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useDontDestroyOnLoad: 1
+  buttonClickSFX: {fileID: 11400000, guid: de761ee0cd8310b478f2f37cc028f1f8, type: 2}
 --- !u!1 &4470103654752450447
 GameObject:
   m_ObjectHideFlags: 0
