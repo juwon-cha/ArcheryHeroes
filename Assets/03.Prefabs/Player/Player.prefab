@@ -64,7 +64,7 @@ Transform:
   m_GameObject: {fileID: 3863558932465538756}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -187,7 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthChangeDelay: 0.5
-  DamageClip: {fileID: 0}
+  damageSFX: {fileID: 11400000, guid: 49c005aacff1c6f4db5aa0711ad1b48a, type: 2}
+  deathSFX: {fileID: 11400000, guid: 7a1e7243d2acfff4697e93d03f8f9710, type: 2}
 --- !u!114 &3691518702325944581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +218,7 @@ MonoBehaviour:
   characterRenderer: {fileID: 1595651993454325111}
   weaponPivot: {fileID: 5704645585697235688}
   weaponPrefab: {fileID: 8091848209504161090, guid: 29bbd6212736e25439239b755748465b, type: 3}
+  isInterAct: 0
 --- !u!114 &5272583914466429563
 MonoBehaviour:
   m_ObjectHideFlags: 0

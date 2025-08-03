@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc6070a5d532fa43b5114149d7971b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightningEffectPrefab: {fileID: 0}
+  lightningEffectPrefab: {fileID: 6901960616876721731, guid: 092618c41a754794ea423fc614cc299d, type: 3}
   lightningDetectionRadius: 3
   lightningCount: 2

@@ -13,6 +13,8 @@ public class PlayerController : BaseController
 
     private float minDistance;
 
+    public bool isInterAct;
+
     protected override void Start()
     {
         base.Start();
@@ -67,7 +69,7 @@ public class PlayerController : BaseController
         if (movementDirection == Vector2.zero)
         {
             weaponHandler?.Attack();
-            Debug.Log("공격중");
+            //Debug.Log("공격중");
         }
     }
 
@@ -94,5 +96,10 @@ public class PlayerController : BaseController
     {
         movementDirection = inputValue.Get<Vector2>();
         movementDirection = movementDirection.normalized;
+    }
+
+    private void OnInterAct(InputValue inputValue)
+    {
+        isInterAct = true;
     }
 }

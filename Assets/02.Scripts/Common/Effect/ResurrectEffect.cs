@@ -32,7 +32,6 @@ public class ResurrectEffect : EffectSO
     {
         if (currentHealth > 0) return;
         if (Random.value > resurrectChance) return; // 부활 확률 체크
-        Debug.Log($"{playerResourceController.CurrentHealth}");
 
         // 부활 이펙트 생성
         ObjectPoolingManager.Instance.Get(resurrectEffect, playerResourceController.transform.position);

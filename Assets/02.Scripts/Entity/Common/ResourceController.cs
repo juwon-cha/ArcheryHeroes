@@ -6,6 +6,8 @@ using UnityEngine;
 public class ResourceController : MonoBehaviour
 {
     [SerializeField] private float _healthChangeDelay = 0.5f; // 체력 변경 딜레이(무적)
+    [SerializeField] private SoundDataSO damageSFX; // 데미지 효과음
+    [SerializeField] private SoundDataSO deathSFX; // 사망 효과음
 
     private BaseController baseController;
     private StatHandler statHandler;
@@ -16,8 +18,6 @@ public class ResourceController : MonoBehaviour
 
     public float CurrentHealth { get; private set; }
     public float MaxHealth => statHandler.Health;
-
-    public AudioClip DamageClip;
 
     private Action<float, float> OnChangeHealth;
 
@@ -40,6 +40,11 @@ public class ResourceController : MonoBehaviour
         {
             Debug.LogError("AnimationHandler component is missing on " + gameObject.name);
         }
+    }
+
+    private void OnEnable()
+    {
+        HPBarManager.Instance.CreateHPBar(this); // HPBar 생성
     }
 
     private void Start()
@@ -82,19 +87,17 @@ public class ResourceController : MonoBehaviour
         ElementEffectManager.Instance.ApplyElementEffect(this, change, elementType); // 엘리먼트 효과 적용
         OnChangeHealth?.Invoke(CurrentHealth, MaxHealth); // 체력 변경 이벤트 호출
 
-        if (change < 0)
-        {
-            animationHandler.Damage(); // 데미지 애니메이션 실행
-
-            if (DamageClip != null)
-            {
-                // 데미지 사운드 재생
-            }
-        }
-
         if (CurrentHealth <= 0)
         {
+            AudioManager.Instance.PlaySFX(deathSFX); // 사망 사운드 재생
             Death();
+        }
+        else if (change < 0)
+        {
+            DamageTextManager.Instance.ShowDamageText((int)-change, transform.position); // 데미지 텍스트 표시
+
+            AudioManager.Instance.PlaySFX(damageSFX); // 데미지 사운드 재생
+            animationHandler.Damage(); // 데미지 애니메이션 실행
         }
 
         return true;
