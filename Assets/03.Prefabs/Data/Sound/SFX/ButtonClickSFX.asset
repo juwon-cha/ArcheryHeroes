@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7568ba8cfa57044bb63660cb87e1a46, type: 3}
   m_Name: ButtonClickSFX
   m_EditorClassIdentifier: 
-  soundName: AchievementComplete
+  soundName: ButtonClick
   audioClips:
-  - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  - {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
   volume: 0.5
   soundType: 1

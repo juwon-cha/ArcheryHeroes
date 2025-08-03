@@ -9,6 +9,7 @@ public class AchievementPopupController : MonoBehaviour
     [SerializeField] private GameObject achievementPopupPrefab; // 팝업 프리팹
     [SerializeField] private Transform popupParent; // 팝업이 생성될 부모
     [SerializeField] private float displayDuration = 3f; // 팝업이 화면에 머무는 시간
+    [SerializeField] private SoundDataSO popupSFX; // 팝업 사운드 효과
 
     private void Start()
     {
@@ -31,6 +32,9 @@ public class AchievementPopupController : MonoBehaviour
 
     private IEnumerator PopupRoutine(GameObject popupInstance, MissionSO missionData)
     {
+        // 사운드 효과 재생
+        AudioManager.Instance.PlaySFX(popupSFX);
+
         AchievementPopupUI popupUI = popupInstance.GetComponent<AchievementPopupUI>();
         if(popupUI != null)
         {

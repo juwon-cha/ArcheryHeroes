@@ -4953,6 +4953,7 @@ MonoBehaviour:
   achievementPopupPrefab: {fileID: 475392552758777836, guid: 237c2927ffc4d554cb6f17e5e3a8cbfa, type: 3}
   popupParent: {fileID: 7673246084748484211}
   displayDuration: 2
+  popupSFX: {fileID: 11400000, guid: 7a3acfa1ef7505749b2c2ed1401eb4eb, type: 2}
 --- !u!1 &7160731486407057670
 GameObject:
   m_ObjectHideFlags: 0
