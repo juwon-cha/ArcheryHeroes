@@ -4308,6 +4308,7 @@ MonoBehaviour:
   door: {fileID: 3454479193695030692}
   playerSpawnPosition: {fileID: 6184676101448617985}
   roomType: 1
+  eventSkillBox: {fileID: 3771432162550284827}
 --- !u!1 &5572178597367035188
 GameObject:
   m_ObjectHideFlags: 0
@@ -7537,6 +7538,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7531358056878914059, guid: bbed04a4b323a1345aac7b63c9e673a1, type: 3}
   m_PrefabInstance: {fileID: 8640342856266807568}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3771432162550284827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4881474962404604683, guid: bbed04a4b323a1345aac7b63c9e673a1, type: 3}
+  m_PrefabInstance: {fileID: 8640342856266807568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35ee4c6510674a4e8bcde7598683397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9093033237960774679
 PrefabInstance:
   m_ObjectHideFlags: 0

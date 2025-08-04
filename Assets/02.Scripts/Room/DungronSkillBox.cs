@@ -45,4 +45,14 @@ public class DungronSkillBox : MonoBehaviour
         // 근대 비활성화 할지 빈 껍대기로 만들지는 선택
         gameObject.SetActive(false);
     }
+
+    // 이벤트 방에 들어올 때 상자를 보여주는 메서드
+    public void PrepareForRoom()
+    {
+        // 사용 상태를 미사용으로 초기화합니다.
+        hasBeenUsed = false;
+
+        // 게임 오브젝트를 활성화하여 화면에 보이게 합니다.
+        this.gameObject.SetActive(true);
+    }
 }
