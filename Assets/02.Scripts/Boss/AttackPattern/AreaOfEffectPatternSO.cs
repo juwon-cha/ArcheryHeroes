@@ -84,9 +84,27 @@ public class AreaOfEffectPatternSO : BossAttackSO
         // 모든 경고를 보여주며 기다림
         yield return new WaitForSeconds(warningDuration);
 
+        if (boss == null)
+        {
+            // 남아있는 경고 장판 정리
+            foreach (GameObject indicator in warningIndicators)
+            {
+                if (indicator != null)
+                {
+                    Object.Destroy(indicator);
+                }
+            }
+            yield break; // 코루틴 즉시 종료
+        }
+
         // 경고 장판을 실제 대미지 장판으로 교체
         foreach (GameObject indicator in warningIndicators)
         {
+            if (indicator == null)
+            {
+                continue;
+            }
+
             // 실제 대미지를 주는 장판을 경고 표시기 위치에 생성
             GameObject damageZone = Object.Instantiate(damageZonePrefab, indicator.transform.position, Quaternion.identity);
 
