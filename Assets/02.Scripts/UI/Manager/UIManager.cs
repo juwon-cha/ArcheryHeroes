@@ -104,6 +104,15 @@ public class UIManager : Singleton<UIManager>
             ui.SetActive(false);
     }
 
+    public void ToggleUI(UIType uIType)
+    {
+        if (uiDictionary.TryGetValue(uIType, out GameObject uiObject))
+        {
+            bool isActive = uiObject.activeSelf;
+            uiObject.SetActive(!isActive);
+        }
+    }
+
     // 모든 버튼에 효과음을 주입하는 메서드
     private void InjectButtonSFX()
     {
