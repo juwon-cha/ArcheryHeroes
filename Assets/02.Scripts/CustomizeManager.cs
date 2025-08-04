@@ -7,8 +7,9 @@ public class CustomizeManager : Singleton<CustomizeManager>
     [Header("커스터마이징 목록")]
     [SerializeField] private GameObject[] customObjects;
 
+    public GameObject previewPrefab;
     public GameObject player;
-    private Vector2 spawnPosition;
+    private Vector2 playerSpawnPosition;
 
     void Start()
     {
@@ -16,12 +17,12 @@ public class CustomizeManager : Singleton<CustomizeManager>
         {
             Vector2 spawnPosition;
             if (i < 5)
-                spawnPosition = new Vector2(-6 + 3 * i, 4);
+                spawnPosition = new Vector2(-6 + 3 * i, 2);
             else
                 spawnPosition = new Vector2(-6 + 3 * (i - 5), -1);
             ObjectPoolingManager.Instance.Get(customObjects[i], spawnPosition);
         }
-        spawnPosition = new Vector2(0, -4);
-        ObjectPoolingManager.Instance.Get(player, spawnPosition);
+        playerSpawnPosition = new Vector2(0, -4);
+        player = ObjectPoolingManager.Instance.Get(previewPrefab, playerSpawnPosition);
     }
 }
