@@ -33,11 +33,13 @@ public class HPBar : UIFillBar
         if (target == null) return;
 
         SetFillAmount(currentHP, maxHP);
+    }
 
-        if (currentHP <= 0)
+    private void OnDisable()
+    {
+        if (target != null)
         {
             target.RemoveHealthChangeEvent(OnChangeHealth);
-            ObjectPoolingManager.Instance.Return(gameObject);
         }
     }
 
