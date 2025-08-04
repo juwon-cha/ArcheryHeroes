@@ -9,7 +9,7 @@ using Object = UnityEngine.Object;
 
 namespace NavMeshPlus.Extensions
 {
-    class NavMeshBuilder2dState: IDisposable
+    class NavMeshBuilder2dState : IDisposable
     {
         public Dictionary<Sprite, Mesh> spriteMeshMap;
         public Dictionary<uint, Mesh> coliderMeshMap;
@@ -25,7 +25,7 @@ namespace NavMeshPlus.Extensions
         public CollectObjects CollectObjects;
         public GameObject parent;
         public bool hideEditorLogs;
-        
+
         protected IEnumerable<GameObject> _root;
         private bool _disposed;
 
@@ -253,7 +253,7 @@ namespace NavMeshPlus.Extensions
         }
 
         public static void CollectSources(List<NavMeshBuildSource> sources, Collider2D collider, int area, NavMeshBuilder2dState builder)
-        { 
+        {
             if (collider.usedByComposite)
             {
                 collider = collider.GetComponent<CompositeCollider2D>();
@@ -299,35 +299,7 @@ namespace NavMeshPlus.Extensions
 
             var vec3int = new Vector3Int(0, 0, 0);
 
-            if (builder.CollectGeometry == NavMeshCollectGeometry.PhysicsColliders)
-            {
-                // Collect physics colliders
-                var colliders = tilemap.GetComponentsInChildren<Collider2D>();
-                foreach (var collider in colliders)
-                {
-                    CollectSources(sources, collider, area, builder);
-                }
-                return;
-            }
-            if (builder.CollectGeometry == NavMeshCollectGeometry.RenderMeshes)
-            {
-                // Collect render meshes
-                var renderers = tilemap.GetComponentsInChildren<SpriteRenderer>();
-                foreach (var renderer in renderers)
-                {
-                    CollectSources(sources, renderer, area, builder);
-                }
-                return;
-            }
-
-            Vector3 size = new Vector3(1, 1);
-            // var size = new Vector3(tilemap.layoutGrid.cellSize.x, tilemap.layoutGrid.cellSize.y, 0);
-            /*
-            if (tilemap != null)
-                size = new Vector3(tilemap.layoutGrid.cellSize.x, tilemap.layoutGrid.cellSize.y, 0);
-
-            */
-
+            var size = new Vector3(tilemap.layoutGrid.cellSize.x, tilemap.layoutGrid.cellSize.y, 0);
             Mesh sharedMesh = null;
             Quaternion rot = default;
 
@@ -355,7 +327,7 @@ namespace NavMeshPlus.Extensions
                     if (modifierTilemap && modifierTilemap.TryGetTileModifier(vec3int, tilemap, out NavMeshModifierTilemap.TileModifier tileModifier))
                     {
                         src.area = tileModifier.overrideArea ? tileModifier.area : area;
-                    }    
+                    }
                     sources.Add(src);
 
                     builder.lookupCallback?.Invoke(tilemap.GetInstantiatedObject(vec3int), src);
