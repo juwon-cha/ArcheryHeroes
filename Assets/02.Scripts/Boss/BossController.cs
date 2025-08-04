@@ -202,8 +202,9 @@ public class BossController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    public void Init(DungeonRoom room)
+    public void Init(DungeonRoom room, Tilemap floor)
     {
         this.parentRoom = room;
+        this.groundTilemap = floor;
     }
 }
