@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c553d63f8fc4a4cac474331a2f597a, type: 3}
   m_Name: Axe_LizardF
   m_EditorClassIdentifier: 
-  enemyName: ShamanOrc
+  enemyName: LizardF
   xpValue: 5
+  enemyType: 0
   maxHealth: 5
   speed: 3
   followRange: 15
   attackRange: 3
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 3434713312661476415, guid: f9575f19361e6dd4080d561ddc720d38, type: 3}
