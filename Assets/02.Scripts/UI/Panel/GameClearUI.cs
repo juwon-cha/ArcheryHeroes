@@ -23,7 +23,7 @@ public class GameClearUI : MonoBehaviour
     {
         GameManager.Instance.Pause();
         SetStageText(DungeonManager.Instance.CurrentStageIndex);
-        SetTimeText(Time.time);
+        SetTimeText(GameManager.Instance.PlayTime);
     }
 
     private void OnDisable()
@@ -38,7 +38,7 @@ public class GameClearUI : MonoBehaviour
 
     public void SetTimeText(float time)
     {
-        timeText.text = $"Time: {time:F2} seconds";
+        timeText.text = $"진행시간 : {time:F2}";
     }
 
     public void OnRestart()
