@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ¸ó½ºÅÍ ½ºÆù, ¿şÀÌºê °ü¸® ¸Å´ÏÀú
+// ëª¬ìŠ¤í„° ìŠ¤í°, ì›¨ì´ë¸Œ ê´€ë¦¬ ë§¤ë‹ˆì €
 public class EnemyManager : Singleton<EnemyManager>
 {
     private Coroutine waveRoutine;
@@ -16,8 +16,8 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private bool enemySpawnComplete;
 
-    [SerializeField] private int timeBetweenSpawns = 5;
-    [SerializeField] private int timeBetweenWaves = 5;
+    //[SerializeField] private int timeBetweenSpawns = 5;
+    //[SerializeField] private int timeBetweenWaves = 5;
 
     //public void StartWave(int waveCount)
     //{
@@ -65,7 +65,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     //    GameObject randomPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
 
-    //    // ¸ó½ºÅÍ »ı¼º ¿µ¿ª ·£´ıÀ¸·Î ¸¸µê
+    //    // ëª¬ìŠ¤í„° ìƒì„± ì˜ì—­ ëœë¤ìœ¼ë¡œ ë§Œë“¦
     //    Rect randomArea = spawnAreas[Random.Range(0, spawnAreas.Count)];
 
     //    Vector2 randomPosition = new Vector2(
@@ -104,8 +104,8 @@ public class EnemyManager : Singleton<EnemyManager>
             activeEnemies.Remove(enemy);
         }
 
-        // Á¤Áø±Ô
-        // ¿ä°Ç RoomManager°¡ ÇÒ °Í °°½À´Ï´Ù.
+        // ì •ì§„ê·œ
+        // ìš”ê±´ RoomManagerê°€ í•  ê²ƒ ê°™ìŠµë‹ˆë‹¤.
         //if (activeEnemies.Count == 0 && enemySpawnComplete)
         //{
         //    GameManager.Instance.EndOfWave();

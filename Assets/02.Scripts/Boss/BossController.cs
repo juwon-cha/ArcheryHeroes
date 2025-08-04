@@ -1,20 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-// 보스 컨트롤러는 플레이어와 일반 몬스터와 다른 특수한 행동을 가져서 BaseController를 상속하지 않음
 public class BossController : BaseController
 {
     // 핵심 컴포넌트
     [SerializeField] private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rigidBody;
-    public Rigidbody2D Rigidbody { get { return rigidBody; } }
+
     private BoxCollider2D boxCollider;
     public BoxCollider2D BoxCollider { get { return boxCollider; } }
-    private AnimationHandler animationHandler;
+
     public AnimationHandler AnimationHandler { get { return animationHandler; } }
-    private StatHandler statHandler;
+    
     public StatHandler StatHandler { get { return statHandler; } }
 
     [Header("공격 정보")]
@@ -134,7 +131,7 @@ public class BossController : BaseController
         rigidBody.velocity = Vector2.zero;
     }
 
-    public void OnDead()
+    public override void OnDead()
     {
         AchievementManager.Instance.UpdateKillEnemyByTypeProgress(enemyType, 1);
         AchievementManager.Instance.UpdateProgress(MissionType.KillEnemy, 1);
