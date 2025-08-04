@@ -28,6 +28,9 @@ public class DungeonRoom : MonoBehaviour
     [Header("방 타입 설정")]
     [SerializeField] private RoomType roomType = RoomType.NormalRoom; // 기본값은 전투 방
 
+    [Header("이벤트 방 설정 (EventRoom 전용)")]
+    [SerializeField] private DungronSkillBox eventSkillBox;
+
     // 현재 방에서 살아있는 몬스터 리스트
     private List<EnemyController> activeEnemies = new List<EnemyController>();
     private BossController activeBoss;
@@ -242,7 +245,10 @@ public class DungeonRoom : MonoBehaviour
                 SpawnBoss();
                 break;
             case RoomType.EventRoom:
-
+                if (eventSkillBox != null)
+                {
+                    eventSkillBox.PrepareForRoom();
+                }
                 break;
         }
 
