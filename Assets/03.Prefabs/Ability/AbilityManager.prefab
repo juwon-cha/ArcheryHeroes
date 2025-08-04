@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f41bc71734dd24b937213f2e199b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useDontDestroyOnLoad: 1
   allAbilities:
   - {fileID: 11400000, guid: 5af64d43c09018d4daa8d3bdf6ec3481, type: 2}
   - {fileID: 11400000, guid: 15210d6cad822d247aa341a56e5b6b76, type: 2}
@@ -55,3 +56,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 586a68d8d26bba64688160ca18b5de61, type: 2}
   - {fileID: 11400000, guid: c670165b098b92b41aace60d213a0ab9, type: 2}
   - {fileID: 11400000, guid: 5fa287356bce9004c99b94f79c3fc290, type: 2}
+  - {fileID: 11400000, guid: 5f9ead6d673608d4d87f9d7c345d7e3f, type: 2}
