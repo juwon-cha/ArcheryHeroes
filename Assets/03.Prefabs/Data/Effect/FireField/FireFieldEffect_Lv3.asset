@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ea7734ca1f87a4fad18cd53701433c, type: 3}
   m_Name: FireFieldEffect_Lv3
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 1652979733421298382, guid: 5bb84377f7fbe404e821acf6af185666, type: 3}
+  spawnObject: {fileID: 1652979733421298382, guid: 1e1aba27109f2ef49874a507ff870aef, type: 3}
