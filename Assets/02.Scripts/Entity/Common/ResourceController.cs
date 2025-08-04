@@ -3,25 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Random = UnityEngine.Random;
+
 public class ResourceController : MonoBehaviour
 {
-    [SerializeField] private float _healthChangeDelay = 0.5f; // 체력 변경 딜레이(무적)
-    [SerializeField] private SoundDataSO damageSFX; // 데미지 효과음
-    [SerializeField] private SoundDataSO deathSFX; // 사망 효과음
+    [SerializeField] protected float _healthChangeDelay = 0.5f; // 체력 변경 딜레이(무적)
+    [SerializeField] protected SoundDataSO damageSFX; // 데미지 효과음
+    [SerializeField] protected SoundDataSO deathSFX; // 사망 효과음
+    [SerializeField] protected GameObject damageEffect; // 데미지 이펙트
+    [SerializeField] protected float damageEffectRandomOffsetRange = 0.5f; // 데미지 이펙트 위치 랜덤 오프셋 범위
 
-    private BaseController baseController;
-    private StatHandler statHandler;
-    private AnimationHandler animationHandler;
+    protected BaseController baseController;
+    protected StatHandler statHandler;
+    protected AnimationHandler animationHandler;
 
     // 변화를 가진 시간 저장
     private float timeSinceLastHealthChange = float.MaxValue;
 
-    public float CurrentHealth { get; private set; }
+    public float CurrentHealth { get; protected set; }
     public float MaxHealth => statHandler.Health;
 
-    private Action<float, float> OnChangeHealth;
+    protected Action<float, float> OnChangeHealth;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         baseController = GetComponent<BaseController>();
         if (baseController == null)
@@ -103,6 +107,10 @@ public class ResourceController : MonoBehaviour
         DamageTextManager.Instance.ShowDamageText((int)-change, transform.position); // 데미지 텍스트 표시
         OnChangeHealth?.Invoke(CurrentHealth, MaxHealth); // 체력 변경 이벤트 호출
 
+        Vector2 offset = Random.insideUnitCircle * damageEffectRandomOffsetRange; // 랜덤 위치 오프셋
+        Vector2 pos = transform.position + (Vector3)offset; // 현재 위치에 오프셋 추가
+        ObjectPoolingManager.Instance.Get(damageEffect, pos);
+
         if (CurrentHealth <= 0)
         {
             AudioManager.Instance.PlaySFX(deathSFX); // 사망 사운드 재생
@@ -118,7 +126,7 @@ public class ResourceController : MonoBehaviour
     }
 
 
-    private void Death()
+    protected virtual void Death()
     {
         baseController.OnDead();
     }

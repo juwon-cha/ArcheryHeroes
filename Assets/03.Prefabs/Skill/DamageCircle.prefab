@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9160127601012927000}
   - component: {fileID: 1861955484719719593}
   - component: {fileID: -9020227969192216037}
+  - component: {fileID: -5043304501365826750}
   m_Layer: 0
   m_Name: DamageCircle
   m_TagString: Untagged
@@ -160,3 +161,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e271337b5a1e5448330741a4b5b37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5043304501365826750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5473979160288868594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a980a649d3e5540931d1582babf42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamType: 1
+  damage: 5
