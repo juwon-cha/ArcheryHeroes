@@ -57,6 +57,9 @@ MonoBehaviour:
   enemyParent: {fileID: 8538954751419123473}
   door: {fileID: 8746397399344605088}
   playerSpawnPosition: {fileID: 5896574692939279855}
+  roomType: 0
+  eventSkillBox: {fileID: 0}
+  floorTilemap: {fileID: 0}
 --- !u!1 &3008765279711146479
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +521,7 @@ GameObject:
   - component: {fileID: 6263261020353032674}
   - component: {fileID: 6918648122914883785}
   - component: {fileID: 2789841246288337536}
+  - component: {fileID: 1484714521459723214}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -3315,6 +3319,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &1484714521459723214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4047795345915185591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &4104949688712363405
 GameObject:
   m_ObjectHideFlags: 0
@@ -6028,6 +6048,7 @@ GameObject:
   - component: {fileID: 6875417901441367519}
   - component: {fileID: 3446985928592981980}
   - component: {fileID: 7443014044542440485}
+  - component: {fileID: 4302638576990339699}
   m_Layer: 6
   m_Name: Obstacle
   m_TagString: Untagged
@@ -6467,6 +6488,22 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 7544093939889958083}
+--- !u!114 &4302638576990339699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544093939889958083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8002215776356015217
 GameObject:
   m_ObjectHideFlags: 0
@@ -8521,6 +8558,7 @@ GameObject:
   - component: {fileID: 3948758855658341138}
   - component: {fileID: 1547378717760672374}
   - component: {fileID: 430579009661932525}
+  - component: {fileID: 585861481702074840}
   m_Layer: 29
   m_Name: Collision
   m_TagString: Untagged
@@ -9498,6 +9536,22 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 8511340383404839359}
+--- !u!114 &585861481702074840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8511340383404839359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8791047270235805057
 GameObject:
   m_ObjectHideFlags: 0

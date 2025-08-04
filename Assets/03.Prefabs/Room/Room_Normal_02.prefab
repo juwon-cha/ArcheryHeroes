@@ -1405,6 +1405,7 @@ GameObject:
   - component: {fileID: 9121815601787946813}
   - component: {fileID: 6883113568200516421}
   - component: {fileID: 3027813691093928144}
+  - component: {fileID: 3582102286724192730}
   m_Layer: 29
   m_Name: Collision
   m_TagString: Untagged
@@ -2382,6 +2383,22 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 1473660391207824792}
+--- !u!114 &3582102286724192730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473660391207824792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &3117655681238481300
 GameObject:
   m_ObjectHideFlags: 0
@@ -3133,6 +3150,7 @@ GameObject:
   - component: {fileID: 5014183388459112454}
   - component: {fileID: 7910536548153101360}
   - component: {fileID: 5566178495801404752}
+  - component: {fileID: 7444292327963563348}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -5930,6 +5948,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &7444292327963563348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328872088804858422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &6686062012965446365
 GameObject:
   m_ObjectHideFlags: 0
@@ -7111,6 +7145,9 @@ MonoBehaviour:
   enemyParent: {fileID: 1147670352469108160}
   door: {fileID: 3232065371052108097}
   playerSpawnPosition: {fileID: 7219851305264543033}
+  roomType: 0
+  eventSkillBox: {fileID: 0}
+  floorTilemap: {fileID: 0}
 --- !u!1 &8316259551983161572
 GameObject:
   m_ObjectHideFlags: 0
@@ -9271,6 +9308,7 @@ GameObject:
   - component: {fileID: 2588608325496334430}
   - component: {fileID: 8257301005888846024}
   - component: {fileID: 5511663551370288133}
+  - component: {fileID: 8960290501025003231}
   m_Layer: 6
   m_Name: Obstacle
   m_TagString: Untagged
@@ -9934,6 +9972,22 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 8602603324258625968}
+--- !u!114 &8960290501025003231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602603324258625968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &9014708227857035506
 PrefabInstance:
   m_ObjectHideFlags: 0

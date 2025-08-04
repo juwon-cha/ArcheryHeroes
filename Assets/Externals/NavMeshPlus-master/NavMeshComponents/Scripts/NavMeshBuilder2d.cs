@@ -1,4 +1,4 @@
-﻿using NavMeshPlus.Components;
+using NavMeshPlus.Components;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -299,7 +299,35 @@ namespace NavMeshPlus.Extensions
 
             var vec3int = new Vector3Int(0, 0, 0);
 
-            var size = new Vector3(tilemap.layoutGrid.cellSize.x, tilemap.layoutGrid.cellSize.y, 0);
+            if (builder.CollectGeometry == NavMeshCollectGeometry.PhysicsColliders)
+            {
+                // Collect physics colliders
+                var colliders = tilemap.GetComponentsInChildren<Collider2D>();
+                foreach (var collider in colliders)
+                {
+                    CollectSources(sources, collider, area, builder);
+                }
+                return;
+            }
+            if (builder.CollectGeometry == NavMeshCollectGeometry.RenderMeshes)
+            {
+                // Collect render meshes
+                var renderers = tilemap.GetComponentsInChildren<SpriteRenderer>();
+                foreach (var renderer in renderers)
+                {
+                    CollectSources(sources, renderer, area, builder);
+                }
+                return;
+            }
+
+            Vector3 size = new Vector3(1, 1);
+            // var size = new Vector3(tilemap.layoutGrid.cellSize.x, tilemap.layoutGrid.cellSize.y, 0);
+            /*
+            if (tilemap != null)
+                size = new Vector3(tilemap.layoutGrid.cellSize.x, tilemap.layoutGrid.cellSize.y, 0);
+
+            */
+
             Mesh sharedMesh = null;
             Quaternion rot = default;
 
