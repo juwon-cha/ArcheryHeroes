@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : BaseController
 {
@@ -14,6 +15,8 @@ public class EnemyController : BaseController
     DungeonRoom parentRoom; // 몬스터가 속한 방
     ResourceController resourceController;
 
+    private NavMeshAgent agent;
+
     private void Awake()
     {
         if(enemyData != null)
@@ -24,6 +27,8 @@ public class EnemyController : BaseController
         base.Awake();
 
         resourceController = GetComponent<ResourceController>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = statHandler.Speed; // NavMeshAgent의 속도를 StatHandler의 속도로 설정
     }
 
     private void ApplyEnemyData()
@@ -65,7 +70,8 @@ public class EnemyController : BaseController
             Debug.Log($"{enemyData.enemyName} 처치! 경험치 {enemyData.xpValue} 획득!");
 
             AchievementManager.Instance.UpdateKillEnemyByTypeProgress(enemyData.enemyType, 1);
-            AchievementManager.Instance.UpdateProgress(MissionType.KillEnemy, 1);
+            if(this.gameObject.CompareTag("Monster"))
+                AchievementManager.Instance.UpdateProgress(MissionType.KillEnemy, 1);
 
             GameManager.Instance.GainExp(enemyData.xpValue);
         }
@@ -124,6 +130,16 @@ public class EnemyController : BaseController
 
             movementDirection = direction;
         }
+    }
+
+    protected override void Movement(Vector2 direction)
+    {
+        if(movementDirection != Vector2.zero)
+            agent.SetDestination(GameManager.Instance.Player.GetPosition()); // NavMeshAgent를 사용하여 이동
+        else
+            agent.SetDestination(transform.position); // 이동할 방향이 없으면 제자리
+
+        animationHandler.Move(direction); // 애니메이션 핸들러에 이동 방향 전달
     }
 
     private void OnDrawGizmosSelected()

@@ -80,7 +80,7 @@ public class PlayerController : BaseController
         for (int i = 0; i < adjObj.Length; i++)
         {
             float distance;
-            if (adjObj[i] != null && adjObj[i].CompareTag("Monster"))
+            if (adjObj[i] != null && (adjObj[i].CompareTag("Monster") || adjObj[i].CompareTag("TutorialMonster")))
             {
                 distance = Vector2.Distance(transform.position, adjObj[i].transform.position);
                 if (distance <= minDistance)

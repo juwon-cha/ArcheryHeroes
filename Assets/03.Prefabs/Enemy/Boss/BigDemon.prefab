@@ -197,6 +197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca73444c9b1ee14ca7909198c699576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 0}
+  weaponPivot: {fileID: 0}
+  weaponPrefab: {fileID: 0}
   spriteRenderer: {fileID: 2680468871832475754}
   power: 3
   applyKnockback: 1
