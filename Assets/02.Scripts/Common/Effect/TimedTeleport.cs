@@ -10,7 +10,11 @@ public class TimedTeleport : EffectSO
     private GameObject portalEffect;
     private Coroutine teleportCoroutine;
 
-    public override void Initialize() { }
+    public override void Initialize()
+    {
+        DungeonManager.Instance.AddStageChangedEvent((_) => Deactivate());
+
+    }
 
     public override void Execute(EffectContext effectContext = null)
     {
