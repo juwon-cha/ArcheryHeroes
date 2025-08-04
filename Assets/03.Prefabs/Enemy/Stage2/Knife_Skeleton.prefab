@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc4170ea7a655d46b84db53dbf74368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthChangeDelay: 0.5
+  _healthChangeDelay: 0.2
   damageSFX: {fileID: 11400000, guid: 1f55828ddc2f0704eba29c59f9cb8663, type: 2}
   deathSFX: {fileID: 11400000, guid: c91e468e187ccc6498de5553eb014c17, type: 2}
   damageEffect: {fileID: 7515368287247860954, guid: 74d53c28c8f2d404cb0daa7180d531dc, type: 3}
