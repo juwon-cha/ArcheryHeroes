@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
   - component: {fileID: -6785567588292168187}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: BigZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
   applyKnockback: 1
   knockbackPower: 5
   knockbackDuration: 0.5
+  enemyType: 0
   attackPatterns:
   - {fileID: 11400000, guid: 2afa8b72c58ab1942bf890256f43818e, type: 2}
   - {fileID: 11400000, guid: 10f6dd58ee531874e9a869cbd0b3959f, type: 2}

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -31,7 +33,17 @@ public class GameManager : Singleton<GameManager>
     private float maxExp;
     [SerializeField] private float initMaxExp = 10f; // 초기 최대 경험치
 
+    private Stopwatch stopwatch = new();
+
     private bool isPaused = false;
+
+    public float PlayTime
+    {
+        get
+        {
+            return (float)stopwatch.Elapsed.TotalSeconds;
+        }
+    }
 
     protected override void Initialize()
     {
@@ -40,12 +52,15 @@ public class GameManager : Singleton<GameManager>
         maxExp = initMaxExp;
         OnExperienceChanged?.Invoke(currentExp, maxExp);
         Resume();
+        stopwatch.Reset();
+        stopwatch.Start();
     }
 
     public void ResetGame()
     {
         SkillManager.Instance.ResetSkills();
         AbilityManager.Instance.ResetAbilities();
+        DungeonManager.Instance.ResetDungeon();
         Initialize();
     }
 

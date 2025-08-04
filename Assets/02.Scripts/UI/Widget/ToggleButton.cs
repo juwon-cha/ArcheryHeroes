@@ -10,11 +10,16 @@ public class ToggleButton : MonoBehaviour
     public UnityEvent OnToggleOff;
 
     private Button toggleButton;
-    [SerializeField] private Sprite onImage;
-    [SerializeField] private Sprite offImage;
-    [SerializeField] private bool isOn = false;
+    [SerializeField] protected Sprite onImage;
+    [SerializeField] protected Sprite offImage;
+    [SerializeField] protected bool isOn = false;
 
     private void Awake()
+    {
+        Initialize();
+    }
+
+    public virtual void Initialize()
     {
         toggleButton = GetComponentInChildren<Button>(true);
         if (toggleButton != null)

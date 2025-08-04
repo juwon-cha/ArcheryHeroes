@@ -23,7 +23,7 @@ public class GameOverUI : MonoBehaviour
     {
         GameManager.Instance.Pause();
         SetStageText(DungeonManager.Instance.CurrentStageIndex);
-        SetTimeText(Time.time);
+        SetTimeText(GameManager.Instance.PlayTime);
     }
 
     private void OnDisable()
@@ -38,11 +38,12 @@ public class GameOverUI : MonoBehaviour
 
     public void SetTimeText(float time)
     {
-        timeText.text = $"Time: {time:F2} seconds";
+        timeText.text = $"진행시간 : {time:F2}";
     }
 
     public void OnRestart()
     {
+        GameManager.Instance.ResetGame();
         FadeManager.LoadScene("PlayScene");
         UIManager.Instance.HideUI(UIType.GameOver);
     }
