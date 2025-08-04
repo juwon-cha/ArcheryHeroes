@@ -5,6 +5,7 @@ using TMPro;
 
 public class LevelUpUI : MonoBehaviour
 {
+    [SerializeField] private SoundDataSO levelUpSFX; // 레벨업 효과음
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private int maxSelectCount = 3; // 최대 선택 개수
     [SerializeField] private GameObject levelUpSelectButtonPrefab; // 레벨업 선택 버튼 프리팹
@@ -62,6 +63,7 @@ public class LevelUpUI : MonoBehaviour
 
     public void Show()
     {
+        AudioManager.Instance.PlaySFX(levelUpSFX);
         GameManager.Instance.Pause(); // 게임 일시 정지
         gameObject.SetActive(true);
         SetSelectButtons(); // 활성화 시 선택 버튼 설정
