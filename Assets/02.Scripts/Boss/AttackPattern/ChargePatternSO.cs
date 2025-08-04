@@ -76,6 +76,16 @@ public class ChargePatternSO : BossAttackSO
         boss.StopMovement();
         yield return new WaitForSeconds(aimDuration);
 
+        if (boss == null)
+        {
+            // 보스가 사라졌다면 인디케이터도 정리
+            if (indicator != null)
+            {
+                Object.Destroy(indicator);
+            }
+            yield break; // 코루틴 즉시 종료
+        }
+
         // 돌진 실행
         if (indicator != null)
         {
@@ -95,6 +105,12 @@ public class ChargePatternSO : BossAttackSO
 
         // 계산된 시간만큼 대기
         yield return new WaitForSeconds(chargeActualDuration);
+
+        // 돌진 중에 보스가 파괴되었는지 확인
+        if (boss == null)
+        {
+            yield break; // 코루틴 즉시 종료
+        }
 
         // 종료 단계
         Debug.Log("돌진 종료.");

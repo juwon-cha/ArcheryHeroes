@@ -25,9 +25,9 @@ public class LaserBeamPatternSO : BossAttackSO
 
     private IEnumerator RotateLasersCoroutine(BossController boss)
     {
-        if (laserSpritePrefab == null)
+        if (laserSpritePrefab == null || boss == null)
         {
-            Debug.LogError($"{AttackName}: laserSpritePrefab이 할당되지 않았습니다!");
+            Debug.LogError($"{AttackName}: laserSpritePrefab 또는 Boss가 할당되지 않았습니다!");
             boss.ChangeState(new BossIdleState(Cooldown));
             yield break;
         }
@@ -48,6 +48,20 @@ public class LaserBeamPatternSO : BossAttackSO
         float timer = rotationDuration;
         while (timer > 0)
         {
+            // 보스와 타겟의 생존 여부 확인
+            if (boss == null || boss.Target == null)
+            {
+                // 루프가 중단되면 생성된 레이저들을 모두 파괴
+                foreach (GameObject laser in lasers)
+                {
+                    if (laser != null)
+                    {
+                        Object.Destroy(laser);
+                    }
+                }
+                yield break; // 코루틴 즉시 종료
+            }
+
             // 현재 회전 진행률 계산 (0.0 -> 1.0)
             float progress = 1f - (timer / rotationDuration);
             // 전체 360도 중 현재의 기본 각도 계산
@@ -139,9 +153,15 @@ public class LaserBeamPatternSO : BossAttackSO
         Debug.Log("회전 레이저 패턴 종료");
         foreach (GameObject laser in lasers)
         {
-            Object.Destroy(laser);
+            if (laser != null)
+            {
+                Object.Destroy(laser);
+            }
         }
 
-        boss.ChangeState(new BossIdleState(Cooldown));
+        if(boss != null)
+        {
+            boss.ChangeState(new BossIdleState(Cooldown));
+        }
     }
 }
