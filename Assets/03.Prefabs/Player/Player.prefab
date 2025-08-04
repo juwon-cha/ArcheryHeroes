@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a20f77e2dc6f224da937989a9bfd973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useDontDestroyOnLoad: 1
   playerVisualData:
   - baseSprites: {fileID: 21300000, guid: 7c948bfdd3b42fa4cb5f03520a43f7c0, type: 3}
     controllers: {fileID: 9100000, guid: 7bf7429557cb83e4a8625f9066a95cdb, type: 2}
@@ -275,6 +276,9 @@ MonoBehaviour:
     isGet: 1
   - baseSprites: {fileID: 21300000, guid: f3de521d047fe4445ae0e43be943095e, type: 3}
     controllers: {fileID: 9100000, guid: 74c9a6740e3ca734dafae6f08040c489, type: 2}
+    isGet: 1
+  - baseSprites: {fileID: 21300000, guid: 4e28f5c8a0509ac49a0cb5d07b548882, type: 3}
+    controllers: {fileID: 9100000, guid: e3b021ec7b0a50e40916369d6c0ddf3c, type: 2}
     isGet: 1
 --- !u!1 &5893668865522084624
 GameObject:

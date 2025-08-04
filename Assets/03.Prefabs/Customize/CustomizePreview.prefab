@@ -151,3 +151,6 @@ MonoBehaviour:
   - baseSprites: {fileID: 21300000, guid: c33d99982582e6244bb6fd205d970cdb, type: 3}
     controllers: {fileID: 9100000, guid: 74c9a6740e3ca734dafae6f08040c489, type: 2}
     isGet: 0
+  - baseSprites: {fileID: 21300000, guid: 4e28f5c8a0509ac49a0cb5d07b548882, type: 3}
+    controllers: {fileID: 9100000, guid: e3b021ec7b0a50e40916369d6c0ddf3c, type: 2}
+    isGet: 0

@@ -707,6 +707,7 @@ MonoBehaviour:
   - {fileID: 7315273379037762008, guid: 773985800fb71ea48b786fb9be689939, type: 3}
   - {fileID: 857572789387036362, guid: 94da00e5c426e9b4aa2e3e7bd43fe251, type: 3}
   - {fileID: 7993218328679179023, guid: 7323250b6c314dc4d939e54d72003c1b, type: 3}
+  - {fileID: 8774599984268220551, guid: 913686c5314a91d4c9c4c05be5a07124, type: 3}
   previewPrefab: {fileID: 5161325649414453761, guid: 72e948075bd3fff48add3941c54cb284, type: 3}
   player: {fileID: 0}
 --- !u!1 &1900052010
