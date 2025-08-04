@@ -155,7 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthChangeDelay: 0.5
-  DamageClip: {fileID: 0}
+  damageSFX: {fileID: 0}
+  deathSFX: {fileID: 0}
+  damageEffect: {fileID: 7515368287247860954, guid: 74d53c28c8f2d404cb0daa7180d531dc, type: 3}
+  damageEffectRandomOffsetRange: 0.5
 --- !u!114 &8355837575124620355
 MonoBehaviour:
   m_ObjectHideFlags: 0

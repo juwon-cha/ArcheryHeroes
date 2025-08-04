@@ -189,6 +189,8 @@ MonoBehaviour:
   _healthChangeDelay: 0.5
   damageSFX: {fileID: 11400000, guid: 49c005aacff1c6f4db5aa0711ad1b48a, type: 2}
   deathSFX: {fileID: 11400000, guid: 7a1e7243d2acfff4697e93d03f8f9710, type: 2}
+  damageEffect: {fileID: 7515368287247860954, guid: 74d53c28c8f2d404cb0daa7180d531dc, type: 3}
+  damageEffectRandomOffsetRange: 0.5
 --- !u!114 &3691518702325944581
 MonoBehaviour:
   m_ObjectHideFlags: 0
