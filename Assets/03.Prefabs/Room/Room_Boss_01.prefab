@@ -56,6 +56,8 @@ MonoBehaviour:
   door: {fileID: 4612907908086869117}
   playerSpawnPosition: {fileID: 8322612030714937807}
   roomType: 2
+  eventSkillBox: {fileID: 0}
+  floorTilemap: {fileID: 1554029025036648971}
 --- !u!1 &368301520225882587
 GameObject:
   m_ObjectHideFlags: 0

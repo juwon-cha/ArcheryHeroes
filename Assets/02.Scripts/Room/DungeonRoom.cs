@@ -31,6 +31,9 @@ public class DungeonRoom : MonoBehaviour
     [Header("이벤트 방 설정 (EventRoom 전용)")]
     [SerializeField] private DungronSkillBox eventSkillBox;
 
+    [Header("보스용 바닥 타일 설정")]
+    [SerializeField] private Tilemap floorTilemap;
+
     // 현재 방에서 살아있는 몬스터 리스트
     private List<EnemyController> activeEnemies = new List<EnemyController>();
     private BossController activeBoss;
@@ -119,7 +122,7 @@ public class DungeonRoom : MonoBehaviour
 
         if (activeBoss != null)
         {
-            activeBoss.Init(this);
+            activeBoss.Init(this, floorTilemap);
         }
     }
 
