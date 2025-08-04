@@ -9501,11 +9501,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 249625004468040122, guid: 924ff645471626f4cb8ca67920fca9e7, type: 3}
-  - {fileID: 249625004468040122, guid: eb37b73f1a8d34546b2f063f61dd9b4a, type: 3}
-  - {fileID: 249625004468040122, guid: d7b6d2c59476cac44aae46708c64b55d, type: 3}
-  - {fileID: 249625004468040122, guid: bfee568287c6ce347a2e77183482694d, type: 3}
-  - {fileID: 249625004468040122, guid: f59487cfe943d0442a3934f7793b1ebb, type: 3}
+  - {fileID: 249625004468040122, guid: 41600c15284ed3a4ba8db8fe9411874a, type: 3}
+  - {fileID: 249625004468040122, guid: 8bd17b3db7385cd43a5e6c1a061627cd, type: 3}
+  - {fileID: 249625004468040122, guid: f0fe8c0e9e7e47046a7f426929720e75, type: 3}
+  - {fileID: 249625004468040122, guid: 28798f58450ba584bb671fa262cde77b, type: 3}
   enemySpawnPoint: {fileID: 7555396130952271588}
   minEnemies: 3
   maxEnemies: 10

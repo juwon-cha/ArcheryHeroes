@@ -788,11 +788,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 249625004468040122, guid: 924ff645471626f4cb8ca67920fca9e7, type: 3}
-  - {fileID: 249625004468040122, guid: eb37b73f1a8d34546b2f063f61dd9b4a, type: 3}
-  - {fileID: 249625004468040122, guid: d7b6d2c59476cac44aae46708c64b55d, type: 3}
-  - {fileID: 249625004468040122, guid: bfee568287c6ce347a2e77183482694d, type: 3}
-  - {fileID: 249625004468040122, guid: f59487cfe943d0442a3934f7793b1ebb, type: 3}
+  - {fileID: 249625004468040122, guid: 81cff3be487795949992a7265f388d35, type: 3}
+  - {fileID: 249625004468040122, guid: 364fd876e00400a4faef02e11a94c18e, type: 3}
+  - {fileID: 249625004468040122, guid: ba90bd06fee04cd49bce85affbd54169, type: 3}
   enemySpawnPoint: {fileID: 985121632863433305}
   minEnemies: 3
   maxEnemies: 10

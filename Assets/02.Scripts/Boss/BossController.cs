@@ -54,7 +54,7 @@ public class BossController : MonoBehaviour
     public Tilemap GroundTilemap { get { return groundTilemap; } }
 
     private BossState currentState;
-
+    private DungeonRoom parentRoom;
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -151,6 +151,11 @@ public class BossController : MonoBehaviour
             component.enabled = false; // 나머지 컴포넌트 비활성화
         }
 
+        if (parentRoom != null)
+        {
+            parentRoom.OnBossKilled();
+        }
+
         Destroy(gameObject, 2f); // 2초 후에 오브젝트 삭제
     }
 
@@ -195,5 +200,10 @@ public class BossController : MonoBehaviour
         // 공격 범위
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
+    public void Init(DungeonRoom room)
+    {
+        this.parentRoom = room;
     }
 }

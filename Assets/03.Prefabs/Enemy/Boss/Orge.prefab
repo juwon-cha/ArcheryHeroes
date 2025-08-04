@@ -199,6 +199,7 @@ MonoBehaviour:
   applyKnockback: 1
   knockbackPower: 5
   knockbackDuration: 0.5
+  enemyType: 0
   attackPatterns:
   - {fileID: 11400000, guid: c9b194af9e1faed438cf4516db553660, type: 2}
   - {fileID: 11400000, guid: b61f0b534b823e145be53bc8bad1ea22, type: 2}

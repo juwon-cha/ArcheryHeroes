@@ -32,6 +32,16 @@ public class DungeonDoor : MonoBehaviour
         doorCollider.isTrigger = true;
     }
 
+    // 문의 상태를 초기화하는 메서드
+    public void ResetDoorState()
+    {
+        isDoorOpen = false;
+        if (doorSprite != null)
+            doorSprite.sprite = closedDoor;
+        if (doorCollider != null)
+            doorCollider.isTrigger = false;
+    }
+
     public void CloseDoor()
     {
         if(!isDoorOpen) return;
