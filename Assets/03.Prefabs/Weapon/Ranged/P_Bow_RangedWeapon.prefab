@@ -48,9 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0.5
   weaponSize: 1
-  power: 10
-  speed: 5
-  attackRange: 20
+  power: 3
+  speed: 3
+  attackRange: 10
   elementType: 0
   attackSFX: {fileID: 11400000, guid: a98a23f03b32e6940a996ec43a71085a, type: 2}
   Target:

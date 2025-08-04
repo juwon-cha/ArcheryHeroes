@@ -23,7 +23,7 @@ public class TutorialDungeonManager : Singleton<TutorialDungeonManager>
         {
             playerTransform = GameManager.Instance.Player.transform;
             playerStatHandler = GameManager.Instance.Player.GetComponent<StatHandler>();
-            playerStatHandler.Health = 100;
+            // playerStatHandler.Health = 100;
         }
         else
         {
