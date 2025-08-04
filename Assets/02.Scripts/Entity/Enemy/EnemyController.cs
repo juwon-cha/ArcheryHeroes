@@ -26,8 +26,6 @@ public class EnemyController : BaseController
             ApplyEnemyData();
         }
 
-        base.Awake();
-
         resourceController = GetComponent<ResourceController>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = statHandler.Speed; // NavMeshAgent의 속도를 StatHandler의 속도로 설정
@@ -136,10 +134,10 @@ public class EnemyController : BaseController
 
     protected override void Movement(Vector2 direction)
     {
-        if(movementDirection != Vector2.zero)
-            agent.SetDestination(GameManager.Instance.Player.GetPosition()); // NavMeshAgent를 사용하여 이동
+        if(isAttacking)
+            agent.SetDestination(transform.position); // NavMeshAgent를 사용하여 이동
         else
-            agent.SetDestination(transform.position); // 이동할 방향이 없으면 제자리
+            agent.SetDestination(GameManager.Instance.Player.GetPosition()); // 이동할 방향이 없으면 제자리
 
         animationHandler.Move(direction); // 애니메이션 핸들러에 이동 방향 전달
     }
