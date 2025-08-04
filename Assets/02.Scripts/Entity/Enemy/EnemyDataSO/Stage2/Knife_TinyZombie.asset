@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c553d63f8fc4a4cac474331a2f597a, type: 3}
   m_Name: Knife_TinyZombie
   m_EditorClassIdentifier: 
-  enemyName: ShamanOrc
+  enemyName: TinyZombie
   xpValue: 5
   enemyType: 7
   maxHealth: 5
   speed: 3
   followRange: 15
   attackRange: 3
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 3434713312661476415, guid: 3f807b88c3e74ed42bf1c6fb5f34250d, type: 3}
