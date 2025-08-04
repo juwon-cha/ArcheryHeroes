@@ -157,13 +157,6 @@ public class BaseController : MonoBehaviour
     {
         rigidBody.velocity = Vector3.zero;
 
-        foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
-        {
-            Color color = renderer.color;
-            color.a = 0.3f;
-            renderer.color = color;
-        }
-
         // 정진규 수정
         // 오브젝트 풀링에서 SetActive(false)를 하기 때문에 비화성화했습니다.
         //foreach (Behaviour component in transform.GetComponentsInChildren<Behaviour>())
@@ -189,14 +182,6 @@ public class BaseController : MonoBehaviour
         if (animationHandler != null && animationHandler.animator != null)
         {
             animationHandler.animator.Play(0, 0, 0f);
-        }
-
-        // 스프라이트 투명도 복구
-        foreach (SpriteRenderer renderer in transform.GetComponentsInChildren<SpriteRenderer>())
-        {
-            Color color = renderer.color;
-            color.a = 1.0f; // 알파값을 1 (불투명)으로 복구
-            renderer.color = color;
         }
 
         // 기타 상태 변수들을 초기화
