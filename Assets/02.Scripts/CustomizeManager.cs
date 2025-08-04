@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CustomizeManager : Singleton<CustomizeManager>
 {
@@ -11,9 +12,23 @@ public class CustomizeManager : Singleton<CustomizeManager>
     public GameObject player;
     private Vector2 playerSpawnPosition;
 
-    void Start()
+    protected override void Initialize()
     {
-        for(int i = 0;  i < customObjects.Length; i++)
+        player = null;
+        playerSpawnPosition = new Vector2(0, -4);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode __)
+    {
+        if (scene.name != "CustomizingScene") return;
+
+        for (int i = 0; i < customObjects.Length; i++)
         {
             Vector2 spawnPosition;
             if (i < 5)
@@ -22,7 +37,7 @@ public class CustomizeManager : Singleton<CustomizeManager>
                 spawnPosition = new Vector2(-6 + 3 * (i - 5), -1);
             ObjectPoolingManager.Instance.Get(customObjects[i], spawnPosition);
         }
-        playerSpawnPosition = new Vector2(0, -4);
+
         player = ObjectPoolingManager.Instance.Get(previewPrefab, playerSpawnPosition);
     }
 }
