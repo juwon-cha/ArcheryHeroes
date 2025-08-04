@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+public enum RoomType
+{
+    NormalRoom,
+    EventRoom,
+    BossRoom
+}
+
 public class DungeonRoom : MonoBehaviour
 {
     [Header("몬스터 설정")]
@@ -18,8 +25,12 @@ public class DungeonRoom : MonoBehaviour
     [Header("플레이어 스폰 위치")]
     [SerializeField] private Transform playerSpawnPosition;
 
+    [Header("방 타입 설정")]
+    [SerializeField] private RoomType roomType = RoomType.NormalRoom; // 기본값은 전투 방
+
     // 현재 방에서 살아있는 몬스터 리스트
     private List<EnemyController> activeEnemies = new List<EnemyController>();
+    private BossController activeBoss;
 
     // 디버그용 기즈모 임시 변수
     private List<Vector2> debug_possibleSpawnPoints = new List<Vector2>();
@@ -45,27 +56,11 @@ public class DungeonRoom : MonoBehaviour
 
         // 랜덤한 마리수의 몬스터 생성
         int enemyCount = Random.Range(minEnemies, maxEnemies);
+        // 디버그용
+        Debug.Log($"현재 방의 몬스터 수: {enemyCount}");
 
-        List<Vector2> possibleSpawnPoints = new List<Vector2>();
-        enemySpawnPoint.CompressBounds();
-        BoundsInt tileBounds = enemySpawnPoint.cellBounds;
-
-        for (int x = tileBounds.xMin; x < tileBounds.xMax; x++)
-        {
-            for (int y = tileBounds.yMin; y < tileBounds.yMax; y++)
-            {
-                Vector3Int tilePosition = new Vector3Int(x, y, 0);
-                if (enemySpawnPoint.HasTile(tilePosition))
-                {
-                    // 해당 위치가 장애물에 막혀있지 않은지도 추가로 확인한다.
-                    Vector2 worldPos = enemySpawnPoint.GetCellCenterWorld(tilePosition);
-                    if (IsPositionValid(worldPos))
-                    {
-                        possibleSpawnPoints.Add(worldPos);
-                    }
-                }
-            }
-        }
+        List<Vector2> possibleSpawnPoints = GetPossibleSpawnPoints();
+        this.debug_possibleSpawnPoints = possibleSpawnPoints; // 디버그용
 
         // 디버그용 기즈모 그리기
         this.debug_possibleSpawnPoints = possibleSpawnPoints;
@@ -97,6 +92,64 @@ public class DungeonRoom : MonoBehaviour
                 activeEnemies.Add(enemyController);
             }
         }
+    }
+
+    private void SpawnBoss()
+    {
+        // 보스 프리팹 중 하나를 랜덤으로 가져온다.
+        GameObject bossPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
+
+        List<Vector2> possibleSpawnPoints = GetPossibleSpawnPoints();
+        this.debug_possibleSpawnPoints = possibleSpawnPoints; // 디버그용
+
+        if (possibleSpawnPoints.Count == 0)
+        {
+            Debug.LogError("보스 방에 유효한 스폰 위치가 없습니다!");
+            CheckClearCondition();
+            return;
+        }
+
+        Vector2 spawnPosition = possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Count)];
+
+        GameObject instance = ObjectPoolingManager.Instance.Get(bossPrefab, spawnPosition, Quaternion.identity);
+        activeBoss = instance.GetComponent<BossController>();
+
+        if (activeBoss != null)
+        {
+            activeBoss.Init(this);
+        }
+    }
+
+    public void OnBossKilled()
+    {
+        activeBoss = null;
+        CheckClearCondition();
+    }   
+
+    private List<Vector2> GetPossibleSpawnPoints()
+    {
+        List<Vector2> points = new List<Vector2>();
+        if (enemySpawnPoint == null) return points;
+
+        enemySpawnPoint.CompressBounds();
+        BoundsInt tileBounds = enemySpawnPoint.cellBounds;
+
+        for (int x = tileBounds.xMin; x < tileBounds.xMax; x++)
+        {
+            for (int y = tileBounds.yMin; y < tileBounds.yMax; y++)
+            {
+                Vector3Int tilePosition = new Vector3Int(x, y, 0);
+                if (enemySpawnPoint.HasTile(tilePosition))
+                {
+                    Vector2 worldPos = enemySpawnPoint.GetCellCenterWorld(tilePosition);
+                    if (IsPositionValid(worldPos))
+                    {
+                        points.Add(worldPos);
+                    }
+                }
+            }
+        }
+        return points;
     }
 
     // 디버그용 기즈모 그리기 함수
@@ -160,18 +213,39 @@ public class DungeonRoom : MonoBehaviour
         }
     }
 
+    // 이벤트 방에서 사용하는 상호작용 메서드
+    public void OnEventObjectInteracted()
+    {
+        // 이 함수가 호출되었다는 것은 이벤트가 완료되었다는 뜻이므로,
+        // 즉시 클리어 조건을 확인하여 문을 엽니다.
+        CheckClearCondition();
+    }
+
     // 오브젝트 풀링에서 다시 가져올 때
     private void OnEnable()
     {
-        // 1. 이전에 남아있던 몬스터 리스트를 깨끗하게 비웁니다.
+        // 이전에 남아있던 몬스터 리스트를 깨끗하게 비웁니다.
         activeEnemies.Clear();
-
-        // 2. 출구 문을 다시 닫습니다.
+        activeBoss = null;
+        
         if (door != null)
         {
-            door.CloseDoor();
+            door.ResetDoorState();
         }
 
-        SpawnEnemies();
+        switch (roomType)
+        {
+            case RoomType.NormalRoom:
+                SpawnEnemies();
+                break;
+            case RoomType.BossRoom:
+                SpawnBoss();
+                break;
+            case RoomType.EventRoom:
+
+                break;
+        }
+
+        
     }
 }

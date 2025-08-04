@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3631f731ec921448ab5fff150d00348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useDontDestroyOnLoad: 1
   roomPrefabs:
   - {fileID: 8868071699777748880, guid: 9d7d1e740e3842f4da580e03dfe452fd, type: 3}
   - {fileID: 8231877604041128707, guid: 1cb1a1e91fe014c4f97c35cc40753f71, type: 3}
@@ -52,4 +53,4 @@ MonoBehaviour:
   - {fileID: 4457843318907568930, guid: 4fa1f31d69dc7384b966b681d25321ad, type: 3}
   - {fileID: 1800196053285717599, guid: 898948ad29ac798449df3ce6e3b6a4dc, type: 3}
   bossRoomPrefab: {fileID: 226899574804855025, guid: ea72ccb0360ebc041a16274b60fd43de, type: 3}
-  eventRoomPrefab: {fileID: 226899574804855025, guid: ea72ccb0360ebc041a16274b60fd43de, type: 3}
+  eventRoomPrefab: {fileID: 5378007697750914753, guid: c2d709465a8651c4a9e62ec4e33ba781, type: 3}
