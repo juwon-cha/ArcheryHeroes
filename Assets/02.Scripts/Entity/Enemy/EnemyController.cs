@@ -17,8 +17,10 @@ public class EnemyController : BaseController
 
     private NavMeshAgent agent;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         if(enemyData != null)
         {
             ApplyEnemyData();
