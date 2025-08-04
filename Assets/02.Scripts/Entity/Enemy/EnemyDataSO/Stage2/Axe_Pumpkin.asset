@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Pumpkin
   xpValue: 5
-  enemyType: 5
+  enemyType: 0
   maxHealth: 5
   speed: 3
   followRange: 15
-  attackRange: 3
+  attackRange: 1
   weaponPrefab: {fileID: 3434713312661476415, guid: f9575f19361e6dd4080d561ddc720d38, type: 3}

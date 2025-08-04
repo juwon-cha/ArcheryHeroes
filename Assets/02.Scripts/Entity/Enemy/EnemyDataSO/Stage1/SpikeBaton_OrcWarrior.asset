@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: BowGoblin
   xpValue: 5
-  enemyType: 3
+  enemyType: 0
   maxHealth: 5
   speed: 1.5
   followRange: 15
-  attackRange: 3
+  attackRange: 1
   weaponPrefab: {fileID: 3434713312661476415, guid: e9500116945633f48a95e450d37fabef, type: 3}

@@ -18,5 +18,5 @@ MonoBehaviour:
   maxHealth: 5
   speed: 3
   followRange: 15
-  attackRange: 3
+  attackRange: 5
   weaponPrefab: {fileID: 0}

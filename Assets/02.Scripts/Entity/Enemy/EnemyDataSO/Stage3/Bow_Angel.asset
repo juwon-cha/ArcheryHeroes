@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: ShamanOrc
   xpValue: 5
-  enemyType: 10
+  enemyType: 0
   maxHealth: 5
   speed: 3
   followRange: 15
-  attackRange: 3
+  attackRange: 4
   weaponPrefab: {fileID: 0}
