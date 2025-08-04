@@ -132,6 +132,14 @@ public class AudioManager : Singleton<AudioManager>
         sfxSource.PlayOneShot(clip);
     }
 
+    public static void SetMute(SoundType type, bool isOn)
+    {
+        if (type == SoundType.BGM)
+            SetBGMMute(isOn);
+        else if (type == SoundType.SFX)
+            SetSFXMute(isOn);
+    }
+
     public static void SetBGMMute(bool isOn)
     {
         if (Instance.bgmSource == null) return;

@@ -76,6 +76,16 @@ public class ResourceController : MonoBehaviour
         timeSinceLastHealthChange = 0f; // 무적 상태 시작
     }
 
+    public void Heal(float change)
+    {
+        if (change <= 0) return;
+        Debug.Log($"Heal: {change}"); // Heal 로그 출력
+
+        CurrentHealth += change;
+        CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth; // 최대 체력 초과 방지
+        OnChangeHealth?.Invoke(CurrentHealth, MaxHealth); // 체력 변경 이벤트 호출
+    }
+
     public bool ChangeHealth(float change, ElementType elementType = ElementType.None)
     {
         if (change == 0 || timeSinceLastHealthChange < _healthChangeDelay)

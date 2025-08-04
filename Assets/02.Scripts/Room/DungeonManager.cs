@@ -23,8 +23,15 @@ public class DungeonManager : Singleton<DungeonManager>
 
     protected override void Initialize()
     {
+        currentStageIndex = 0;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+    public void ResetDungeon()
+    {
+        currentStageIndex = 0;
+    }
+
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
