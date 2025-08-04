@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerVisualManager : MonoBehaviour
+public class PlayerVisualManager : Singleton<PlayerVisualManager>
 {
     [System.Serializable]
     public class PlayerVisualData
@@ -36,8 +36,9 @@ public class PlayerVisualManager : MonoBehaviour
 
     private const string PlayerVisualIndexKey = "VisualIndexKey";
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         controller = GetComponentInChildren<Animator>();
     }
@@ -48,18 +49,7 @@ public class PlayerVisualManager : MonoBehaviour
         ChangeVisual(visualIndex);
     }
 
-    private void Update()
-    {
-        for(int i = 0; i < playerVisualData.Length; i++)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha0 + i) && i != 0)
-                PlayerVisualIndex = i - 1;
-            else if (Input.GetKeyDown(KeyCode.Alpha0))
-                PlayerVisualIndex = 9;
-        }
-    }
-
-    private void ChangeVisual(int index)
+    public void ChangeVisual(int index)
     {
         spriteRenderer.sprite = playerVisualData[index].baseSprites;
         controller.runtimeAnimatorController = playerVisualData[index].controllers;
