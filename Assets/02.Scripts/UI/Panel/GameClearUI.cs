@@ -33,7 +33,7 @@ public class GameClearUI : MonoBehaviour
 
     public void SetStageText(int stage)
     {
-        stageText.text = $"현재 스테이지 : {stage}";
+        stageText.text = $"현재 스테이지 : {stage-1}";
     }
 
     public void SetTimeText(float time)

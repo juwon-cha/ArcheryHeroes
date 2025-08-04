@@ -16,6 +16,7 @@ public class TutorialDungeonManager : Singleton<TutorialDungeonManager>
 
     private void Start()
     {
+        GameManager.Instance.ResetGame();
         player = GameManager.Instance.Player;
 
         if (player != null)

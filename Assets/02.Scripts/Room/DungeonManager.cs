@@ -13,6 +13,7 @@ public class DungeonManager : Singleton<DungeonManager>
     [SerializeField] private List<GameObject> roomPrefabs;
     [SerializeField] private GameObject bossRoomPrefab;
     [SerializeField] private GameObject eventRoomPrefab;
+    [SerializeField] private int clearStageIndex = 11; // 게임 클리어 스테이지 인덱스 (예: 11 스테이지에서 게임 클리어)
 
     private GameObject currentRoomInstance; // 현재 방의 정보
     private int currentStageIndex = 0; // 현재 스테이지 정보
@@ -52,6 +53,16 @@ public class DungeonManager : Singleton<DungeonManager>
     {
         currentStageIndex++;
         Debug.Log($"현재 스테이지는 {currentStageIndex} 스테이지");
+
+        // 현재 스테이지가 마지막 스테이지라면 게임 클리어
+        if(currentStageIndex >= clearStageIndex)
+        {
+            Debug.Log("게임 클리어!");
+            UIManager.Instance.ShowUI(UIType.GameClear);
+            return;
+        }
+
+
         // 방의 정보가 남아있다. 즉, 이전 방의 정보가 남아있다면 오브젝트 풀링으로 넣어준다.
         if (currentRoomInstance != null)
         {
