@@ -62,6 +62,8 @@ public class DungeonManager : Singleton<DungeonManager>
             return;
         }
 
+        // 다음 방을 로드하기 전에 남아있는 보스 공격 패턴들을 모두 제거
+        ClearRemainingBossAttackPatterns();
 
         // 방의 정보가 남아있다. 즉, 이전 방의 정보가 남아있다면 오브젝트 풀링으로 넣어준다.
         if (currentRoomInstance != null)
@@ -127,4 +129,22 @@ public class DungeonManager : Singleton<DungeonManager>
         OnStageChanged -= action;
     }
 
+    private void ClearRemainingBossAttackPatterns()
+    {
+        // BossAttackObject, BossAttackProjectile 태그를 가진 모든 게임 오브젝트를 배열로 찾아옴
+        GameObject[] remainingObject = GameObject.FindGameObjectsWithTag("BossAttackObject");
+        GameObject[] remainingProjectiles = GameObject.FindGameObjectsWithTag("BossAttackProjectile");
+
+        // 탄막이 아닌 패턴들은 파괴
+        foreach (GameObject go in remainingObject)
+        {
+            Destroy(go);
+        }
+
+        // 탄막 패턴은 오브젝트 풀에 반환
+        foreach(GameObject projectile in remainingProjectiles)
+        {
+            projectile.SetActive(false);
+        }
+    }
 }

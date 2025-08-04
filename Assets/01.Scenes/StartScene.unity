@@ -677,6 +677,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6700836785735540955, guid: 75a46181d061a7e4e98fdc551a232382, type: 3}
+      propertyPath: clearStageIndex
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
