@@ -407,7 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useDontDestroyOnLoad: 1
   playerPrefab: {fileID: 3863558932465538756, guid: 1bea643ba137c5d4bbeb230eaf197f17, type: 3}
-  maxExp: 10
+  initMaxExp: 10
 --- !u!4 &541221510
 Transform:
   m_ObjectHideFlags: 0
@@ -1240,6 +1240,10 @@ PrefabInstance:
         \uD0A4\uB97C \uB20C\uB7EC \uB2E4\uC74C\uC73C\uB85C \uB118\uC5B4\uAC00\uC138\uC694"
       objectReference: {fileID: 0}
     - target: {fileID: 3942604584500262959, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 948744d8458e05d4f86aab8d48ca1c94, type: 3}
+    - target: {fileID: 3942604584500262959, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 70
       objectReference: {fileID: 0}
@@ -1268,6 +1272,10 @@ PrefabInstance:
       value: "\uBB38\uC744 \uD1B5\uD574\uC11C\n\uB2E4\uC74C \uBC29\uC73C\uB85C \uB118\uC5B4\uAC00\uC138\uC694"
       objectReference: {fileID: 0}
     - target: {fileID: 5960911389425681169, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 948744d8458e05d4f86aab8d48ca1c94, type: 3}
+    - target: {fileID: 5960911389425681169, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 100
       objectReference: {fileID: 0}
@@ -1285,6 +1293,10 @@ PrefabInstance:
         \uB20C\uB7EC \uB2E4\uC74C\uC73C\uB85C \uB118\uC5B4\uAC00\uC138\uC694"
       objectReference: {fileID: 0}
     - target: {fileID: 6664900370994501205, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 948744d8458e05d4f86aab8d48ca1c94, type: 3}
+    - target: {fileID: 6664900370994501205, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 70
       objectReference: {fileID: 0}
@@ -1297,6 +1309,10 @@ PrefabInstance:
       value: "'F' \uD0A4\uB97C \uB20C\uB7EC\n\uBAAC\uC2A4\uD130\uB97C \uC18C\uD658\uD558\uC2ED\uC2DC\uC624"
       objectReference: {fileID: 0}
     - target: {fileID: 6904759235273862810, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 948744d8458e05d4f86aab8d48ca1c94, type: 3}
+    - target: {fileID: 6904759235273862810, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 70
       objectReference: {fileID: 0}
@@ -1308,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7407220346826984884, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 948744d8458e05d4f86aab8d48ca1c94, type: 3}
     - target: {fileID: 7407220346826984884, guid: 1365de99b39f2784280be5d13510d5b6, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 70
