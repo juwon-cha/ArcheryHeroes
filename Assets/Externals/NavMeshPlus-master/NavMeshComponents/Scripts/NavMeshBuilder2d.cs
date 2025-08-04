@@ -299,6 +299,13 @@ namespace NavMeshPlus.Extensions
 
             var vec3int = new Vector3Int(0, 0, 0);
 
+            if (tilemap.layoutGrid == null)
+            {
+                if (!builder.hideEditorLogs)
+                    Debug.LogWarning($"Tilemap '{tilemap.name}' has no layoutGrid. Skipping tile collection.");
+                return;
+            }
+
             var size = new Vector3(tilemap.layoutGrid.cellSize.x, tilemap.layoutGrid.cellSize.y, 0);
             Mesh sharedMesh = null;
             Quaternion rot = default;

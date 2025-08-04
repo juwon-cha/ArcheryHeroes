@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
   - component: {fileID: 8029843810610918852}
+  - component: {fileID: 6591145488961290375}
+  - component: {fileID: -1422454679385156567}
   m_Layer: 31
   m_Name: Axe_Chort
   m_TagString: Untagged
@@ -202,6 +204,40 @@ MonoBehaviour:
   weaponPrefab: {fileID: 3434713312661476415, guid: f9575f19361e6dd4080d561ddc720d38, type: 3}
   enemyData: {fileID: 11400000, guid: 62f7033a1de793f42bcee5ea04a42462, type: 2}
   showGizmos: 1
+--- !u!195 &6591145488961290375
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249625004468040122}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.1
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-1422454679385156567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249625004468040122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e39f6090724e4a4a8aadeb042afa2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3015333807292570419
 GameObject:
   m_ObjectHideFlags: 0
