@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 8029843810610918852}
   m_Layer: 31
   m_Name: Staff_Imp
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

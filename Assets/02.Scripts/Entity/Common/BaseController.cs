@@ -174,6 +174,8 @@ public class BaseController : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Monster"))
             ObjectPoolingManager.Instance.Return(this.gameObject);
+        else if(this.gameObject.CompareTag("TutorialMonster"))
+            Destroy(this.gameObject);
     }
 
     public virtual void OnRestore()

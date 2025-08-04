@@ -3846,14 +3846,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 249625004468040122, guid: eb37b73f1a8d34546b2f063f61dd9b4a, type: 3}
-  - {fileID: 249625004468040122, guid: 924ff645471626f4cb8ca67920fca9e7, type: 3}
+  - {fileID: 249625004468040122, guid: 6e58cd95ca50435438d40775f31d0a1f, type: 3}
+  - {fileID: 249625004468040122, guid: fc879b2b6a8ac4046added6136029c62, type: 3}
   enemySpawnPoint: {fileID: 8007138605718843220}
   minEnemies: 3
   maxEnemies: 3
   enemyParent: {fileID: 6790452057881816622}
   door: {fileID: 6331897379815689009}
   playerSpawnPosition: {fileID: 1025321466600652174}
+  roomType: 0
+  eventSkillBox: {fileID: 0}
+  floorTilemap: {fileID: 0}
 --- !u!1 &1983678566671921829
 GameObject:
   m_ObjectHideFlags: 0
