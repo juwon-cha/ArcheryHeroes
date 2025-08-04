@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c964f236c248044a604db3970f9f19, type: 3}
   m_Name: OrbitingOrbEffect_Lv3
   m_EditorClassIdentifier: 
-  orbPrefab: {fileID: 3995127850393183158, guid: bd8ca5d4157137446807c3e64811edb8, type: 3}
+  orbPrefab: {fileID: 3995127850393183158, guid: 1baed585cf5aae74abdd68fcb08f0fe3, type: 3}
   orbCount: 7
   orbitRadius: 3
   orbitSpeed: 2
