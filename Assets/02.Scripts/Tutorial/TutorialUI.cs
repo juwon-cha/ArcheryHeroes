@@ -31,6 +31,7 @@ public class TutorialUI : MonoBehaviour
 
     private void Update()
     {
+        DistanceCheck();
         if (!isMove)
             DisplayMove();
 
@@ -39,8 +40,6 @@ public class TutorialUI : MonoBehaviour
 
         if (isSpawn && !isMonster)
             DisplayMonster();
-
-        DistanceCheck();
 
         if (isMonster && !isStop)
             DisplayStop();
@@ -98,10 +97,15 @@ public class TutorialUI : MonoBehaviour
 
     private void DistanceCheck()
     {
-        Collider2D obj = Physics2D.OverlapCircle(player.transform.position, 7);
-        if (obj != null && obj.CompareTag("Monster"))
-            isClose = true;
-        else
-            isClose = false;
+        isClose = false;
+        Collider2D[] objs = Physics2D.OverlapCircleAll(player.transform.position, 7);
+        foreach (Collider2D obj in objs)
+        {
+            if (obj != null && obj.CompareTag("Monster"))
+            {
+                isClose = true;
+                break;
+            }
+        }
     }
 }
