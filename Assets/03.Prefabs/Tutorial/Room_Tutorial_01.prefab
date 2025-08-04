@@ -2088,6 +2088,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8230776324972019837, guid: 57d2cc3e2c446454b9554e19e3396c13, type: 3}
   door: {fileID: 6059277435900837346}
   playerSpawnPosition: {fileID: 1025321466600652174}
+  tutorialUI: {fileID: 0}
+  spawnedMonsters: []
 --- !u!1 &2416722095673740441
 GameObject:
   m_ObjectHideFlags: 0
@@ -6710,6 +6712,10 @@ PrefabInstance:
       propertyPath: isDoorOpen
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2946689432787031330, guid: d38098cfeab93334aa379a0f8589e968, type: 3}
+      propertyPath: tutorialDungeonRoom
+      value: 
+      objectReference: {fileID: 8585768307099292416}
     - target: {fileID: 6250994316315713664, guid: d38098cfeab93334aa379a0f8589e968, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
