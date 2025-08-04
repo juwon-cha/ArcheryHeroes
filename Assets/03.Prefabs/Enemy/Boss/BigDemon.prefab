@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8355837575124620355}
   - component: {fileID: 6067485286864423406}
   - component: {fileID: 119583954426625805}
-  m_Layer: 31
+  m_Layer: 28
   m_Name: BigDemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
   applyKnockback: 1
   knockbackPower: 5
   knockbackDuration: 0.5
+  enemyType: 0
   attackPatterns:
   - {fileID: 11400000, guid: b079f692ba52af045be00315de56148f, type: 2}
   - {fileID: 11400000, guid: 8845a0a1c854b4b459617fb81d423860, type: 2}
