@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 // 보스 컨트롤러는 플레이어와 일반 몬스터와 다른 특수한 행동을 가져서 BaseController를 상속하지 않음
-public class BossController : MonoBehaviour
+public class BossController : BaseController
 {
     // 핵심 컴포넌트
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -55,7 +55,7 @@ public class BossController : MonoBehaviour
 
     private BossState currentState;
     private DungeonRoom parentRoom;
-    private void Awake()
+    protected override void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         if (rigidBody == null)
@@ -82,7 +82,7 @@ public class BossController : MonoBehaviour
         }
     }
 
-    private void Start()
+    protected override void Start()
     {
         if (target == null)
         {
@@ -93,7 +93,7 @@ public class BossController : MonoBehaviour
         ChangeState(new BossChaseState());
     }
 
-    private void Update()
+    protected override void Update()
     {
         if(currentState != null)
         {
@@ -105,6 +105,8 @@ public class BossController : MonoBehaviour
             spriteRenderer.flipX = LookDirection.x < 0;
         }
     }
+
+    protected override void FixedUpdate() { }
 
     public void ChangeState(BossState state)
     {
