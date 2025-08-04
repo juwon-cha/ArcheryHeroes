@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameClearUI : MonoBehaviour
 {
+    [SerializeField] private SoundDataSO gameClearSFX; // 게임클리어 효과음
     [SerializeField] private TMP_Text stageText;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private Button restartButton;
@@ -21,6 +22,7 @@ public class GameClearUI : MonoBehaviour
     
     private void OnEnable()
     {
+        AudioManager.Instance.PlaySFX(gameClearSFX);
         GameManager.Instance.Pause();
         SetStageText(DungeonManager.Instance.CurrentStageIndex);
         SetTimeText(GameManager.Instance.PlayTime);

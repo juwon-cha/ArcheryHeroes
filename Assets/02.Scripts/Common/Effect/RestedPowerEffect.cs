@@ -59,8 +59,11 @@ public class RestedPowerEffect : EffectSO
         {
             if (wasIdle) // 이번 프레임에 처음으로 Idle이 아닌 상태가 됐을 때만
             {
-                var main = powerEffect.main;
-                main.loop = false; // 파티클 효과를 다시 시작
+                if(powerEffect != null)
+                {
+                    var main = powerEffect.main;
+                    main.loop = false; // 파티클 효과를 다시 시작
+                }
                 currentRestedTime = 0f;
                 ApplyRestedPower();
             }

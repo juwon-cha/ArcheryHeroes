@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameOverUI : MonoBehaviour
 {
+    [SerializeField] private SoundDataSO gameOverSFX; // 게임오버 효과음
     [SerializeField] private TMP_Text stageText;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private Button restartButton;
@@ -21,6 +22,7 @@ public class GameOverUI : MonoBehaviour
 
     private void OnEnable()
     {
+        AudioManager.Instance.PlaySFX(gameOverSFX);
         GameManager.Instance.Pause();
         SetStageText(DungeonManager.Instance.CurrentStageIndex);
         SetTimeText(GameManager.Instance.PlayTime);

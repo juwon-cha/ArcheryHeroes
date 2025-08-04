@@ -871,6 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20442e4cb58cf4f48b1120a4e9e25e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameClearSFX: {fileID: 11400000, guid: 5a01b4cb2df58b34485f57cecf3cb767, type: 2}
   stageText: {fileID: 3209322305492393820}
   timeText: {fileID: 6782599628879116205}
   restartButton: {fileID: 1854859002393100034}
@@ -5403,6 +5404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b5b7ffda7d52349a10c59b9b71cff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverSFX: {fileID: 11400000, guid: 8ca6ebc9b5b77464ca234552ad4b732a, type: 2}
   stageText: {fileID: 9126807268768792803}
   timeText: {fileID: 328542469990574432}
   restartButton: {fileID: 1048981771106779168}
