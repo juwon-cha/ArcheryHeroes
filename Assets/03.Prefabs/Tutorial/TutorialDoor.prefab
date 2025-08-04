@@ -463,3 +463,4 @@ MonoBehaviour:
   doorSprite: {fileID: 666359643006037845}
   isDoorOpen: 0
   manager: {fileID: 7708270454755424110, guid: 4224624ca75120e499e061991df104f1, type: 3}
+  tutorialDungeonRoom: {fileID: 8585768307099292416, guid: 2e797b679b67d9d4f89f6c1b6a959bfb, type: 3}

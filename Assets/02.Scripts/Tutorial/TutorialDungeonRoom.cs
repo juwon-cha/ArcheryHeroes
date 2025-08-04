@@ -18,7 +18,7 @@ public class TutorialDungeonRoom : MonoBehaviour
     [Header("플레이어 스폰 위치")]
     [SerializeField] private Transform playerSpawnPosition;
 
-    private TutorialUI tutorialUI;
+    public TutorialUI tutorialUI;
 
 
     private GameObject player;
@@ -27,7 +27,7 @@ public class TutorialDungeonRoom : MonoBehaviour
     private bool isRight;
     private bool isSpawned;
 
-    private List<GameObject> spawnedMonsters = new();
+    public List<GameObject> spawnedMonsters = new();
 
     private void Start()
     {
@@ -50,7 +50,7 @@ public class TutorialDungeonRoom : MonoBehaviour
     private void CheckPlayerPosition()
     {
         Vector3 pivot = Vector2.zero;
-        if(player.transform.position.x > pivot.x)
+        if (player.transform.position.x > pivot.x)
         {
             isRight = true;
         }
@@ -68,7 +68,7 @@ public class TutorialDungeonRoom : MonoBehaviour
         else
             spawnPoint = new Vector3(5, 0, 0);
 
-            var enemy = ObjectPoolingManager.Instance.Get(enemyPrefab, spawnPoint, Quaternion.identity);
+        var enemy = ObjectPoolingManager.Instance.Get(enemyPrefab, spawnPoint, Quaternion.identity);
         spawnedMonsters.Add(enemy);
         isSpawned = true;
     }
@@ -91,20 +91,9 @@ public class TutorialDungeonRoom : MonoBehaviour
     // 방에 남은 몬스터를 체크하는 메서드
     private void CheckClearCondition()
     {
-        if(tutorialUI.isStop)
+        if (tutorialUI.isStop)
         {
             door.OpenDoor();
         }
-        Vector3 pivot = new Vector3(0, 4.5f, 0);
-        if (player.transform.position.y > pivot.y)
-        {
-            for (int i = spawnedMonsters.Count - 1; i >= 0; i--)
-            {
-                ObjectPoolingManager.Instance.Return(spawnedMonsters[i]);
-            }
-            tutorialUI.next.SetActive(false);
-            spawnedMonsters.Clear();
-        }
-            
     }
 }
