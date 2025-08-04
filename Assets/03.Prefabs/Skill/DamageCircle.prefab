@@ -174,4 +174,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamType: 1
-  damage: 5
+  damage: 2

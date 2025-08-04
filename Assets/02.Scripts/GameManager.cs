@@ -58,6 +58,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ResetGame()
     {
+        Player.GetComponent<ResourceController>().RestoreAndReset();
         SkillManager.Instance.ResetSkills();
         AbilityManager.Instance.ResetAbilities();
         DungeonManager.Instance.ResetDungeon();
@@ -77,7 +78,7 @@ public class GameManager : Singleton<GameManager>
     public void LevelUp()
     {
         Debug.Log($"레벨업! 현재 레벨: {currentLevel + 1}");
-        maxExp = Mathf.Round(maxExp * 1.2f); // 레벨업 시 경험치 증가 (예: 20% 증가)
+        maxExp = Mathf.Round(maxExp * 1.5f); // 레벨업 시 경험치 증가 (예: 20% 증가)
         OnLevelUp?.Invoke(++currentLevel);
     }
 

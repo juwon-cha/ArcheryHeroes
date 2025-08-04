@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6f19a6880d7e34ea06f5e40f4a48a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.5
+  delay: 0.8
   weaponSize: 1
-  power: 3
-  speed: 3
+  power: 2
+  speed: 10
   attackRange: 10
   elementType: 0
   attackSFX: {fileID: 11400000, guid: a98a23f03b32e6940a996ec43a71085a, type: 2}
@@ -64,7 +64,7 @@ MonoBehaviour:
   bulletSize: 0.7
   duration: 5
   spread: 3
-  numberOfProjectilesPerShot: 3
+  numberOfProjectilesPerShot: 1
   multipleProjectileAngle: 3
   projectileColor: {r: 1, g: 1, b: 1, a: 1}
   numberOfProjectilesPerShot_Back: 0
