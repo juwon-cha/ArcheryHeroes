@@ -46,14 +46,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6f19a6880d7e34ea06f5e40f4a48a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
+  delay: 0.5
   weaponSize: 1
-  power: 1
-  speed: 2
-  attackRange: 5
+  power: 10
+  speed: 5
+  attackRange: 20
+  elementType: 0
+  attackSFX: {fileID: 11400000, guid: a98a23f03b32e6940a996ec43a71085a, type: 2}
   Target:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 268435456
   isOnKnockBack: 0
   knockBackPower: 1
   knockBackDuration: 0.1
@@ -65,6 +67,8 @@ MonoBehaviour:
   numberOfProjectilesPerShot: 3
   multipleProjectileAngle: 3
   projectileColor: {r: 1, g: 1, b: 1, a: 1}
+  numberOfProjectilesPerShot_Back: 0
+  bounceCount: 0
 --- !u!1 &6095780711545954297
 GameObject:
   m_ObjectHideFlags: 0

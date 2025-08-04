@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public enum SoundType
 {
@@ -33,6 +34,7 @@ public class AudioManager : Singleton<AudioManager>
     [Header("Sound Data List")]
     [SerializeField] private SoundDataSO[] soundDataList;
     private Dictionary<string, SoundDataSO> soundDataDict = new();
+    private Dictionary<string, string> sceneBGMMapping;
 
     protected override void Initialize()
     {
@@ -43,7 +45,27 @@ public class AudioManager : Singleton<AudioManager>
             if (!soundDataDict.ContainsKey(data.soundName))
                 soundDataDict.Add(data.soundName, data);
         }
+
+        // 씬별 BGM 매핑 초기화
+        sceneBGMMapping = new Dictionary<string, string>
+        {
+            { "StartScene", "StartBGM" },
+            { "MainScene", "MainBGM" },
+            { "PlayScene", "PlayBGM" }
+        };
+
+        // 씬 변경 시 자동으로 BGM 재생
+        SceneManager.sceneLoaded += (scene, _) => PlaySceneBGM(scene.name);
     }
+
+    void PlaySceneBGM(string sceneName)
+    {
+        if (sceneBGMMapping != null && sceneBGMMapping.TryGetValue(sceneName, out string bgmName))
+        {
+            PlayBGM(bgmName);
+        }
+    }
+
 
     // 버튼 클릭 이벤트에서 사운드 호출용
     public static void OnPlaySound(string soundName)
@@ -110,6 +132,26 @@ public class AudioManager : Singleton<AudioManager>
         sfxSource.PlayOneShot(clip);
     }
 
+    public static void SetMute(SoundType type, bool isOn)
+    {
+        if (type == SoundType.BGM)
+            SetBGMMute(isOn);
+        else if (type == SoundType.SFX)
+            SetSFXMute(isOn);
+    }
+
+    public static void SetBGMMute(bool isOn)
+    {
+        if (Instance.bgmSource == null) return;
+        Instance.bgmSource.mute = isOn;
+    }
+
+    public static void SetSFXMute(bool isOn)
+    {
+        if (Instance.sfxSource == null) return;
+        Instance.sfxSource.mute = isOn;
+    }
+
     private AudioClip GetRandomClip(SoundDataSO data)
     {
         if (data.audioClips == null || data.audioClips.Length == 0) return null;
@@ -151,7 +193,7 @@ public class AudioManager : Singleton<AudioManager>
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
-        fadeCoroutine = StartCoroutine(FadeVolumeCoroutine(bgmVolumeParam, currentBGM.volume, 0f, duration));
+        fadeCoroutine = StartCoroutine(FadeVolumeCoroutine(currentBGM.volume, 0f, duration));
     }
 
     public void FadeInBGM(float duration)
@@ -160,10 +202,10 @@ public class AudioManager : Singleton<AudioManager>
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
-        fadeCoroutine = StartCoroutine(FadeVolumeCoroutine(bgmVolumeParam, 0f, currentBGM.volume, duration));
+        fadeCoroutine = StartCoroutine(FadeVolumeCoroutine(0f, currentBGM.volume, duration));
     }
 
-    private IEnumerator FadeVolumeCoroutine(string param, float from, float to, float duration)
+    private IEnumerator FadeVolumeCoroutine(float from, float to, float duration)
     {
         float time = 0f;
         while (time < duration)

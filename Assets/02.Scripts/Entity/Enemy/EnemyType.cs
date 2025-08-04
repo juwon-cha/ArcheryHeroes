@@ -1,0 +1,19 @@
+public enum EnemyType
+{
+    None,
+    Goblin,
+    MaskedOrc,
+    OrcWarrior,
+    ShamanOrc,
+    Pumpkin,
+    Skeleton,
+    TinyZombie,
+    IceZombie,
+    Chort,
+    Angel,
+    Wogol,
+    Imp,
+    Orge,
+    BigDemon,
+    BigZombie,
+}

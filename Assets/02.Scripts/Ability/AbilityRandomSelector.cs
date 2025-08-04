@@ -11,7 +11,7 @@ public class AbilityRandomSelector
         abilityDatas = new(abilities);
     }
 
-    // ÃÖ´ë ·¹º§ÀÌ ¾Æ´Ñ ½ºÅ³ Áß¿¡¼­ ¿øÇÏ´Â °³¼ö¸¸Å­ ·£´ı ¼±ÅÃ
+    // ìµœëŒ€ ë ˆë²¨ì´ ì•„ë‹Œ ìŠ¤í‚¬ ì¤‘ì—ì„œ ì›í•˜ëŠ” ê°œìˆ˜ë§Œí¼ ëœë¤ ì„ íƒ
     public List<AbilityData> SelectRandomAbilities(int count)
     {
         var available = abilityDatas.Where(s => !s.IsMaxLevel()).ToList();
@@ -21,15 +21,8 @@ public class AbilityRandomSelector
 
         count = Mathf.Min(count, available.Count);
 
-        // ¸®½ºÆ® ¼ÅÇÃ (Fisher-Yates)
-        for (int i = 0; i < available.Count; i++)
-        {
-            int j = Random.Range(i, available.Count);
-            var temp = available[i];
-            available[i] = available[j];
-            available[j] = temp;
-        }
-
+        // ë¦¬ìŠ¤íŠ¸ ì…”í”Œ 
+        available.Shuffle();
         return available.GetRange(0, count);
     }
 }

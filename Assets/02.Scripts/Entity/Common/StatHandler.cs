@@ -17,4 +17,10 @@ public class StatHandler : MonoBehaviour
         get => speed;
         set => speed = Mathf.Clamp(value, 0f, 20.0f);
     }
+
+    public void Initialize(EnemyDataSO data)
+    {
+        Health = (int)data.maxHealth;
+        Speed = data.speed;
+    }
 }

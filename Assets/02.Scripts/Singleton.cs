@@ -12,14 +12,17 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 instance = FindObjectOfType<T>();
                 if (instance == null)
                 {
-                    GameObject singletonObject = new GameObject(typeof(T).Name);
+                    GameObject singletonObject = new(typeof(T).Name);
                     instance = singletonObject.AddComponent<T>();
-                    (instance as Singleton<T>)?.Initialize();
+                    (instance as Singleton<T>).Initialize();
                 }
             }
             return instance;
         }
     }
+
+    public bool useDontDestroyOnLoad = true;
+
 
     protected virtual void Initialize() { }
 
@@ -33,7 +36,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             instance = this as T;
             Initialize();
-            DontDestroyOnLoad(gameObject);
+            if (useDontDestroyOnLoad)
+                DontDestroyOnLoad(gameObject);
         }
     }
 }

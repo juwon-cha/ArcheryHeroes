@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
+  - BossAttackObject
+  - BossAttackProjectile
+  - TutorialMonster
   layers:
   - Default
   - TransparentFX
@@ -41,4 +44,34 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 432813393
+    locked: 0
+  - name: Decoration
+    uniqueID: 996397353
+    locked: 0
+  - name: GroundObject
+    uniqueID: 3461719459
+    locked: 0
+  - name: Shadow
+    uniqueID: 1200994243
+    locked: 0
+  - name: Character
+    uniqueID: 3082344747
+    locked: 0
+  - name: Weapon
+    uniqueID: 1531043963
+    locked: 0
+  - name: Effect
+    uniqueID: 1491764639
+    locked: 0
+  - name: Projectile
+    uniqueID: 831757203
+    locked: 0
+  - name: UI
+    uniqueID: 3985042395
+    locked: 0
+  - name: Foreground
+    uniqueID: 2299181095
     locked: 0

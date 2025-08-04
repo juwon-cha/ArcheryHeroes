@@ -4,19 +4,23 @@ using UnityEngine;
 [System.Serializable]
 public class AbilityData
 {
-    public AbilityDataSO abilitySO;  // ±âÁØÀÌ µÇ´Â SO
-    public int currentLevel;     // ÇöÀç ·¹º§
+    public AbilityDataSO abilitySO;  // ê¸°ì¤€ì´ ë˜ëŠ” SO
+    public int currentLevel;     // í˜„ì¬ ë ˆë²¨
 
-    public string SkillName { get => abilitySO.skillName; }
+    public string AbilityName { get => abilitySO.abilityName; }
     public string Description { get => abilitySO.description; }
     public Sprite Icon { get => abilitySO.icon; }
     public int MaxLevel { get => abilitySO.MaxLevel; }
-    public List<StatModifier> Modifiers { get => abilitySO.modifiers; }
 
-    public AbilityData(AbilityDataSO skillSO)
+    public AbilityData(AbilityDataSO abilitySO)
     {
-        this.abilitySO = skillSO;
+        this.abilitySO = abilitySO;
         currentLevel = 0;
+    }
+
+    public void Initialize()
+    {
+        currentLevel = 0; // ì´ˆê¸°í™” ì‹œ ë ˆë²¨ì„ 0ìœ¼ë¡œ ì„¤ì •
     }
 
     public bool IsMaxLevel()
@@ -32,13 +36,5 @@ public class AbilityData
         {
             currentLevel++;
         }
-    }
-
-    public StatModifier GetCurrentModifier()
-    {
-        if (IsMaxLevel())
-            return null;
-
-        return Modifiers[currentLevel];
     }
 }

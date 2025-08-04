@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3990296458170876435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 928941313362088052}
+  - component: {fileID: 6700836785735540955}
+  m_Layer: 0
+  m_Name: DungeonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &928941313362088052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3990296458170876435}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6700836785735540955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3990296458170876435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3631f731ec921448ab5fff150d00348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDontDestroyOnLoad: 1
+  roomPrefabs:
+  - {fileID: 8868071699777748880, guid: 9d7d1e740e3842f4da580e03dfe452fd, type: 3}
+  - {fileID: 8231877604041128707, guid: 1cb1a1e91fe014c4f97c35cc40753f71, type: 3}
+  - {fileID: 1282480997240505041, guid: 3f1bf30ab0517454b933bb6fe4f000f9, type: 3}
+  - {fileID: 2588046398583611180, guid: 2640647b9c9a09d4ab84e69ac56d60da, type: 3}
+  - {fileID: 4457843318907568930, guid: 4fa1f31d69dc7384b966b681d25321ad, type: 3}
+  - {fileID: 1800196053285717599, guid: 898948ad29ac798449df3ce6e3b6a4dc, type: 3}
+  bossRoomPrefab: {fileID: 226899574804855025, guid: ea72ccb0360ebc041a16274b60fd43de, type: 3}
+  eventRoomPrefab: {fileID: 5378007697750914753, guid: c2d709465a8651c4a9e62ec4e33ba781, type: 3}
+  clearStageIndex: 11

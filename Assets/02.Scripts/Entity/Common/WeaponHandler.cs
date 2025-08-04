@@ -1,7 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum ElementType
+{
+    None,
+    Poison,
+    Lightning,
+    Fire,
+}
 public class WeaponHandler : MonoBehaviour
 {
     [Header("Attack Info")]
@@ -19,6 +25,12 @@ public class WeaponHandler : MonoBehaviour
 
     [SerializeField] private float attackRange = 10f;
     public float AttackRange { get => attackRange; set => attackRange = value; }
+
+    [SerializeField] private ElementType elementType = ElementType.None;
+    public ElementType ElementType { get => elementType; set => elementType = value; }
+
+    [SerializeField] private SoundDataSO attackSFX;
+
 
     public LayerMask Target;
 
@@ -62,17 +74,14 @@ public class WeaponHandler : MonoBehaviour
         transform.localScale = Vector3.one * weaponSize; // 무기 크기 설정
     }
 
-    protected virtual void Start()
-    {
-        
-    }
+    protected virtual void Start() { }
 
     public virtual void Attack()
     {
         AttackAnimation();
 
-
         // TODO: 공격 사운드 재생
+        AudioManager.Instance.PlaySFX(attackSFX);
     }
 
     public void AttackAnimation()

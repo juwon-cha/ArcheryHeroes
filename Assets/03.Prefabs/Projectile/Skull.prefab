@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 213997779895961883}
   - component: {fileID: 2793567680740193240}
   - component: {fileID: 8255563027738888845}
+  - component: {fileID: 8851927677095949778}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -206,6 +207,18 @@ MonoBehaviour:
   levelCollisionLayer:
     serializedVersion: 2
     m_Bits: 536870912
+--- !u!114 &8851927677095949778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643473914380838996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e271337b5a1e5448330741a4b5b37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8792730837907024823
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,20 +13,7 @@ public class PlayerController : BaseController
 
     private float minDistance;
 
-    protected override void Awake()
-    {
-        rigidBody = GetComponent<Rigidbody2D>();
-        lookDirection = new Vector2(1, 0);
-
-        if (weaponPrefab != null)
-        {
-            weaponHandler = Instantiate(weaponPrefab, weaponPivot);
-        }
-        else
-        {
-            weaponHandler = GetComponentInChildren<WeaponHandler>();
-        }
-    }
+    public bool isInterAct;
 
     protected override void Start()
     {
@@ -40,20 +27,14 @@ public class PlayerController : BaseController
         if(movementDirection != Vector2.zero)
             lookDirection = movementDirection.normalized;
         else if(movementDirection == Vector2.zero && closestTarget != null)
-            lookDirection = DirectionToTarget();
+            lookDirection = DirectionToCloseTarget();
         HandleAction();
         Rotate(lookDirection);
         HandleAttackDelay();
         closestTarget = null;
     }
 
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
-        //Movement(moveDirection);
-    }
-
-    private Vector2 DirectionToTarget()
+    private Vector2 DirectionToCloseTarget()
     {
         return (closestTarget.transform.position - transform.position).normalized;
     }
@@ -74,17 +55,13 @@ public class PlayerController : BaseController
         }
 
         if (isAttacking && timeSinceLastAttack > weaponHandler.Delay)
+        {
             if (closestTarget != null && isAttacking && timeSinceLastAttack > weaponHandler.Delay)
             {
                 timeSinceLastAttack = 0;
                 Attack();
+            }
         }
-    }
-
-    protected override void Movement(Vector2 direction)
-    {
-        direction = direction * 5;
-        rigidBody.velocity = direction;
     }
 
     protected override void Attack()
@@ -92,6 +69,7 @@ public class PlayerController : BaseController
         if (movementDirection == Vector2.zero)
         {
             weaponHandler?.Attack();
+            //Debug.Log("공격중");
         }
     }
 
@@ -102,7 +80,7 @@ public class PlayerController : BaseController
         for (int i = 0; i < adjObj.Length; i++)
         {
             float distance;
-            if (adjObj[i] != null && adjObj[i].CompareTag("Monster"))
+            if (adjObj[i] != null && (adjObj[i].CompareTag("Monster") || adjObj[i].CompareTag("TutorialMonster")))
             {
                 distance = Vector2.Distance(transform.position, adjObj[i].transform.position);
                 if (distance <= minDistance)
@@ -118,5 +96,10 @@ public class PlayerController : BaseController
     {
         movementDirection = inputValue.Get<Vector2>();
         movementDirection = movementDirection.normalized;
+    }
+
+    private void OnInterAct(InputValue inputValue)
+    {
+        isInterAct = true;
     }
 }

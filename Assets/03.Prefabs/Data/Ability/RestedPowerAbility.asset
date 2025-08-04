@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a4fe6ccf116fe40b0a2cfb0533f2db, type: 3}
+  m_Name: RestedPowerAbility
+  m_EditorClassIdentifier: 
+  abilityName: "\uD734\uC2DD \uD30C\uC6CC"
+  description: 
+  icon: {fileID: 21300000, guid: d3c845ca16ea40d4cb4d0e3f73000f52, type: 3}
+  isLevelUpEnabled: 1
+  skillDataSO: {fileID: 11400000, guid: 9dff25295264cb5468948099153ee4e9, type: 2}

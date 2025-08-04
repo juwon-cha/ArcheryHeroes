@@ -46,12 +46,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479ab26e5ee72894581a03926cec9f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useDontDestroyOnLoad: 1
   mixer: {fileID: 24100000, guid: f8c2479f847adde489308062e71ece61, type: 2}
   bgmSource: {fileID: 8634112721530637364}
   sfxSource: {fileID: 3804257035014077015}
   soundDataList:
-  - {fileID: 11400000, guid: 845ca9cbb909828439fc69f73bc9fe6a, type: 2}
-  - {fileID: 11400000, guid: ba19ceeeda791cc4881a05a66b5b7a71, type: 2}
+  - {fileID: 11400000, guid: e132b2d91707d224583186ee5690b775, type: 2}
+  - {fileID: 11400000, guid: 4ab95e4b27e44c0499061621d713df61, type: 2}
+  - {fileID: 11400000, guid: 411efc05bcc957b4ca4a93d24fd4378d, type: 2}
+  - {fileID: 11400000, guid: 1f55828ddc2f0704eba29c59f9cb8663, type: 2}
+  - {fileID: 11400000, guid: c91e468e187ccc6498de5553eb014c17, type: 2}
+  - {fileID: 11400000, guid: 49c005aacff1c6f4db5aa0711ad1b48a, type: 2}
+  - {fileID: 11400000, guid: 7a1e7243d2acfff4697e93d03f8f9710, type: 2}
+  - {fileID: 11400000, guid: a98a23f03b32e6940a996ec43a71085a, type: 2}
+  - {fileID: 11400000, guid: 7a3acfa1ef7505749b2c2ed1401eb4eb, type: 2}
+  - {fileID: 11400000, guid: de761ee0cd8310b478f2f37cc028f1f8, type: 2}
+  - {fileID: 11400000, guid: 5a01b4cb2df58b34485f57cecf3cb767, type: 2}
+  - {fileID: 11400000, guid: 8ca6ebc9b5b77464ca234552ad4b732a, type: 2}
+  - {fileID: 11400000, guid: d555fbb0eaa644f479bfe2e2941a4d1c, type: 2}
 --- !u!1 &3754569512352138814
 GameObject:
   m_ObjectHideFlags: 0
