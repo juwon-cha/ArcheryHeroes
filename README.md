@@ -11,6 +11,8 @@ https://khh7052.itch.io/archeryheroes
 개발 인원: 5명
 <br>
 개발 기간: 2025.07.29 - 2025.08.05
+<br>
+Unity Editor Version: 2022.3.17f1
 
 <br>
 
